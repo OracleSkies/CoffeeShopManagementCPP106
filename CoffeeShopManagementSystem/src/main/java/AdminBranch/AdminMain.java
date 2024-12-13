@@ -11,6 +11,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.CategoryAxis;
+import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.chart.title.TextTitle;
@@ -952,7 +954,7 @@ public class AdminMain extends javax.swing.JFrame {
         JFreeChart linechart = ChartFactory.createLineChart("Sales Monitoring","monthly","amount", 
                 dataset, PlotOrientation.VERTICAL, false,true,false);
         
-        // COLOR ADJUSTMENTS
+        // <editor-fold defaultstate="collapsed" desc="LINE CHART TITLE COLOR ADJUSTMENT">    
         // Get the title object
         Title title = linechart.getTitle();
         // Set the font color
@@ -961,8 +963,9 @@ public class AdminMain extends javax.swing.JFrame {
         textTitle.setPaint(Color.WHITE);
         
         linechart.setBackgroundPaint(new java.awt.Color(222, 160, 87));
-//        linechart.setForegroundPaint(new java.awt.Color(222, 160, 87));
-        
+        //</editor-fold>    
+
+        // <editor-fold defaultstate="collapsed" desc="CHART PLOT AND LINE RENDERER">
         //create plot object
         org.jfree.chart.plot.CategoryPlot lineCategoryPlot = linechart.getCategoryPlot();
        // lineCategoryPlot.setRangeGridlinePaint(Color.BLUE);
@@ -974,7 +977,27 @@ public class AdminMain extends javax.swing.JFrame {
         LineAndShapeRenderer lineRenderer = (LineAndShapeRenderer) lineCategoryPlot.getRenderer();
         Color lineChartColor = new Color(204,0,51);
         lineRenderer.setSeriesPaint(0, lineChartColor);
+        // </editor-fold>
         
+        // <editor-fold defaultstate="collapsed" desc="LINE CHART AXIS COLOR ADJUSTMENT"> 
+        CategoryAxis domainAxis = lineCategoryPlot.getDomainAxis();
+        NumberAxis rangeAxis = (NumberAxis) lineCategoryPlot.getRangeAxis();
+
+        // Set the font color for x-axis labels
+        domainAxis.setLabelFont(new Font("Segoe", Font.PLAIN, 20));
+        domainAxis.setLabelPaint(Color.WHITE);
+
+        // Set the font color for y-axis labels
+        rangeAxis.setLabelFont(new Font("Segoe", Font.PLAIN, 20));
+        rangeAxis.setLabelPaint(Color.WHITE);
+
+        // Set the font color for tick labels
+        domainAxis.setTickLabelFont(new Font("Segoe", Font.PLAIN, 15));
+        domainAxis.setTickLabelPaint(Color.WHITE);
+        rangeAxis.setTickLabelFont(new Font("Segoe", Font.PLAIN, 15));
+        rangeAxis.setTickLabelPaint(Color.WHITE);
+        
+        //</editor-fold>
          //create chartPanel to display chart(graph)
         ChartPanel lineChartPanel = new ChartPanel(linechart);
         lineChartPanel.setBackground(new Color(206, 148, 97));
@@ -1017,6 +1040,7 @@ public class AdminMain extends javax.swing.JFrame {
         });
     }
 
+    // <editor-fold defaultstate="collapsed" desc="VARIABLES"> 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AuditLogs;
     private javax.swing.JTable AuditLogsTable;
@@ -1075,4 +1099,6 @@ public class AdminMain extends javax.swing.JFrame {
     private javax.swing.JButton salesmonitoring;
     private javax.swing.JButton systemsettings;
     // End of variables declaration//GEN-END:variables
+    // </editor-fold>
 }
+
