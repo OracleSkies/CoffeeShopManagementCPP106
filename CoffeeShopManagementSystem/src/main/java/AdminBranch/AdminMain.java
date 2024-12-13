@@ -160,6 +160,7 @@ public class AdminMain extends javax.swing.JFrame {
 
         ButtonsPanel.setOpaque(false);
 
+        dashboard.setBackground(new java.awt.Color(222, 160, 87));
         dashboard.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         dashboard.setForeground(new java.awt.Color(255, 255, 255));
         dashboard.setText("DASHBOARD");
@@ -824,7 +825,7 @@ public class AdminMain extends javax.swing.JFrame {
     private void dashboardMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardMouseEntered
         // TODO add your handling code here:
         dashboard.setContentAreaFilled(true);
-        dashboard.setBackground(new java.awt.Color(206, 148, 97));
+        dashboard.setBackground(new java.awt.Color(111, 68, 54));
         dashboard.setForeground(Color.white);
     }//GEN-LAST:event_dashboardMouseEntered
 
@@ -837,7 +838,7 @@ public class AdminMain extends javax.swing.JFrame {
     private void inventoryMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventoryMouseEntered
         // TODO add your handling code here:
         inventory.setContentAreaFilled(true);
-        inventory.setBackground(new java.awt.Color(206, 148, 97));
+        inventory.setBackground(new java.awt.Color(111, 68, 54));
         inventory.setForeground(Color.white);
     }//GEN-LAST:event_inventoryMouseEntered
 
@@ -850,7 +851,7 @@ public class AdminMain extends javax.swing.JFrame {
     private void salesmonitoringMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesmonitoringMouseEntered
         // TODO add your handling code here:
         salesmonitoring.setContentAreaFilled(true);
-        salesmonitoring.setBackground(new java.awt.Color(206, 148, 97));
+        salesmonitoring.setBackground(new java.awt.Color(111, 68, 54));
         salesmonitoring.setForeground(Color.white);
     }//GEN-LAST:event_salesmonitoringMouseEntered
 
@@ -863,7 +864,7 @@ public class AdminMain extends javax.swing.JFrame {
     private void rolemanagementMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rolemanagementMouseEntered
         // TODO add your handling code here:
         rolemanagement.setContentAreaFilled(true);
-        rolemanagement.setBackground(new java.awt.Color(206, 148, 97));
+        rolemanagement.setBackground(new java.awt.Color(111, 68, 54));
         rolemanagement.setForeground(Color.white);
     }//GEN-LAST:event_rolemanagementMouseEntered
 
@@ -876,7 +877,7 @@ public class AdminMain extends javax.swing.JFrame {
     private void systemsettingsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_systemsettingsMouseEntered
         // TODO add your handling code here:
         systemsettings.setContentAreaFilled(true);
-        systemsettings.setBackground(new java.awt.Color(206, 148, 97));
+        systemsettings.setBackground(new java.awt.Color(111, 68, 54));
         systemsettings.setForeground(Color.white);
     }//GEN-LAST:event_systemsettingsMouseEntered
 
@@ -889,7 +890,7 @@ public class AdminMain extends javax.swing.JFrame {
     private void auditlogsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_auditlogsMouseEntered
         // TODO add your handling code here:
         auditlogs.setContentAreaFilled(true);
-        auditlogs.setBackground(new java.awt.Color(206, 148, 97));
+        auditlogs.setBackground(new java.awt.Color(111, 68, 54));
         auditlogs.setForeground(Color.white);
     }//GEN-LAST:event_auditlogsMouseEntered
 
@@ -902,7 +903,7 @@ public class AdminMain extends javax.swing.JFrame {
     private void NewAccButMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewAccButMouseEntered
         // TODO add your handling code here:
         NewAccBut.setContentAreaFilled(true);
-        NewAccBut.setBackground(new java.awt.Color(206, 148, 97));
+        NewAccBut.setBackground(new java.awt.Color(111, 68, 54));
         NewAccBut.setForeground(Color.white);
     }//GEN-LAST:event_NewAccButMouseEntered
 
@@ -915,7 +916,7 @@ public class AdminMain extends javax.swing.JFrame {
     private void ImportButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ImportButtonMouseEntered
         // TODO add your handling code here:
         ImportButton.setContentAreaFilled(true);
-        ImportButton.setBackground(new java.awt.Color(206, 148, 97));
+        ImportButton.setBackground(new java.awt.Color(111, 68, 54));
         ImportButton.setForeground(Color.white);
     }//GEN-LAST:event_ImportButtonMouseEntered
 
@@ -928,7 +929,7 @@ public class AdminMain extends javax.swing.JFrame {
     private void ConfirmButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmButtonMouseEntered
         // TODO add your handling code here:
         ConfirmButton.setContentAreaFilled(true);
-        ConfirmButton.setBackground(new java.awt.Color(206, 148, 97));
+        ConfirmButton.setBackground(new java.awt.Color(111, 68, 54));
         ConfirmButton.setForeground(Color.white);
     }//GEN-LAST:event_ConfirmButtonMouseEntered
 
