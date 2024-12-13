@@ -6,12 +6,15 @@ package AdminBranch;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import javax.swing.table.DefaultTableCellRenderer;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.LineAndShapeRenderer;
+import org.jfree.chart.title.TextTitle;
+import org.jfree.chart.title.Title;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
@@ -35,6 +38,8 @@ public class AdminMain extends javax.swing.JFrame {
         SystemSettings.setVisible(false);
         AuditLogs.setVisible(false);
         
+        
+        // <editor-fold defaultstate="collapsed" desc="GUI MODIFICATIONS">    
         RecentSalesTable.setOpaque(false);
         RecentSalesTable.setBackground(new java.awt.Color(204, 204, 204, 80));
         ((DefaultTableCellRenderer)RecentSalesTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(204, 204, 204, 80));
@@ -76,6 +81,7 @@ public class AdminMain extends javax.swing.JFrame {
         jScrollPane4.setOpaque(false);
         jScrollPane4.getViewport().setOpaque(false);
         AuditLogsTable.setShowGrid(false);
+        // </editor-fold>    
     }
 
     /**
@@ -310,6 +316,7 @@ public class AdminMain extends javax.swing.JFrame {
         jLabel2.setText("DASHBOARD");
 
         LineChart.setBackground(new java.awt.Color(255, 255, 255));
+        LineChart.setOpaque(false);
         LineChart.setLayout(new java.awt.BorderLayout());
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -739,8 +746,10 @@ public class AdminMain extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    // <editor-fold defaultstate="collapsed" desc="EVENTS">    
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
@@ -927,6 +936,7 @@ public class AdminMain extends javax.swing.JFrame {
         ConfirmButton.setForeground(Color.white);
     }//GEN-LAST:event_ConfirmButtonMouseExited
 
+    // </editor-fold>    
     
     public void showLineChart(){
         //create dataset for the graph
@@ -942,10 +952,23 @@ public class AdminMain extends javax.swing.JFrame {
         JFreeChart linechart = ChartFactory.createLineChart("Sales Monitoring","monthly","amount", 
                 dataset, PlotOrientation.VERTICAL, false,true,false);
         
+        // COLOR ADJUSTMENTS
+        // Get the title object
+        Title title = linechart.getTitle();
+        // Set the font color
+        TextTitle textTitle = (TextTitle) title;
+        textTitle.setFont(new Font("Segoe", Font.BOLD, 24));
+        textTitle.setPaint(Color.WHITE);
+        
+        linechart.setBackgroundPaint(new java.awt.Color(222, 160, 87));
+//        linechart.setForegroundPaint(new java.awt.Color(222, 160, 87));
+        
         //create plot object
         org.jfree.chart.plot.CategoryPlot lineCategoryPlot = linechart.getCategoryPlot();
        // lineCategoryPlot.setRangeGridlinePaint(Color.BLUE);
-        lineCategoryPlot.setBackgroundPaint(Color.white);
+        lineCategoryPlot.setBackgroundAlpha(0.8f);
+        lineCategoryPlot.setBackgroundPaint(new java.awt.Color(206, 148, 97));
+        
         
         //create render object to change the moficy the line properties like color
         LineAndShapeRenderer lineRenderer = (LineAndShapeRenderer) lineCategoryPlot.getRenderer();
@@ -954,6 +977,7 @@ public class AdminMain extends javax.swing.JFrame {
         
          //create chartPanel to display chart(graph)
         ChartPanel lineChartPanel = new ChartPanel(linechart);
+        lineChartPanel.setBackground(new Color(206, 148, 97));
         LineChart.removeAll();
         LineChart.add(lineChartPanel, BorderLayout.CENTER);
         LineChart.validate();
