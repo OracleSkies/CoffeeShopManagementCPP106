@@ -45,8 +45,8 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        EndShifft = new javax.swing.JButton();
+        LogOut = new javax.swing.JButton();
         OrderMenu = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
@@ -303,11 +303,16 @@ public class CashierWindow extends javax.swing.JFrame {
 
         Dashboard.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 350, 350));
 
-        jButton1.setText("END SHIFT");
-        Dashboard.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, 100, 50));
+        EndShifft.setText("END SHIFT");
+        EndShifft.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EndShifftActionPerformed(evt);
+            }
+        });
+        Dashboard.add(EndShifft, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, 100, 50));
 
-        jButton2.setText("LOGOUT");
-        Dashboard.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 610, 100, 50));
+        LogOut.setText("LOGOUT");
+        Dashboard.add(LogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 610, 100, 50));
 
         MainPanel.add(Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 500, 680));
 
@@ -1556,6 +1561,8 @@ public class CashierWindow extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    // <editor-fold defaultstate="collapsed" desc="Navs"> 
     private void DashboardButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DashboardButtonMouseClicked
         // TODO add your handling code here:
         OrderMenu.setVisible(false);
@@ -1701,6 +1708,10 @@ public class CashierWindow extends javax.swing.JFrame {
         SearchProduct.setVisible(false);
         CurrentOrder.setVisible(true);
     }//GEN-LAST:event_ViewOrderMouseClicked
+    // </editor-fold>
+    private void EndShifftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EndShifftActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EndShifftActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1744,10 +1755,12 @@ public class CashierWindow extends javax.swing.JFrame {
     private javax.swing.JPanel CurrentOrder;
     private javax.swing.JPanel Dashboard;
     private javax.swing.JButton DashboardButton;
+    private javax.swing.JButton EndShifft;
     private javax.swing.JButton Frappe;
     private javax.swing.JPanel FrappeItems;
     private javax.swing.JButton FruitTea;
     private javax.swing.JPanel FruitTeaItems;
+    private javax.swing.JButton LogOut;
     private javax.swing.JPanel MainPanel;
     private javax.swing.JButton MilkTea;
     private javax.swing.JPanel MilkTeaItems;
@@ -1763,9 +1776,7 @@ public class CashierWindow extends javax.swing.JFrame {
     private javax.swing.JPanel TeaItems;
     private javax.swing.JButton ViewOrder;
     private javax.swing.JButton bAck;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
