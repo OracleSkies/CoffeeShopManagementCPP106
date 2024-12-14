@@ -53,6 +53,7 @@ public class AdminMain extends javax.swing.JFrame {
         showLineChart();
         populateIngredientsListTable();
         populateSalesMonitoringTable();
+        populateRoleManagementTable();
         // </editor-fold> 
         
         TableActionEvent event = new TableActionEvent(){
@@ -70,6 +71,7 @@ public class AdminMain extends javax.swing.JFrame {
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
         IngredientsTable.setDefaultRenderer(Object.class, centerRenderer);
         SalesMonitoringTable.setDefaultRenderer(Object.class, centerRenderer);
+        RoleManagementTable.setDefaultRenderer(Object.class, centerRenderer);
         // </editor-fold>
         
         // <editor-fold defaultstate="collapsed" desc="CELL ACTION">
@@ -106,8 +108,8 @@ public class AdminMain extends javax.swing.JFrame {
         SalesMonitoringTable.setShowGrid(false);
         
         RoleManagementTable.setOpaque(false);
-        RoleManagementTable.setBackground(new java.awt.Color(204, 204, 204, 80));
-        ((DefaultTableCellRenderer)RoleManagementTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(204, 204, 204, 80));
+        RoleManagementTable.setBackground(new java.awt.Color(0, 0, 0, 100));
+        ((DefaultTableCellRenderer)RoleManagementTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(0, 0, 0, 100));
         jScrollPane3.setOpaque(false);
         jScrollPane3.getViewport().setOpaque(false);
         RoleManagementTable.setShowGrid(false);
@@ -582,17 +584,25 @@ public class AdminMain extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("ROLE MANAGEMENT");
 
+        RoleManagementTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        RoleManagementTable.setForeground(new java.awt.Color(255, 255, 255));
         RoleManagementTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Name", "Account Type", "Action"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        RoleManagementTable.setRowHeight(40);
         jScrollPane3.setViewportView(RoleManagementTable);
 
         NewAccBut.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -1007,7 +1017,30 @@ public class AdminMain extends javax.swing.JFrame {
     // </editor-fold>    
     
     // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIES"> 
-    
+    private void populateRoleManagementTable(){
+        DefaultTableModel model = (DefaultTableModel) RoleManagementTable.getModel();
+        
+        String url = "jdbc:sqlite:coffeeDB.db";
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT Name, AccountType FROM Accounts")) {
+
+            // Iterate through the result set and add rows to the table model
+            while (rs.next()) {
+                String name = rs.getString("Name");
+                String type = rs.getString("AccountType");
+                if(type.equals("admin")){
+                    type = "ADMINISTRATOR";
+                } else if (type.equals("user")){
+                    type = "CASHIER";
+                }
+                model.addRow(new Object[]{name, type});
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     private void populateSalesMonitoringTable(){
         //POPULATES DATA FROM DATABASE TO SALES MONITORING TABLE
         DefaultTableModel model = (DefaultTableModel) SalesMonitoringTable.getModel();
