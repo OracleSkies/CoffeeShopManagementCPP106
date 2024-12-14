@@ -75,6 +75,11 @@ public class PastryCustomization extends javax.swing.JFrame {
                 ConfirmMouseExited(evt);
             }
         });
+        Confirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfirmActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -151,6 +156,10 @@ public class PastryCustomization extends javax.swing.JFrame {
         Confirm.setContentAreaFilled(false);
         Confirm.setForeground(Color.black);
     }//GEN-LAST:event_ConfirmMouseExited
+
+    private void ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmActionPerformed
+        dispose();
+    }//GEN-LAST:event_ConfirmActionPerformed
 
     /**
      * @param args the command line arguments

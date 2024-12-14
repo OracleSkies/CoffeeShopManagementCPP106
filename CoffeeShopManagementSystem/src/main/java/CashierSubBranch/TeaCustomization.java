@@ -177,6 +177,11 @@ public class TeaCustomization extends javax.swing.JFrame {
                 ConfirmMouseExited(evt);
             }
         });
+        Confirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfirmActionPerformed(evt);
+            }
+        });
 
         jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
@@ -188,12 +193,9 @@ public class TeaCustomization extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jSeparator2)
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jSeparator3)
-                        .addContainerGap())))
+                    .addComponent(jSeparator2)
+                    .addComponent(jSeparator3))
+                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,6 +370,10 @@ public class TeaCustomization extends javax.swing.JFrame {
         Confirm.setContentAreaFilled(false);
         Confirm.setForeground(Color.black);
     }//GEN-LAST:event_ConfirmMouseExited
+
+    private void ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmActionPerformed
+        dispose();
+    }//GEN-LAST:event_ConfirmActionPerformed
 
     /**
      * @param args the command line arguments

@@ -128,6 +128,11 @@ public class FrappeCustomization extends javax.swing.JFrame {
                 ConfirmMouseExited(evt);
             }
         });
+        Confirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfirmActionPerformed(evt);
+            }
+        });
 
         jRadioButton8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jRadioButton8.setText("100%");
@@ -159,14 +164,10 @@ public class FrappeCustomization extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator2)
-                            .addComponent(jSeparator3))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jSeparator4)
-                        .addContainerGap())))
+                    .addComponent(jSeparator2)
+                    .addComponent(jSeparator3)
+                    .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -277,6 +278,10 @@ public class FrappeCustomization extends javax.swing.JFrame {
     private void jRadioButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton8ActionPerformed
+
+    private void ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmActionPerformed
+        dispose();
+    }//GEN-LAST:event_ConfirmActionPerformed
 
     /**
      * @param args the command line arguments

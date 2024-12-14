@@ -186,6 +186,11 @@ public class CoffeeCustomization extends javax.swing.JFrame {
                 ConfirmMouseExited(evt);
             }
         });
+        Confirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfirmActionPerformed(evt);
+            }
+        });
 
         jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
@@ -382,6 +387,10 @@ public class CoffeeCustomization extends javax.swing.JFrame {
         Confirm.setContentAreaFilled(false);
         Confirm.setForeground(Color.black);
     }//GEN-LAST:event_ConfirmMouseExited
+
+    private void ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmActionPerformed
+        dispose();
+    }//GEN-LAST:event_ConfirmActionPerformed
 
     /**
      * @param args the command line arguments
