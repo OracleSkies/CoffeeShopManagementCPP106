@@ -7,7 +7,14 @@ package AdminBranch;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -32,7 +39,7 @@ public class AdminMain extends javax.swing.JFrame {
         initComponents();
         
         showLineChart();
-        
+        populateIngredientsListTable();
         Dashboard.setVisible(true);
         Inventory.setVisible(false);
         SalesMonitoring.setVisible(false);
@@ -41,7 +48,15 @@ public class AdminMain extends javax.swing.JFrame {
         AuditLogs.setVisible(false);
         
         
-        // <editor-fold defaultstate="collapsed" desc="GUI MODIFICATIONS">    
+        // <editor-fold defaultstate="collapsed" desc="GUI MODIFICATIONS"> 
+        
+        // <editor-fold defaultstate="collapsed" desc="TABLE CENTER">
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        IngredientsTable.setDefaultRenderer(Object.class, centerRenderer);
+        // </editor-fold>
+        
+        
         RecentSalesTable.setOpaque(false);
         RecentSalesTable.setBackground(new java.awt.Color(204, 204, 204, 80));
         ((DefaultTableCellRenderer)RecentSalesTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(204, 204, 204, 80));
@@ -50,10 +65,10 @@ public class AdminMain extends javax.swing.JFrame {
         RecentSalesTable.setShowGrid(false);
         
         IngredientsTable.setOpaque(false);
-        IngredientsTable.setBackground(new java.awt.Color(204, 204, 204, 80));
-        ((DefaultTableCellRenderer)IngredientsTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(204, 204, 204, 80));
-        jScrollPane6.setOpaque(false);
-        jScrollPane6.getViewport().setOpaque(false);
+        IngredientsTable.setBackground(new java.awt.Color(0, 0, 0, 100));
+        ((DefaultTableCellRenderer)IngredientsTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(0, 0, 0, 100));
+        IngredientsScrPane.setOpaque(false);
+        IngredientsScrPane.getViewport().setOpaque(false);
         IngredientsTable.setShowGrid(false);
         
         ProductsTable.setOpaque(false);
@@ -115,7 +130,7 @@ public class AdminMain extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jScrollPane6 = new javax.swing.JScrollPane();
+        IngredientsScrPane = new javax.swing.JScrollPane();
         IngredientsTable = new javax.swing.JTable();
         jScrollPane7 = new javax.swing.JScrollPane();
         ProductsTable = new javax.swing.JTable();
@@ -392,33 +407,53 @@ public class AdminMain extends javax.swing.JFrame {
         jLabel6.setText("PRODUCTS");
         Inventory.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 70, -1, -1));
 
+        IngredientsTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        IngredientsTable.setForeground(new java.awt.Color(255, 255, 255));
         IngredientsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Ingredient", "Qty/Volume", "Restock"
             }
-        ));
-        jScrollPane6.setViewportView(IngredientsTable);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
-        Inventory.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 570, 510));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        IngredientsTable.setAlignmentY(0.1F);
+        IngredientsTable.setRowHeight(40);
+        IngredientsScrPane.setViewportView(IngredientsTable);
+
+        Inventory.add(IngredientsScrPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 570, 510));
 
         ProductsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Image", "Product Name", "Estimated Serving", "Price"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane7.setViewportView(ProductsTable);
+        if (ProductsTable.getColumnModel().getColumnCount() > 0) {
+            ProductsTable.getColumnModel().getColumn(0).setResizable(false);
+            ProductsTable.getColumnModel().getColumn(1).setResizable(false);
+            ProductsTable.getColumnModel().getColumn(2).setResizable(false);
+            ProductsTable.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         Inventory.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, 570, 510));
 
@@ -941,6 +976,28 @@ public class AdminMain extends javax.swing.JFrame {
 
     // </editor-fold>    
     
+    // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIES"> 
+    
+    private void populateIngredientsListTable(){
+        //POPULATES DATA FROM DATABASE TO INGREDIENTS LIST TABLE
+        DefaultTableModel model = (DefaultTableModel) IngredientsTable.getModel();
+        
+        String url = "jdbc:sqlite:coffeeDB.db";
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM IngredientList")) {
+
+            // Iterate through the result set and add rows to the table model
+            while (rs.next()) {
+                String ingredient = rs.getString("Ingredient");
+                int amount = rs.getInt("Amount");
+                model.addRow(new Object[]{ingredient, amount});
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void showLineChart(){
         //create dataset for the graph
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -1006,9 +1063,9 @@ public class AdminMain extends javax.swing.JFrame {
         LineChart.add(lineChartPanel, BorderLayout.CENTER);
         LineChart.validate();
     }
-    /**
-     * @param args the command line arguments
-     */
+    
+    // </editor-fold> 
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1050,6 +1107,7 @@ public class AdminMain extends javax.swing.JFrame {
     private javax.swing.JButton ConfirmButton;
     private javax.swing.JPanel Dashboard;
     private javax.swing.JButton ImportButton;
+    private javax.swing.JScrollPane IngredientsScrPane;
     private javax.swing.JTable IngredientsTable;
     private javax.swing.JPanel Inventory;
     private javax.swing.JPanel LineChart;
@@ -1089,7 +1147,6 @@ public class AdminMain extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField1;
