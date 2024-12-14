@@ -19,7 +19,7 @@ public class restockTableActionCellRenderer extends DefaultTableCellRenderer{
         Component com = super.getTableCellRendererComponent(jtable, o, isSeleted, bln1, row, column);
         restockPanelAction action = new restockPanelAction();
         if (isSeleted == false && row % 2 == 0) {
-            action.setBackground(new java.awt.Color(204, 204, 204, 80));
+            action.setBackground(new java.awt.Color(0, 0, 0, 100));
         } else {
             action.setBackground(com.getBackground());
         }

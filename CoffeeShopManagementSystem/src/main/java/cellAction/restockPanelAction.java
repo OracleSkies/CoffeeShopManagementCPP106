@@ -39,18 +39,11 @@ public class restockPanelAction extends javax.swing.JPanel {
 
         cmdRestock = new cellAction.ActionButton();
 
-        cmdRestock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add to stock 18x18.png"))); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(cmdRestock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(cmdRestock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        cmdRestock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add to stock 35x35.png"))); // NOI18N
+        cmdRestock.setPreferredSize(new java.awt.Dimension(35, 35));
+        add(cmdRestock, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, -1, 41));
     }// </editor-fold>//GEN-END:initComponents
 
 

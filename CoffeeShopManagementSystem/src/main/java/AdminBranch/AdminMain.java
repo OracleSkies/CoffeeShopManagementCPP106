@@ -41,8 +41,7 @@ public class AdminMain extends javax.swing.JFrame {
     public AdminMain() {
         initComponents();
         
-        showLineChart();
-        populateIngredientsListTable();
+        
         Dashboard.setVisible(true);
         Inventory.setVisible(false);
         SalesMonitoring.setVisible(false);
@@ -50,10 +49,17 @@ public class AdminMain extends javax.swing.JFrame {
         SystemSettings.setVisible(false);
         AuditLogs.setVisible(false);
         
+        // <editor-fold defaultstate="collapsed" desc="TABLE POPULATION"> 
+        showLineChart();
+        populateIngredientsListTable();
+        populateSalesMonitoringTable();
+        // </editor-fold> 
+        
         TableActionEvent event = new TableActionEvent(){
             @Override 
             public void onRestock(int row){
                 System.out.println("CLICKED");
+                System.out.println(row);
             }
         };
         
@@ -63,6 +69,7 @@ public class AdminMain extends javax.swing.JFrame {
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
         IngredientsTable.setDefaultRenderer(Object.class, centerRenderer);
+        SalesMonitoringTable.setDefaultRenderer(Object.class, centerRenderer);
         // </editor-fold>
         
         // <editor-fold defaultstate="collapsed" desc="CELL ACTION">
@@ -92,8 +99,8 @@ public class AdminMain extends javax.swing.JFrame {
         ProductsTable.setShowGrid(false);
         
         SalesMonitoringTable.setOpaque(false);
-        SalesMonitoringTable.setBackground(new java.awt.Color(204, 204, 204, 80));
-        ((DefaultTableCellRenderer)SalesMonitoringTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(204, 204, 204, 80));
+        SalesMonitoringTable.setBackground(new java.awt.Color(0, 0, 0, 100));
+        ((DefaultTableCellRenderer)SalesMonitoringTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(0, 0, 0, 100));
         jScrollPane2.setOpaque(false);
         jScrollPane2.getViewport().setOpaque(false);
         SalesMonitoringTable.setShowGrid(false);
@@ -498,17 +505,26 @@ public class AdminMain extends javax.swing.JFrame {
             }
         });
 
+        SalesMonitoringTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        SalesMonitoringTable.setForeground(new java.awt.Color(255, 255, 255));
         SalesMonitoringTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Cashier", "Orders", "Sales", "Timestamp"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        SalesMonitoringTable.setAlignmentY(0.1F);
+        SalesMonitoringTable.setRowHeight(40);
         jScrollPane2.setViewportView(SalesMonitoringTable);
 
         jButton9.setBackground(new java.awt.Color(0, 0, 255));
@@ -992,6 +1008,28 @@ public class AdminMain extends javax.swing.JFrame {
     
     // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIES"> 
     
+    private void populateSalesMonitoringTable(){
+        //POPULATES DATA FROM DATABASE TO SALES MONITORING TABLE
+        DefaultTableModel model = (DefaultTableModel) SalesMonitoringTable.getModel();
+        
+        String url = "jdbc:sqlite:coffeeDB.db";
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM Sales")) {
+
+            // Iterate through the result set and add rows to the table model
+            while (rs.next()) {
+                String cashier = rs.getString("Cashier");
+                int orders = rs.getInt("Orders");
+                int sales = rs.getInt("Sales");
+                String timestamp = rs.getString("Timestamp");
+                model.addRow(new Object[]{cashier, orders, sales, timestamp});
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     private void populateIngredientsListTable(){
         //POPULATES DATA FROM DATABASE TO INGREDIENTS LIST TABLE
         DefaultTableModel model = (DefaultTableModel) IngredientsTable.getModel();
