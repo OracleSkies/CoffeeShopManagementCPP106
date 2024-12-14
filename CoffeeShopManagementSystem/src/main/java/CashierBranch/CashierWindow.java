@@ -11,9 +11,7 @@ public class CashierWindow extends javax.swing.JFrame {
     public CashierWindow() {
         initComponents();
         
-       CoffeeBuilderwindow();
-       TeaBuilderWindow();
-           
+        
         Dashboard.setVisible(true);
         OrderMenu.setVisible(false);
         SearchProduct.setVisible(false);
@@ -29,7 +27,7 @@ public class CashierWindow extends javax.swing.JFrame {
     private static Connection connect(){
         var dbURL = "jdbc:sqlite:coffeDB.db";
         
-        try(Connection  conn = DriverManager.getConnection(dbURL)){
+        try(Connection conn = DriverManager.getConnection(dbURL)){
             System.out.println("Connection to SQLlite has been establish");
         } catch(SQLException e){
             System.out.println(e.getMessage());
@@ -1019,6 +1017,11 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel45.setText("Croissant");
 
         Macaroons.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Macaroons.png"))); // NOI18N
+        Macaroons.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MacaroonsActionPerformed(evt);
+            }
+        });
 
         jLabel46.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(255, 255, 255));
@@ -1026,6 +1029,11 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel46.setText("COFFEE");
 
         RedVelvetCake.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Red Velvet Cake.png"))); // NOI18N
+        RedVelvetCake.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RedVelvetCakeActionPerformed(evt);
+            }
+        });
 
         jLabel47.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(255, 255, 255));
@@ -1033,6 +1041,11 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel47.setText("Pandesal");
 
         BlackForestCake.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Black Forest Cake.png"))); // NOI18N
+        BlackForestCake.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BlackForestCakeActionPerformed(evt);
+            }
+        });
 
         jLabel48.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(255, 255, 255));
@@ -1040,6 +1053,11 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel48.setText("Ensaymada");
 
         BukoPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Buko Pie.png"))); // NOI18N
+        BukoPie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BukoPieActionPerformed(evt);
+            }
+        });
 
         jLabel49.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel49.setForeground(new java.awt.Color(255, 255, 255));
@@ -1047,6 +1065,11 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel49.setText("Doughnut");
 
         EggPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Egg Pie.png"))); // NOI18N
+        EggPie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EggPieActionPerformed(evt);
+            }
+        });
 
         jLabel50.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel50.setForeground(new java.awt.Color(255, 255, 255));
@@ -1054,14 +1077,39 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel50.setText("Crinkles");
 
         Croissant.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Croissant.png"))); // NOI18N
+        Croissant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CroissantActionPerformed(evt);
+            }
+        });
 
         Pandesal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Pandesal.png"))); // NOI18N
+        Pandesal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PandesalActionPerformed(evt);
+            }
+        });
 
         Ensaymada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Ensaymada.png"))); // NOI18N
+        Ensaymada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EnsaymadaActionPerformed(evt);
+            }
+        });
 
         Doughnut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Doughnut.png"))); // NOI18N
+        Doughnut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DoughnutActionPerformed(evt);
+            }
+        });
 
         Crinkles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Crinkles.png"))); // NOI18N
+        Crinkles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrinklesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PastriesItemsLayout = new javax.swing.GroupLayout(PastriesItems);
         PastriesItems.setLayout(PastriesItemsLayout);
@@ -1188,6 +1236,11 @@ public class CashierWindow extends javax.swing.JFrame {
         BackToDashboard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BackToDashboardMouseClicked(evt);
+            }
+        });
+        BackToDashboard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackToDashboardActionPerformed(evt);
             }
         });
         OrderMenu.add(BackToDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 610, 100, 40));
@@ -1465,7 +1518,7 @@ public class CashierWindow extends javax.swing.JFrame {
     
     // <editor-fold defaultstate="collapsed" desc="Coffee"> 
     private void AmericanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AmericanoActionPerformed
-        CoffeeBuilderwindow();
+        CoffeeBuilderwindow();     
     }//GEN-LAST:event_AmericanoActionPerformed
 
     private void IrishCofActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IrishCofActionPerformed
@@ -1587,7 +1640,54 @@ public class CashierWindow extends javax.swing.JFrame {
     private void MatchaFrappeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MatchaFrappeActionPerformed
         FrappeBuilderWindow();
     }//GEN-LAST:event_MatchaFrappeActionPerformed
+//</editor-fold>
     
+    //badtrip
+    private void BackToDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BackToDashboardActionPerformed
+
+    // <editor-fold defaultstate="collapsed" desc="PASTRY"> 
+    private void PandesalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PandesalActionPerformed
+        PastryBuilderWindow();
+    }//GEN-LAST:event_PandesalActionPerformed
+
+    private void EnsaymadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnsaymadaActionPerformed
+        PastryBuilderWindow();
+    }//GEN-LAST:event_EnsaymadaActionPerformed
+
+    private void DoughnutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoughnutActionPerformed
+        PastryBuilderWindow();
+    }//GEN-LAST:event_DoughnutActionPerformed
+
+    private void CrinklesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrinklesActionPerformed
+        PastryBuilderWindow();
+    }//GEN-LAST:event_CrinklesActionPerformed
+
+    private void MacaroonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MacaroonsActionPerformed
+        PastryBuilderWindow();
+    }//GEN-LAST:event_MacaroonsActionPerformed
+
+    private void RedVelvetCakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RedVelvetCakeActionPerformed
+        PastryBuilderWindow();
+    }//GEN-LAST:event_RedVelvetCakeActionPerformed
+
+    private void BlackForestCakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlackForestCakeActionPerformed
+        PastryBuilderWindow();
+    }//GEN-LAST:event_BlackForestCakeActionPerformed
+
+    private void BukoPieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BukoPieActionPerformed
+        PastryBuilderWindow();
+    }//GEN-LAST:event_BukoPieActionPerformed
+
+    private void EggPieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EggPieActionPerformed
+        PastryBuilderWindow();
+    }//GEN-LAST:event_EggPieActionPerformed
+
+    private void CroissantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CroissantActionPerformed
+       PastryBuilderWindow();
+    }//GEN-LAST:event_CroissantActionPerformed
+   
     
 // </editor-fold>
     
@@ -1614,7 +1714,11 @@ public class CashierWindow extends javax.swing.JFrame {
         PC.setVisible(true);
     }
     
+    // try lang 
     
+
+        
+
     
     
     
