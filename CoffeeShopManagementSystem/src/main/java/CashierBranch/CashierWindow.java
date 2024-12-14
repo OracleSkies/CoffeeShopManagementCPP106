@@ -27,14 +27,15 @@ public class CashierWindow extends javax.swing.JFrame {
         
     }
     
-    private static void connect(){
-        var dbURL = "jdbc:sqlite:coffedb";
+    private static Connection connect(){
+        var dbURL = "jdbc:sqlite:coffedb.db";
         
-        try(var  conn = DriverManager.getConnection(dbURL)){
+        try(Connection  conn = DriverManager.getConnection(dbURL)){
             System.out.println("Connection to SQLlite has been establish");
         } catch(SQLException e){
             System.out.println(e.getMessage());
         }
+        return null;
     }
     
     
@@ -1872,7 +1873,7 @@ public class CashierWindow extends javax.swing.JFrame {
             }
         });
     }
-// <editor-fold defaultstate="collapsed" desc="pang gulo">    
+// <editor-fold defaultstate="collapsed" desc="BWESIT ANG HABA NETO">    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackToDashboard;
     private javax.swing.JButton Coffee;
