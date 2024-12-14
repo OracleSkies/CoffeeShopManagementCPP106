@@ -4,6 +4,9 @@
  */
 package AdminBranch;
 
+import cellAction.TableActionEvent;
+import cellAction.restockTableActionCellEditor;
+import cellAction.restockTableActionCellRenderer;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -47,6 +50,12 @@ public class AdminMain extends javax.swing.JFrame {
         SystemSettings.setVisible(false);
         AuditLogs.setVisible(false);
         
+        TableActionEvent event = new TableActionEvent(){
+            @Override 
+            public void onRestock(int row){
+                System.out.println("CLICKED");
+            }
+        };
         
         // <editor-fold defaultstate="collapsed" desc="GUI MODIFICATIONS"> 
         
@@ -56,6 +65,10 @@ public class AdminMain extends javax.swing.JFrame {
         IngredientsTable.setDefaultRenderer(Object.class, centerRenderer);
         // </editor-fold>
         
+        // <editor-fold defaultstate="collapsed" desc="CELL ACTION">
+        IngredientsTable.getColumnModel().getColumn(2).setCellRenderer(new restockTableActionCellRenderer());
+        IngredientsTable.getColumnModel().getColumn(2).setCellEditor(new restockTableActionCellEditor(event));
+        // </editor-fold>
         
         RecentSalesTable.setOpaque(false);
         RecentSalesTable.setBackground(new java.awt.Color(204, 204, 204, 80));
@@ -418,7 +431,7 @@ public class AdminMain extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -427,6 +440,7 @@ public class AdminMain extends javax.swing.JFrame {
         });
         IngredientsTable.setAlignmentY(0.1F);
         IngredientsTable.setRowHeight(40);
+        IngredientsTable.setRowSelectionAllowed(false);
         IngredientsScrPane.setViewportView(IngredientsTable);
 
         Inventory.add(IngredientsScrPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 570, 510));
