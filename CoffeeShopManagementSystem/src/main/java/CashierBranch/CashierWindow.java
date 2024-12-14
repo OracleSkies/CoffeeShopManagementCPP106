@@ -28,7 +28,7 @@ public class CashierWindow extends javax.swing.JFrame {
     }
     
     private static Connection connect(){
-        var dbURL = "jdbc:sqlite:coffedb.db";
+        var dbURL = "jdbc:sqlite:coffeDB.db";
         
         try(Connection  conn = DriverManager.getConnection(dbURL)){
             System.out.println("Connection to SQLlite has been establish");
@@ -1584,13 +1584,10 @@ public class CashierWindow extends javax.swing.JFrame {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane4.setViewportView(jTable3);
@@ -1831,7 +1828,7 @@ public class CashierWindow extends javax.swing.JFrame {
         SearchProduct.setVisible(false);
         CurrentOrder.setVisible(true);
     }//GEN-LAST:event_ViewOrderMouseClicked
-    // </editor-fold>
+    
     private void EndShifftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EndShifftActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EndShifftActionPerformed
@@ -1840,6 +1837,19 @@ public class CashierWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton91ActionPerformed
 
+// </editor-fold>
+// <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIS">  
+    
+    
+    
+    
+    
+    
+    
+    
+// </editor-fold>
+
+    
     /**
      * @param args the command line arguments
      */
