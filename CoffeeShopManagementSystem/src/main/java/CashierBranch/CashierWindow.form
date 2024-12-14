@@ -310,7 +310,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="12" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel16" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
@@ -321,23 +321,23 @@
                                           <Component id="jLabel8" min="-2" pref="97" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jButton1" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="Americano" min="-2" pref="100" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jButton2" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="IrishCof" min="-2" pref="100" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jButton4" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="TurkishCof" min="-2" pref="100" max="-2" attributes="0"/>
                                       <Component id="jLabel9" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jButton11" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="Cappucino" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton12" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="Machiato" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton13" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="Latte" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel10" min="-2" pref="100" max="-2" attributes="0"/>
@@ -347,11 +347,11 @@
                                   <Component id="jLabel12" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jButton14" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="ColdBrew" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton15" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="IcedCof" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton16" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="Mocha" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel13" min="-2" pref="100" max="-2" attributes="0"/>
@@ -360,7 +360,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel15" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jButton17" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="Affogato" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                               <Component id="jLabel17" alignment="0" min="-2" pref="336" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -375,8 +375,8 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jButton1" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Component id="jButton2" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="Americano" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="IrishCof" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -385,14 +385,14 @@
                                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jButton4" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="TurkishCof" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jButton11" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Component id="jButton12" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="Cappucino" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="Machiato" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -401,14 +401,14 @@
                                       <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jButton13" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="Latte" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jButton14" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Component id="jButton15" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="ColdBrew" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="IcedCof" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -417,10 +417,10 @@
                                       <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jButton16" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="Mocha" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton17" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="Affogato" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
@@ -561,75 +561,105 @@
                     <Property name="text" type="java.lang.String" value="COFFEE"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton1">
+                <Component class="javax.swing.JButton" name="Americano">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/C_Americano.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AmericanoActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton2">
+                <Component class="javax.swing.JButton" name="IrishCof">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/C_Irish Coffee.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IrishCofActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton4">
+                <Component class="javax.swing.JButton" name="TurkishCof">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/C_Turkish Brew.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TurkishCofActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton11">
+                <Component class="javax.swing.JButton" name="Cappucino">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/C_Cappucino.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CappucinoActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton12">
+                <Component class="javax.swing.JButton" name="Machiato">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/C_Macchiato.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MachiatoActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton13">
+                <Component class="javax.swing.JButton" name="Latte">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/C_Latte.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LatteActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton14">
+                <Component class="javax.swing.JButton" name="ColdBrew">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/C_Cold Brew.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ColdBrewActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton15">
+                <Component class="javax.swing.JButton" name="IcedCof">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/C_Iced Coffee.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IcedCofActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton16">
+                <Component class="javax.swing.JButton" name="Mocha">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/C_Mocha.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MochaActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton17">
+                <Component class="javax.swing.JButton" name="Affogato">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/C_Affogato.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AffogatoActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -660,23 +690,23 @@
                                           <Component id="jLabel26" min="-2" pref="97" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jButton34" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="GreeTea" min="-2" pref="100" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jButton35" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="YellowTea" min="-2" pref="100" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jButton36" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="WhiteTea" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                       <Component id="jLabel27" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jButton37" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="BllackTea" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton28" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="HibiscusTea" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton29" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="ChaiTea" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel28" min="-2" pref="100" max="-2" attributes="0"/>
@@ -686,11 +716,11 @@
                                   <Component id="jLabel19" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jButton30" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="GingerTea" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton31" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="Matcha" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton32" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="ButterflyTea" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel20" min="-2" pref="100" max="-2" attributes="0"/>
@@ -699,7 +729,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel22" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jButton33" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="FermentedTea" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                               <Component id="jLabel24" alignment="0" min="-2" pref="336" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -714,8 +744,8 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jButton34" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Component id="jButton35" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="GreeTea" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="YellowTea" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -724,14 +754,14 @@
                                       <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jButton36" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="WhiteTea" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jButton37" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Component id="jButton28" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="BllackTea" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="HibiscusTea" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -740,14 +770,14 @@
                                       <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jButton29" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="ChaiTea" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jButton30" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Component id="jButton31" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="GingerTea" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="Matcha" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -756,10 +786,10 @@
                                       <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jButton32" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="ButterflyTea" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton33" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="FermentedTea" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
@@ -840,12 +870,15 @@
                     <Property name="text" type="java.lang.String" value="Fermented Tea"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton28">
+                <Component class="javax.swing.JButton" name="HibiscusTea">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/T_Hibiscus Tea.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HibiscusTeaActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel24">
                   <Properties>
@@ -859,12 +892,15 @@
                     <Property name="text" type="java.lang.String" value="TEA"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton29">
+                <Component class="javax.swing.JButton" name="ChaiTea">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/T_Chai Tea.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ChaiTeaActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel25">
                   <Properties>
@@ -878,12 +914,15 @@
                     <Property name="text" type="java.lang.String" value="Green Tea"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton30">
+                <Component class="javax.swing.JButton" name="GingerTea">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/T_Ginger Tea.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GingerTeaActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel26">
                   <Properties>
@@ -897,12 +936,15 @@
                     <Property name="text" type="java.lang.String" value="Yellow Tea"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton31">
+                <Component class="javax.swing.JButton" name="Matcha">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/T_Matcha.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MatchaActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel27">
                   <Properties>
@@ -916,12 +958,15 @@
                     <Property name="text" type="java.lang.String" value="White Tea"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton32">
+                <Component class="javax.swing.JButton" name="ButterflyTea">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/T_Butterfly Pea Tea.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButterflyTeaActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel28">
                   <Properties>
@@ -935,40 +980,55 @@
                     <Property name="text" type="java.lang.String" value="Black Tea"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton33">
+                <Component class="javax.swing.JButton" name="FermentedTea">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/T_Fermented Tea.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FermentedTeaActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton34">
+                <Component class="javax.swing.JButton" name="GreeTea">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/T_Green Tea.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GreeTeaActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton35">
+                <Component class="javax.swing.JButton" name="YellowTea">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/T_Yellow Tea.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="YellowTeaActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton36">
+                <Component class="javax.swing.JButton" name="WhiteTea">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/T_White Tea.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="WhiteTeaActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton37">
+                <Component class="javax.swing.JButton" name="BllackTea">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/T_Black Tea.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BllackTeaActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -999,23 +1059,23 @@
                                           <Component id="jLabel37" min="-2" pref="97" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jButton44" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="ChocolateFrappe" min="-2" pref="100" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jButton45" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="DarkChocoFrappe" min="-2" pref="100" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jButton46" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="JavaChipFrappe" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                       <Component id="jLabel38" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jButton47" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="BlackForestFrappe" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton38" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="CoockiesAndCreamFrappe" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton39" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="VanillaCaramelFrappe" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel39" min="-2" pref="100" max="-2" attributes="0"/>
@@ -1025,11 +1085,11 @@
                                   <Component id="jLabel30" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jButton40" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="CappucinoFrappe" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton41" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="ManggoFrappe" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton42" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="StrawberryFrappe" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel31" min="-2" pref="100" max="-2" attributes="0"/>
@@ -1038,7 +1098,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel33" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jButton43" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="MatchaFrappe" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                               <Component id="jLabel35" alignment="0" min="-2" pref="336" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1053,8 +1113,8 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jButton44" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Component id="jButton45" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="ChocolateFrappe" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="DarkChocoFrappe" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -1063,14 +1123,14 @@
                                       <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jButton46" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="JavaChipFrappe" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jButton47" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Component id="jButton38" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="BlackForestFrappe" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="CoockiesAndCreamFrappe" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -1079,14 +1139,14 @@
                                       <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jButton39" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="VanillaCaramelFrappe" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jButton40" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Component id="jButton41" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="CappucinoFrappe" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="ManggoFrappe" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -1095,10 +1155,10 @@
                                       <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jButton42" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="StrawberryFrappe" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton43" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="MatchaFrappe" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
@@ -1152,7 +1212,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Mango"/>
+                    <Property name="text" type="java.lang.String" value="Manggo"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel33">
@@ -1179,12 +1239,15 @@
                     <Property name="text" type="java.lang.String" value="Matcha"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton38">
+                <Component class="javax.swing.JButton" name="CoockiesAndCreamFrappe">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/F_Cookies Cream.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CoockiesAndCreamFrappeActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel35">
                   <Properties>
@@ -1198,12 +1261,15 @@
                     <Property name="text" type="java.lang.String" value="FRAPPE"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton39">
+                <Component class="javax.swing.JButton" name="VanillaCaramelFrappe">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/F_Vanilla Caramel.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VanillaCaramelFrappeActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel36">
                   <Properties>
@@ -1217,12 +1283,15 @@
                     <Property name="text" type="java.lang.String" value="Chocolate"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton40">
+                <Component class="javax.swing.JButton" name="CappucinoFrappe">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/F_Cappucino.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CappucinoFrappeActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel37">
                   <Properties>
@@ -1236,12 +1305,15 @@
                     <Property name="text" type="java.lang.String" value="Dark Choco"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton41">
+                <Component class="javax.swing.JButton" name="ManggoFrappe">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/F_Mango.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ManggoFrappeActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel38">
                   <Properties>
@@ -1255,12 +1327,15 @@
                     <Property name="text" type="java.lang.String" value="Java Chips"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton42">
+                <Component class="javax.swing.JButton" name="StrawberryFrappe">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/F_Strawberry.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StrawberryFrappeActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel39">
                   <Properties>
@@ -1274,40 +1349,55 @@
                     <Property name="text" type="java.lang.String" value="Black Forest"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton43">
+                <Component class="javax.swing.JButton" name="MatchaFrappe">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/F_Matcha.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MatchaFrappeActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton44">
+                <Component class="javax.swing.JButton" name="ChocolateFrappe">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/F_Chocolate.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ChocolateFrappeActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton45">
+                <Component class="javax.swing.JButton" name="DarkChocoFrappe">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/F_Dark Choco.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DarkChocoFrappeActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton46">
+                <Component class="javax.swing.JButton" name="JavaChipFrappe">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/F_Java Chips.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JavaChipFrappeActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton47">
+                <Component class="javax.swing.JButton" name="BlackForestFrappe">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/F_BlackForest.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BlackForestFrappeActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1338,23 +1428,23 @@
                                           <Component id="jLabel48" min="-2" pref="97" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jButton54" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="Pandesal" min="-2" pref="100" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jButton55" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="Ensaymada" min="-2" pref="100" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jButton56" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="Doughnut" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                       <Component id="jLabel49" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jButton57" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="Crinkles" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton48" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="Macaroons" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton49" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="RedVelvetCake" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel50" min="-2" pref="100" max="-2" attributes="0"/>
@@ -1364,11 +1454,11 @@
                                   <Component id="jLabel41" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jButton50" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="BlackForestCake" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton51" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="BukoPie" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton52" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="EggPie" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel42" min="-2" pref="100" max="-2" attributes="0"/>
@@ -1377,7 +1467,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel44" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jButton53" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="Croissant" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                               <Component id="jLabel46" alignment="0" min="-2" pref="336" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1392,8 +1482,8 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jButton54" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Component id="jButton55" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="Pandesal" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="Ensaymada" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -1402,14 +1492,14 @@
                                       <Component id="jLabel49" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jButton56" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="Doughnut" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jButton57" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Component id="jButton48" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="Crinkles" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="Macaroons" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -1418,14 +1508,14 @@
                                       <Component id="jLabel41" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jButton49" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="RedVelvetCake" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jButton50" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Component id="jButton51" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="BlackForestCake" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="BukoPie" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -1434,10 +1524,10 @@
                                       <Component id="jLabel44" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jButton52" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="EggPie" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton53" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="Croissant" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
@@ -1518,7 +1608,7 @@
                     <Property name="text" type="java.lang.String" value="Croissant"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton48">
+                <Component class="javax.swing.JButton" name="Macaroons">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/P_Macaroons.png"/>
@@ -1537,7 +1627,7 @@
                     <Property name="text" type="java.lang.String" value="COFFEE"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton49">
+                <Component class="javax.swing.JButton" name="RedVelvetCake">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/P_Red Velvet Cake.png"/>
@@ -1556,7 +1646,7 @@
                     <Property name="text" type="java.lang.String" value="Pandesal"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton50">
+                <Component class="javax.swing.JButton" name="BlackForestCake">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/P_Black Forest Cake.png"/>
@@ -1575,7 +1665,7 @@
                     <Property name="text" type="java.lang.String" value="Ensaymada"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton51">
+                <Component class="javax.swing.JButton" name="BukoPie">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/P_Buko Pie.png"/>
@@ -1594,7 +1684,7 @@
                     <Property name="text" type="java.lang.String" value="Doughnut"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton52">
+                <Component class="javax.swing.JButton" name="EggPie">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/P_Egg Pie.png"/>
@@ -1613,35 +1703,35 @@
                     <Property name="text" type="java.lang.String" value="Crinkles"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton53">
+                <Component class="javax.swing.JButton" name="Croissant">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/P_Croissant.png"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton54">
+                <Component class="javax.swing.JButton" name="Pandesal">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/P_Pandesal.png"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton55">
+                <Component class="javax.swing.JButton" name="Ensaymada">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/P_Ensaymada.png"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton56">
+                <Component class="javax.swing.JButton" name="Doughnut">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/P_Doughnut.png"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton57">
+                <Component class="javax.swing.JButton" name="Crinkles">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/P_Crinkles.png"/>
@@ -1733,19 +1823,19 @@
                                   <Component id="jScrollPane3" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="jButton3" min="-2" pref="125" max="-2" attributes="0"/>
+                                      <Component id="VIEWOrder2" min="-2" pref="125" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                                      <Component id="jButton5" min="-2" pref="125" max="-2" attributes="0"/>
+                                      <Component id="BackButto2" min="-2" pref="125" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jComboBox1" min="-2" pref="101" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField1" min="-2" pref="210" max="-2" attributes="0"/>
+                                      <Component id="Searchbar" min="-2" pref="210" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Filter" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButton7" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ShowAll" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -1763,16 +1853,16 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField1" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                          <Component id="jButton6" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                          <Component id="jButton7" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="Searchbar" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="Filter" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="ShowAll" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane3" pref="502" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton5" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                          <Component id="jButton3" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="BackButto2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="VIEWOrder2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   </Group>
@@ -1813,17 +1903,17 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JButton" name="VIEWOrder2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="VIEW ORDER"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton5">
+            <Component class="javax.swing.JButton" name="BackButto2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="BACK"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton5MouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BackButto2MouseClicked"/>
               </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBox1">
@@ -1847,14 +1937,14 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="Searchbar">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton6">
+            <Component class="javax.swing.JButton" name="Filter">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
@@ -1862,7 +1952,7 @@
                 <Property name="text" type="java.lang.String" value="Filter"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton7">
+            <Component class="javax.swing.JButton" name="ShowAll">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
@@ -1897,7 +1987,7 @@
                                   <Component id="jScrollPane4" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="0" pref="57" max="32767" attributes="0"/>
-                                      <Component id="jButton10" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="ConfrimOrder" min="-2" pref="140" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                                       <Component id="bAck" min="-2" pref="140" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
@@ -1919,7 +2009,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="bAck" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                          <Component id="jButton10" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="ConfrimOrder" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   </Group>
@@ -1946,7 +2036,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable3">
+                <Component class="javax.swing.JTable" name="Orders">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="2" rowCount="0">
@@ -1975,7 +2065,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButton10">
+            <Component class="javax.swing.JButton" name="ConfrimOrder">
               <Properties>
                 <Property name="text" type="java.lang.String" value="CONFIRM ORDER"/>
               </Properties>

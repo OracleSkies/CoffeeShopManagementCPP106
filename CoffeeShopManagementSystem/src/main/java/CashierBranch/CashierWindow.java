@@ -1,16 +1,18 @@
 package CashierBranch;
 
-
+import CashierSubBranch.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;   
+
 
 public class CashierWindow extends javax.swing.JFrame {
 
     public CashierWindow() {
         initComponents();
         
-       
+       CoffeeBuilderwindow();
+       TeaBuilderWindow();
            
         Dashboard.setVisible(true);
         OrderMenu.setVisible(false);
@@ -23,7 +25,7 @@ public class CashierWindow extends javax.swing.JFrame {
         PastriesItems.setVisible(false);
         
     }
-    
+    // SQL Connector
     private static Connection connect(){
         var dbURL = "jdbc:sqlite:coffeDB.db";
         
@@ -73,16 +75,16 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
+        Americano = new javax.swing.JButton();
+        IrishCof = new javax.swing.JButton();
+        TurkishCof = new javax.swing.JButton();
+        Cappucino = new javax.swing.JButton();
+        Machiato = new javax.swing.JButton();
+        Latte = new javax.swing.JButton();
+        ColdBrew = new javax.swing.JButton();
+        IcedCof = new javax.swing.JButton();
+        Mocha = new javax.swing.JButton();
+        Affogato = new javax.swing.JButton();
         TeaItems = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -90,21 +92,21 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jButton28 = new javax.swing.JButton();
+        HibiscusTea = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
-        jButton29 = new javax.swing.JButton();
+        ChaiTea = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
-        jButton30 = new javax.swing.JButton();
+        GingerTea = new javax.swing.JButton();
         jLabel26 = new javax.swing.JLabel();
-        jButton31 = new javax.swing.JButton();
+        Matcha = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
-        jButton32 = new javax.swing.JButton();
+        ButterflyTea = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
-        jButton33 = new javax.swing.JButton();
-        jButton34 = new javax.swing.JButton();
-        jButton35 = new javax.swing.JButton();
-        jButton36 = new javax.swing.JButton();
-        jButton37 = new javax.swing.JButton();
+        FermentedTea = new javax.swing.JButton();
+        GreeTea = new javax.swing.JButton();
+        YellowTea = new javax.swing.JButton();
+        WhiteTea = new javax.swing.JButton();
+        BllackTea = new javax.swing.JButton();
         FrappeItems = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
@@ -112,21 +114,21 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
-        jButton38 = new javax.swing.JButton();
+        CoockiesAndCreamFrappe = new javax.swing.JButton();
         jLabel35 = new javax.swing.JLabel();
-        jButton39 = new javax.swing.JButton();
+        VanillaCaramelFrappe = new javax.swing.JButton();
         jLabel36 = new javax.swing.JLabel();
-        jButton40 = new javax.swing.JButton();
+        CappucinoFrappe = new javax.swing.JButton();
         jLabel37 = new javax.swing.JLabel();
-        jButton41 = new javax.swing.JButton();
+        ManggoFrappe = new javax.swing.JButton();
         jLabel38 = new javax.swing.JLabel();
-        jButton42 = new javax.swing.JButton();
+        StrawberryFrappe = new javax.swing.JButton();
         jLabel39 = new javax.swing.JLabel();
-        jButton43 = new javax.swing.JButton();
-        jButton44 = new javax.swing.JButton();
-        jButton45 = new javax.swing.JButton();
-        jButton46 = new javax.swing.JButton();
-        jButton47 = new javax.swing.JButton();
+        MatchaFrappe = new javax.swing.JButton();
+        ChocolateFrappe = new javax.swing.JButton();
+        DarkChocoFrappe = new javax.swing.JButton();
+        JavaChipFrappe = new javax.swing.JButton();
+        BlackForestFrappe = new javax.swing.JButton();
         PastriesItems = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
@@ -134,21 +136,21 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
-        jButton48 = new javax.swing.JButton();
+        Macaroons = new javax.swing.JButton();
         jLabel46 = new javax.swing.JLabel();
-        jButton49 = new javax.swing.JButton();
+        RedVelvetCake = new javax.swing.JButton();
         jLabel47 = new javax.swing.JLabel();
-        jButton50 = new javax.swing.JButton();
+        BlackForestCake = new javax.swing.JButton();
         jLabel48 = new javax.swing.JLabel();
-        jButton51 = new javax.swing.JButton();
+        BukoPie = new javax.swing.JButton();
         jLabel49 = new javax.swing.JLabel();
-        jButton52 = new javax.swing.JButton();
+        EggPie = new javax.swing.JButton();
         jLabel50 = new javax.swing.JLabel();
-        jButton53 = new javax.swing.JButton();
-        jButton54 = new javax.swing.JButton();
-        jButton55 = new javax.swing.JButton();
-        jButton56 = new javax.swing.JButton();
-        jButton57 = new javax.swing.JButton();
+        Croissant = new javax.swing.JButton();
+        Pandesal = new javax.swing.JButton();
+        Ensaymada = new javax.swing.JButton();
+        Doughnut = new javax.swing.JButton();
+        Crinkles = new javax.swing.JButton();
         jLabel84 = new javax.swing.JLabel();
         SearchProductButton = new javax.swing.JButton();
         ViewOrder = new javax.swing.JButton();
@@ -157,17 +159,17 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel85 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        VIEWOrder2 = new javax.swing.JButton();
+        BackButto2 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        Searchbar = new javax.swing.JTextField();
+        Filter = new javax.swing.JButton();
+        ShowAll = new javax.swing.JButton();
         CurrentOrder = new javax.swing.JPanel();
         jLabel86 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jButton10 = new javax.swing.JButton();
+        Orders = new javax.swing.JTable();
+        ConfrimOrder = new javax.swing.JButton();
         bAck = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
@@ -363,32 +365,82 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("COFFEE");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Americano.png"))); // NOI18N
+        Americano.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Americano.png"))); // NOI18N
+        Americano.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AmericanoActionPerformed(evt);
+            }
+        });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Irish Coffee.png"))); // NOI18N
+        IrishCof.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Irish Coffee.png"))); // NOI18N
+        IrishCof.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IrishCofActionPerformed(evt);
+            }
+        });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Turkish Brew.png"))); // NOI18N
+        TurkishCof.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Turkish Brew.png"))); // NOI18N
+        TurkishCof.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TurkishCofActionPerformed(evt);
+            }
+        });
 
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Cappucino.png"))); // NOI18N
+        Cappucino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Cappucino.png"))); // NOI18N
+        Cappucino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CappucinoActionPerformed(evt);
+            }
+        });
 
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Macchiato.png"))); // NOI18N
+        Machiato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Macchiato.png"))); // NOI18N
+        Machiato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MachiatoActionPerformed(evt);
+            }
+        });
 
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Latte.png"))); // NOI18N
+        Latte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Latte.png"))); // NOI18N
+        Latte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LatteActionPerformed(evt);
+            }
+        });
 
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Cold Brew.png"))); // NOI18N
+        ColdBrew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Cold Brew.png"))); // NOI18N
+        ColdBrew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ColdBrewActionPerformed(evt);
+            }
+        });
 
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Iced Coffee.png"))); // NOI18N
+        IcedCof.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Iced Coffee.png"))); // NOI18N
+        IcedCof.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IcedCofActionPerformed(evt);
+            }
+        });
 
-        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Mocha.png"))); // NOI18N
+        Mocha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Mocha.png"))); // NOI18N
+        Mocha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MochaActionPerformed(evt);
+            }
+        });
 
-        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Affogato.png"))); // NOI18N
+        Affogato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Affogato.png"))); // NOI18N
+        Affogato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AffogatoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout CoffeeItemsLayout = new javax.swing.GroupLayout(CoffeeItems);
         CoffeeItems.setLayout(CoffeeItemsLayout);
         CoffeeItemsLayout.setHorizontalGroup(
             CoffeeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CoffeeItemsLayout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(CoffeeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(CoffeeItemsLayout.createSequentialGroup()
@@ -398,19 +450,19 @@ public class CashierWindow extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(CoffeeItemsLayout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Americano, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(IrishCof, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(CoffeeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TurkishCof, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(CoffeeItemsLayout.createSequentialGroup()
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Cappucino, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Machiato, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Latte, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(CoffeeItemsLayout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -418,18 +470,18 @@ public class CashierWindow extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(CoffeeItemsLayout.createSequentialGroup()
-                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ColdBrew, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(IcedCof, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Mocha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(CoffeeItemsLayout.createSequentialGroup()
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Affogato, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -441,40 +493,40 @@ public class CashierWindow extends javax.swing.JFrame {
                 .addGroup(CoffeeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(CoffeeItemsLayout.createSequentialGroup()
                         .addGroup(CoffeeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Americano, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(IrishCof, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(CoffeeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8)
                             .addComponent(jLabel9)))
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TurkishCof, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(CoffeeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(CoffeeItemsLayout.createSequentialGroup()
                         .addGroup(CoffeeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Cappucino, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Machiato, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(CoffeeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(jLabel11)
                             .addComponent(jLabel12)))
-                    .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Latte, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(CoffeeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(CoffeeItemsLayout.createSequentialGroup()
                         .addGroup(CoffeeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ColdBrew, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(IcedCof, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(CoffeeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
                             .addComponent(jLabel14)
                             .addComponent(jLabel15)))
-                    .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Mocha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Affogato, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel16)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -514,50 +566,100 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText("Fermented Tea");
 
-        jButton28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Hibiscus Tea.png"))); // NOI18N
+        HibiscusTea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Hibiscus Tea.png"))); // NOI18N
+        HibiscusTea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HibiscusTeaActionPerformed(evt);
+            }
+        });
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel24.setText("TEA");
 
-        jButton29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Chai Tea.png"))); // NOI18N
+        ChaiTea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Chai Tea.png"))); // NOI18N
+        ChaiTea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChaiTeaActionPerformed(evt);
+            }
+        });
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel25.setText("Green Tea");
 
-        jButton30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Ginger Tea.png"))); // NOI18N
+        GingerTea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Ginger Tea.png"))); // NOI18N
+        GingerTea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GingerTeaActionPerformed(evt);
+            }
+        });
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel26.setText("Yellow Tea");
 
-        jButton31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Matcha.png"))); // NOI18N
+        Matcha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Matcha.png"))); // NOI18N
+        Matcha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MatchaActionPerformed(evt);
+            }
+        });
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel27.setText("White Tea");
 
-        jButton32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Butterfly Pea Tea.png"))); // NOI18N
+        ButterflyTea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Butterfly Pea Tea.png"))); // NOI18N
+        ButterflyTea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButterflyTeaActionPerformed(evt);
+            }
+        });
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("Black Tea");
 
-        jButton33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Fermented Tea.png"))); // NOI18N
+        FermentedTea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Fermented Tea.png"))); // NOI18N
+        FermentedTea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FermentedTeaActionPerformed(evt);
+            }
+        });
 
-        jButton34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Green Tea.png"))); // NOI18N
+        GreeTea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Green Tea.png"))); // NOI18N
+        GreeTea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GreeTeaActionPerformed(evt);
+            }
+        });
 
-        jButton35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Yellow Tea.png"))); // NOI18N
+        YellowTea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Yellow Tea.png"))); // NOI18N
+        YellowTea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                YellowTeaActionPerformed(evt);
+            }
+        });
 
-        jButton36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_White Tea.png"))); // NOI18N
+        WhiteTea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_White Tea.png"))); // NOI18N
+        WhiteTea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                WhiteTeaActionPerformed(evt);
+            }
+        });
 
-        jButton37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Black Tea.png"))); // NOI18N
+        BllackTea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Black Tea.png"))); // NOI18N
+        BllackTea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BllackTeaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout TeaItemsLayout = new javax.swing.GroupLayout(TeaItems);
         TeaItems.setLayout(TeaItemsLayout);
@@ -574,19 +676,19 @@ public class CashierWindow extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(TeaItemsLayout.createSequentialGroup()
-                                .addComponent(jButton34, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(GreeTea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton35, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(YellowTea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(TeaItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton36, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(WhiteTea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(TeaItemsLayout.createSequentialGroup()
-                        .addComponent(jButton37, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BllackTea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(HibiscusTea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ChaiTea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(TeaItemsLayout.createSequentialGroup()
                         .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -594,18 +696,18 @@ public class CashierWindow extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(TeaItemsLayout.createSequentialGroup()
-                        .addComponent(jButton30, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(GingerTea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Matcha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton32, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ButterflyTea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(TeaItemsLayout.createSequentialGroup()
                         .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton33, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FermentedTea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -617,40 +719,40 @@ public class CashierWindow extends javax.swing.JFrame {
                 .addGroup(TeaItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(TeaItemsLayout.createSequentialGroup()
                         .addGroup(TeaItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton34, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton35, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(GreeTea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(YellowTea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(TeaItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel25)
                             .addComponent(jLabel26)
                             .addComponent(jLabel27)))
-                    .addComponent(jButton36, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(WhiteTea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(TeaItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(TeaItemsLayout.createSequentialGroup()
                         .addGroup(TeaItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton37, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(BllackTea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(HibiscusTea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(TeaItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel28)
                             .addComponent(jLabel18)
                             .addComponent(jLabel19)))
-                    .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ChaiTea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(TeaItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(TeaItemsLayout.createSequentialGroup()
                         .addGroup(TeaItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton30, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(GingerTea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Matcha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(TeaItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel20)
                             .addComponent(jLabel21)
                             .addComponent(jLabel22)))
-                    .addComponent(jButton32, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ButterflyTea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton33, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(FermentedTea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel23)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -678,7 +780,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(255, 255, 255));
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel32.setText("Mango");
+        jLabel32.setText("Manggo");
 
         jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(255, 255, 255));
@@ -690,50 +792,100 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel34.setText("Matcha");
 
-        jButton38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Cookies Cream.png"))); // NOI18N
+        CoockiesAndCreamFrappe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Cookies Cream.png"))); // NOI18N
+        CoockiesAndCreamFrappe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CoockiesAndCreamFrappeActionPerformed(evt);
+            }
+        });
 
         jLabel35.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(255, 255, 255));
         jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel35.setText("FRAPPE");
 
-        jButton39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Vanilla Caramel.png"))); // NOI18N
+        VanillaCaramelFrappe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Vanilla Caramel.png"))); // NOI18N
+        VanillaCaramelFrappe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VanillaCaramelFrappeActionPerformed(evt);
+            }
+        });
 
         jLabel36.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
         jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel36.setText("Chocolate");
 
-        jButton40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Cappucino.png"))); // NOI18N
+        CappucinoFrappe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Cappucino.png"))); // NOI18N
+        CappucinoFrappe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CappucinoFrappeActionPerformed(evt);
+            }
+        });
 
         jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(255, 255, 255));
         jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel37.setText("Dark Choco");
 
-        jButton41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Mango.png"))); // NOI18N
+        ManggoFrappe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Mango.png"))); // NOI18N
+        ManggoFrappe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManggoFrappeActionPerformed(evt);
+            }
+        });
 
         jLabel38.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel38.setText("Java Chips");
 
-        jButton42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Strawberry.png"))); // NOI18N
+        StrawberryFrappe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Strawberry.png"))); // NOI18N
+        StrawberryFrappe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StrawberryFrappeActionPerformed(evt);
+            }
+        });
 
         jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(255, 255, 255));
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel39.setText("Black Forest");
 
-        jButton43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Matcha.png"))); // NOI18N
+        MatchaFrappe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Matcha.png"))); // NOI18N
+        MatchaFrappe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MatchaFrappeActionPerformed(evt);
+            }
+        });
 
-        jButton44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Chocolate.png"))); // NOI18N
+        ChocolateFrappe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Chocolate.png"))); // NOI18N
+        ChocolateFrappe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChocolateFrappeActionPerformed(evt);
+            }
+        });
 
-        jButton45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Dark Choco.png"))); // NOI18N
+        DarkChocoFrappe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Dark Choco.png"))); // NOI18N
+        DarkChocoFrappe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DarkChocoFrappeActionPerformed(evt);
+            }
+        });
 
-        jButton46.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Java Chips.png"))); // NOI18N
+        JavaChipFrappe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Java Chips.png"))); // NOI18N
+        JavaChipFrappe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JavaChipFrappeActionPerformed(evt);
+            }
+        });
 
-        jButton47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_BlackForest.png"))); // NOI18N
+        BlackForestFrappe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_BlackForest.png"))); // NOI18N
+        BlackForestFrappe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BlackForestFrappeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout FrappeItemsLayout = new javax.swing.GroupLayout(FrappeItems);
         FrappeItems.setLayout(FrappeItemsLayout);
@@ -750,19 +902,19 @@ public class CashierWindow extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(FrappeItemsLayout.createSequentialGroup()
-                                .addComponent(jButton44, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ChocolateFrappe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton45, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(DarkChocoFrappe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(FrappeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton46, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JavaChipFrappe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(FrappeItemsLayout.createSequentialGroup()
-                        .addComponent(jButton47, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BlackForestFrappe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton38, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CoockiesAndCreamFrappe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton39, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(VanillaCaramelFrappe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(FrappeItemsLayout.createSequentialGroup()
                         .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -770,18 +922,18 @@ public class CashierWindow extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(FrappeItemsLayout.createSequentialGroup()
-                        .addComponent(jButton40, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CappucinoFrappe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton41, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ManggoFrappe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton42, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(StrawberryFrappe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(FrappeItemsLayout.createSequentialGroup()
                         .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton43, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MatchaFrappe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -793,40 +945,40 @@ public class CashierWindow extends javax.swing.JFrame {
                 .addGroup(FrappeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(FrappeItemsLayout.createSequentialGroup()
                         .addGroup(FrappeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton44, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton45, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ChocolateFrappe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DarkChocoFrappe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(FrappeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel36)
                             .addComponent(jLabel37)
                             .addComponent(jLabel38)))
-                    .addComponent(jButton46, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JavaChipFrappe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(FrappeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(FrappeItemsLayout.createSequentialGroup()
                         .addGroup(FrappeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton47, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton38, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(BlackForestFrappe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CoockiesAndCreamFrappe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(FrappeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel39)
                             .addComponent(jLabel29)
                             .addComponent(jLabel30)))
-                    .addComponent(jButton39, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(VanillaCaramelFrappe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(FrappeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(FrappeItemsLayout.createSequentialGroup()
                         .addGroup(FrappeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton40, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton41, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(CappucinoFrappe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ManggoFrappe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(FrappeItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel31)
                             .addComponent(jLabel32)
                             .addComponent(jLabel33)))
-                    .addComponent(jButton42, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(StrawberryFrappe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton43, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MatchaFrappe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel34)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -866,50 +1018,50 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel45.setText("Croissant");
 
-        jButton48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Macaroons.png"))); // NOI18N
+        Macaroons.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Macaroons.png"))); // NOI18N
 
         jLabel46.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(255, 255, 255));
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel46.setText("COFFEE");
 
-        jButton49.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Red Velvet Cake.png"))); // NOI18N
+        RedVelvetCake.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Red Velvet Cake.png"))); // NOI18N
 
         jLabel47.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(255, 255, 255));
         jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel47.setText("Pandesal");
 
-        jButton50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Black Forest Cake.png"))); // NOI18N
+        BlackForestCake.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Black Forest Cake.png"))); // NOI18N
 
         jLabel48.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(255, 255, 255));
         jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel48.setText("Ensaymada");
 
-        jButton51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Buko Pie.png"))); // NOI18N
+        BukoPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Buko Pie.png"))); // NOI18N
 
         jLabel49.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel49.setForeground(new java.awt.Color(255, 255, 255));
         jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel49.setText("Doughnut");
 
-        jButton52.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Egg Pie.png"))); // NOI18N
+        EggPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Egg Pie.png"))); // NOI18N
 
         jLabel50.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel50.setForeground(new java.awt.Color(255, 255, 255));
         jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel50.setText("Crinkles");
 
-        jButton53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Croissant.png"))); // NOI18N
+        Croissant.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Croissant.png"))); // NOI18N
 
-        jButton54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Pandesal.png"))); // NOI18N
+        Pandesal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Pandesal.png"))); // NOI18N
 
-        jButton55.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Ensaymada.png"))); // NOI18N
+        Ensaymada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Ensaymada.png"))); // NOI18N
 
-        jButton56.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Doughnut.png"))); // NOI18N
+        Doughnut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Doughnut.png"))); // NOI18N
 
-        jButton57.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Crinkles.png"))); // NOI18N
+        Crinkles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Crinkles.png"))); // NOI18N
 
         javax.swing.GroupLayout PastriesItemsLayout = new javax.swing.GroupLayout(PastriesItems);
         PastriesItems.setLayout(PastriesItemsLayout);
@@ -926,19 +1078,19 @@ public class CashierWindow extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(PastriesItemsLayout.createSequentialGroup()
-                                .addComponent(jButton54, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Pandesal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton55, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Ensaymada, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(PastriesItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton56, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Doughnut, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(PastriesItemsLayout.createSequentialGroup()
-                        .addComponent(jButton57, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Crinkles, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton48, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Macaroons, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton49, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(RedVelvetCake, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PastriesItemsLayout.createSequentialGroup()
                         .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -946,18 +1098,18 @@ public class CashierWindow extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PastriesItemsLayout.createSequentialGroup()
-                        .addComponent(jButton50, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BlackForestCake, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton51, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BukoPie, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton52, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(EggPie, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PastriesItemsLayout.createSequentialGroup()
                         .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton53, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Croissant, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -969,40 +1121,40 @@ public class CashierWindow extends javax.swing.JFrame {
                 .addGroup(PastriesItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PastriesItemsLayout.createSequentialGroup()
                         .addGroup(PastriesItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton54, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton55, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Pandesal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Ensaymada, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(PastriesItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel47)
                             .addComponent(jLabel48)
                             .addComponent(jLabel49)))
-                    .addComponent(jButton56, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Doughnut, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PastriesItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PastriesItemsLayout.createSequentialGroup()
                         .addGroup(PastriesItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton57, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton48, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Crinkles, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Macaroons, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(PastriesItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel50)
                             .addComponent(jLabel40)
                             .addComponent(jLabel41)))
-                    .addComponent(jButton49, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(RedVelvetCake, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PastriesItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PastriesItemsLayout.createSequentialGroup()
                         .addGroup(PastriesItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton50, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton51, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(BlackForestCake, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BukoPie, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(PastriesItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel42)
                             .addComponent(jLabel43)
                             .addComponent(jLabel44)))
-                    .addComponent(jButton52, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(EggPie, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton53, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Croissant, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel45)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1063,12 +1215,12 @@ public class CashierWindow extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable2);
 
-        jButton3.setText("VIEW ORDER");
+        VIEWOrder2.setText("VIEW ORDER");
 
-        jButton5.setText("BACK");
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+        BackButto2.setText("BACK");
+        BackButto2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton5MouseClicked(evt);
+                BackButto2MouseClicked(evt);
             }
         });
 
@@ -1080,13 +1232,13 @@ public class CashierWindow extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Searchbar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton6.setText("Filter");
+        Filter.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Filter.setText("Filter");
 
-        jButton7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton7.setText("Show All");
+        ShowAll.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ShowAll.setText("Show All");
 
         javax.swing.GroupLayout SearchProductLayout = new javax.swing.GroupLayout(SearchProduct);
         SearchProduct.setLayout(SearchProductLayout);
@@ -1101,18 +1253,18 @@ public class CashierWindow extends javax.swing.JFrame {
                             .addComponent(jScrollPane3)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SearchProductLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(VIEWOrder2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(69, 69, 69)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(BackButto2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(103, 103, 103))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SearchProductLayout.createSequentialGroup()
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Searchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton6)
+                                .addComponent(Filter)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton7)
+                                .addComponent(ShowAll)
                                 .addGap(6, 6, 6)))))
                 .addContainerGap())
         );
@@ -1124,15 +1276,15 @@ public class CashierWindow extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(SearchProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Searchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ShowAll, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(SearchProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BackButto2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(VIEWOrder2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 
@@ -1146,7 +1298,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel86.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel86.setText("BEANS AND LEAVES CURRENT ORDER");
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        Orders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -1154,9 +1306,9 @@ public class CashierWindow extends javax.swing.JFrame {
                 "sheesh", "Title 2"
             }
         ));
-        jScrollPane4.setViewportView(jTable3);
+        jScrollPane4.setViewportView(Orders);
 
-        jButton10.setText("CONFIRM ORDER");
+        ConfrimOrder.setText("CONFIRM ORDER");
 
         bAck.setText("BACK");
         bAck.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1178,7 +1330,7 @@ public class CashierWindow extends javax.swing.JFrame {
                             .addComponent(jScrollPane4)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CurrentOrderLayout.createSequentialGroup()
                                 .addGap(0, 57, Short.MAX_VALUE)
-                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ConfrimOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(66, 66, 66)
                                 .addComponent(bAck, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(85, 85, 85)))))
@@ -1194,7 +1346,7 @@ public class CashierWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(CurrentOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAck, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ConfrimOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 
@@ -1218,7 +1370,7 @@ public class CashierWindow extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    // <editor-fold defaultstate="collapsed" desc="EVENTS"> 
     private void OrderMenuButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OrderMenuButtonMouseClicked
         // TODO add your handling code here:
         OrderMenu.setVisible(true);
@@ -1282,13 +1434,13 @@ public class CashierWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+    private void BackButto2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButto2MouseClicked
         // TODO add your handling code here:
         OrderMenu.setVisible(true);
         Dashboard.setVisible(false);
         SearchProduct.setVisible(false);
         CurrentOrder.setVisible(false);
-    }//GEN-LAST:event_jButton5MouseClicked
+    }//GEN-LAST:event_BackButto2MouseClicked
 
     private void bAckMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAckMouseClicked
         // TODO add your handling code here:
@@ -1307,14 +1459,160 @@ public class CashierWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_ViewOrderMouseClicked
     
     private void EndShifftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EndShifftActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_EndShifftActionPerformed
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="Coffee"> 
+    private void AmericanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AmericanoActionPerformed
+        CoffeeBuilderwindow();
+    }//GEN-LAST:event_AmericanoActionPerformed
 
+    private void IrishCofActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IrishCofActionPerformed
+        CoffeeBuilderwindow();
+    }//GEN-LAST:event_IrishCofActionPerformed
+
+    private void TurkishCofActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TurkishCofActionPerformed
+        CoffeeBuilderwindow();
+    }//GEN-LAST:event_TurkishCofActionPerformed
+
+    private void CappucinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CappucinoActionPerformed
+        CoffeeBuilderwindow();
+    }//GEN-LAST:event_CappucinoActionPerformed
+
+    private void MachiatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MachiatoActionPerformed
+        CoffeeBuilderwindow();
+    }//GEN-LAST:event_MachiatoActionPerformed
+
+    private void LatteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LatteActionPerformed
+        CoffeeBuilderwindow();
+    }//GEN-LAST:event_LatteActionPerformed
+
+    private void ColdBrewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ColdBrewActionPerformed
+        CoffeeBuilderwindow();
+    }//GEN-LAST:event_ColdBrewActionPerformed
+
+    private void IcedCofActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IcedCofActionPerformed
+        CoffeeBuilderwindow();
+    }//GEN-LAST:event_IcedCofActionPerformed
+
+    private void MochaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MochaActionPerformed
+        CoffeeBuilderwindow();
+    }//GEN-LAST:event_MochaActionPerformed
+
+    private void AffogatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AffogatoActionPerformed
+        CoffeeBuilderwindow();
+    }//GEN-LAST:event_AffogatoActionPerformed
 // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="TEA"> 
+    private void GreeTeaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GreeTeaActionPerformed
+        TeaBuilderWindow();
+    }//GEN-LAST:event_GreeTeaActionPerformed
+
+    private void YellowTeaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YellowTeaActionPerformed
+        TeaBuilderWindow();
+    }//GEN-LAST:event_YellowTeaActionPerformed
+
+    private void WhiteTeaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WhiteTeaActionPerformed
+        TeaBuilderWindow();
+    }//GEN-LAST:event_WhiteTeaActionPerformed
+
+    private void BllackTeaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BllackTeaActionPerformed
+        TeaBuilderWindow();
+    }//GEN-LAST:event_BllackTeaActionPerformed
+
+    private void HibiscusTeaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HibiscusTeaActionPerformed
+        TeaBuilderWindow();
+    }//GEN-LAST:event_HibiscusTeaActionPerformed
+
+    private void ChaiTeaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChaiTeaActionPerformed
+        TeaBuilderWindow();
+    }//GEN-LAST:event_ChaiTeaActionPerformed
+
+    private void GingerTeaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GingerTeaActionPerformed
+        TeaBuilderWindow();
+    }//GEN-LAST:event_GingerTeaActionPerformed
+
+    private void MatchaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MatchaActionPerformed
+        TeaBuilderWindow();
+    }//GEN-LAST:event_MatchaActionPerformed
+
+    private void ButterflyTeaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButterflyTeaActionPerformed
+        TeaBuilderWindow();
+    }//GEN-LAST:event_ButterflyTeaActionPerformed
+
+    private void FermentedTeaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FermentedTeaActionPerformed
+        TeaBuilderWindow();
+    }//GEN-LAST:event_FermentedTeaActionPerformed
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="FRAPPE"> 
+    private void ChocolateFrappeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChocolateFrappeActionPerformed
+        FrappeBuilderWindow();
+    }//GEN-LAST:event_ChocolateFrappeActionPerformed
+
+    private void DarkChocoFrappeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DarkChocoFrappeActionPerformed
+        FrappeBuilderWindow();
+    }//GEN-LAST:event_DarkChocoFrappeActionPerformed
+
+    private void JavaChipFrappeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JavaChipFrappeActionPerformed
+        FrappeBuilderWindow();
+    }//GEN-LAST:event_JavaChipFrappeActionPerformed
+
+    private void BlackForestFrappeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlackForestFrappeActionPerformed
+        FrappeBuilderWindow();
+    }//GEN-LAST:event_BlackForestFrappeActionPerformed
+
+    private void CoockiesAndCreamFrappeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CoockiesAndCreamFrappeActionPerformed
+        FrappeBuilderWindow();
+    }//GEN-LAST:event_CoockiesAndCreamFrappeActionPerformed
+
+    private void VanillaCaramelFrappeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VanillaCaramelFrappeActionPerformed
+        FrappeBuilderWindow();
+    }//GEN-LAST:event_VanillaCaramelFrappeActionPerformed
+
+    private void CappucinoFrappeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CappucinoFrappeActionPerformed
+        FrappeBuilderWindow();
+    }//GEN-LAST:event_CappucinoFrappeActionPerformed
+
+    private void ManggoFrappeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManggoFrappeActionPerformed
+        FrappeBuilderWindow();
+    }//GEN-LAST:event_ManggoFrappeActionPerformed
+
+    private void StrawberryFrappeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StrawberryFrappeActionPerformed
+        FrappeBuilderWindow();
+    }//GEN-LAST:event_StrawberryFrappeActionPerformed
+
+    private void MatchaFrappeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MatchaFrappeActionPerformed
+        FrappeBuilderWindow();
+    }//GEN-LAST:event_MatchaFrappeActionPerformed
+    
+    
+// </editor-fold>
+    
+    
+    
 // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIS">  
+    public void CoffeeBuilderwindow(){
+        CoffeeCustomization CC = new CoffeeCustomization();
+        CC.setVisible(true);        
+    }
+   
+    public void TeaBuilderWindow(){
+        TeaCustomization TC = new TeaCustomization();
+        TC.setVisible(true);
+    }
     
+    public void FrappeBuilderWindow(){
+        FrappeCustomization FC = new FrappeCustomization();
+        FC.setVisible(true);
+    }
     
-    
+    public void PastryBuilderWindow(){
+        PastryCustomization PC = new PastryCustomization();
+        PC.setVisible(true);
+    }
     
     
     
@@ -1323,9 +1621,7 @@ public class CashierWindow extends javax.swing.JFrame {
 // </editor-fold>
 
     
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String args[]) {
         connect();
         /* Set the Nimbus look and feel */
@@ -1358,70 +1654,72 @@ public class CashierWindow extends javax.swing.JFrame {
     }
 // <editor-fold defaultstate="collapsed" desc="BWESIT ANG HABA NETO">    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Affogato;
+    private javax.swing.JButton Americano;
+    private javax.swing.JButton BackButto2;
     private javax.swing.JButton BackToDashboard;
+    private javax.swing.JButton BlackForestCake;
+    private javax.swing.JButton BlackForestFrappe;
+    private javax.swing.JButton BllackTea;
+    private javax.swing.JButton BukoPie;
+    private javax.swing.JButton ButterflyTea;
+    private javax.swing.JButton Cappucino;
+    private javax.swing.JButton CappucinoFrappe;
+    private javax.swing.JButton ChaiTea;
+    private javax.swing.JButton ChocolateFrappe;
     private javax.swing.JButton Coffee;
     private javax.swing.JPanel CoffeeItems;
+    private javax.swing.JButton ColdBrew;
+    private javax.swing.JButton ConfrimOrder;
+    private javax.swing.JButton CoockiesAndCreamFrappe;
+    private javax.swing.JButton Crinkles;
+    private javax.swing.JButton Croissant;
     private javax.swing.JPanel CurrentOrder;
+    private javax.swing.JButton DarkChocoFrappe;
     private javax.swing.JPanel Dashboard;
+    private javax.swing.JButton Doughnut;
+    private javax.swing.JButton EggPie;
     private javax.swing.JButton EndShifft;
+    private javax.swing.JButton Ensaymada;
+    private javax.swing.JButton FermentedTea;
+    private javax.swing.JButton Filter;
     private javax.swing.JButton Frappe;
     private javax.swing.JPanel FrappeItems;
+    private javax.swing.JButton GingerTea;
+    private javax.swing.JButton GreeTea;
+    private javax.swing.JButton HibiscusTea;
+    private javax.swing.JButton IcedCof;
+    private javax.swing.JButton IrishCof;
+    private javax.swing.JButton JavaChipFrappe;
+    private javax.swing.JButton Latte;
+    private javax.swing.JButton Macaroons;
+    private javax.swing.JButton Machiato;
     private javax.swing.JPanel MainPanel;
+    private javax.swing.JButton ManggoFrappe;
+    private javax.swing.JButton Matcha;
+    private javax.swing.JButton MatchaFrappe;
+    private javax.swing.JButton Mocha;
     private javax.swing.JPanel OrderMenu;
     private javax.swing.JButton OrderMenuButton;
+    private javax.swing.JTable Orders;
+    private javax.swing.JButton Pandesal;
     private javax.swing.JButton Pastries;
     private javax.swing.JPanel PastriesItems;
+    private javax.swing.JButton RedVelvetCake;
     private javax.swing.JPanel SearchProduct;
     private javax.swing.JButton SearchProductButton;
+    private javax.swing.JTextField Searchbar;
+    private javax.swing.JButton ShowAll;
+    private javax.swing.JButton StrawberryFrappe;
     private javax.swing.JButton Tea;
     private javax.swing.JPanel TeaItems;
+    private javax.swing.JButton TurkishCof;
+    private javax.swing.JButton VIEWOrder2;
+    private javax.swing.JButton VanillaCaramelFrappe;
     private javax.swing.JButton ViewOrder;
+    private javax.swing.JButton WhiteTea;
+    private javax.swing.JButton YellowTea;
     private javax.swing.JButton bAck;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton28;
-    private javax.swing.JButton jButton29;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton30;
-    private javax.swing.JButton jButton31;
-    private javax.swing.JButton jButton32;
-    private javax.swing.JButton jButton33;
-    private javax.swing.JButton jButton34;
-    private javax.swing.JButton jButton35;
-    private javax.swing.JButton jButton36;
-    private javax.swing.JButton jButton37;
-    private javax.swing.JButton jButton38;
-    private javax.swing.JButton jButton39;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton40;
-    private javax.swing.JButton jButton41;
-    private javax.swing.JButton jButton42;
-    private javax.swing.JButton jButton43;
-    private javax.swing.JButton jButton44;
-    private javax.swing.JButton jButton45;
-    private javax.swing.JButton jButton46;
-    private javax.swing.JButton jButton47;
-    private javax.swing.JButton jButton48;
-    private javax.swing.JButton jButton49;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton50;
-    private javax.swing.JButton jButton51;
-    private javax.swing.JButton jButton52;
-    private javax.swing.JButton jButton53;
-    private javax.swing.JButton jButton54;
-    private javax.swing.JButton jButton55;
-    private javax.swing.JButton jButton56;
-    private javax.swing.JButton jButton57;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1483,7 +1781,5 @@ public class CashierWindow extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }// </editor-fold>
