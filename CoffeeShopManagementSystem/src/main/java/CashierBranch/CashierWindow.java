@@ -1151,7 +1151,7 @@ public class CashierWindow extends javax.swing.JFrame {
 
             },
             new String [] {
-
+                "sheesh", "Title 2"
             }
         ));
         jScrollPane4.setViewportView(jTable3);
