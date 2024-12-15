@@ -2142,23 +2142,19 @@ public class CashierWindow extends javax.swing.JFrame {
     public static void insertCSVToDatabase(String csvFile, String jdbcUrl) {
         BufferedReader br = null;
         PreparedStatement stmt = null;
-        PreparedStatement countStmt = null;
         Connection conn = null;
         FileWriter fw = null;
         PrintWriter pw = null;
-        int count = 0;  // To track the number of values in column 7 (Date)
 
         try {
             // Establish the connection to the SQLite database
             conn = DriverManager.getConnection(jdbcUrl);
 
             // SQL query to insert data into the database
-            String sql = "INSERT INTO TransactionBYOrder (Date, Time) VALUES ( ?, ?)";
-            String countSql = "INSERT INTO TransactionBYOrder (TotalAmount) VALUES (?)"; // Assuming you have a table to store the count
+            String sql = "INSERT INTO TransactionByOrder (TotalAmount, Date, Time) VALUES (?, ?, ?)";
 
-            // Prepare the statements
+            // Prepare the statement
             stmt = conn.prepareStatement(sql);
-            countStmt = conn.prepareStatement(countSql);
 
             // Read the CSV file
             br = new BufferedReader(new FileReader(csvFile));
@@ -2166,22 +2162,17 @@ public class CashierWindow extends javax.swing.JFrame {
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");  // Assuming CSV columns are comma-separated
 
-                // Insert data into the TransactionBYOrder table
+                // Set values to the PreparedStatement (Adjust indices and types as needed)
                 stmt.setString(1, values[6]);  // Set value for TotalAmount
                 stmt.setString(2, values[7]);  // Set value for Date
                 stmt.setString(3, values[8]);  // Set value for Time
-                stmt.executeUpdate();
 
-                // Count the entries in column 7 (Date)
-                count++;
+                // Execute the insert
+                stmt.executeUpdate();
             }
 
-            // Insert the count into the TransactionBYOrderCount table (or another appropriate table)
-            countStmt.setInt(1, count);
-            countStmt.executeUpdate();
-
             // Update message in the label
-            JOptionPane.showMessageDialog(null, "CSV data successfully inserted into the SQLite database, and the count of entries in column 7 is " + count + ".");
+            JOptionPane.showMessageDialog(null, "CSV data successfully inserted into the SQLite database.");
 
             // Clear the CSV file by opening it for writing and truncating its content
             fw = new FileWriter(csvFile);
@@ -2196,7 +2187,6 @@ public class CashierWindow extends javax.swing.JFrame {
             // Close resources
             try {
                 if (stmt != null) stmt.close();
-                if (countStmt != null) countStmt.close();
                 if (conn != null) conn.close();
                 if (br != null) br.close();
                 if (fw != null) fw.close();
