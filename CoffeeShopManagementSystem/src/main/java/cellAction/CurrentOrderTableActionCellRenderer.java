@@ -18,7 +18,7 @@ public class CurrentOrderTableActionCellRenderer extends DefaultTableCellRendere
     public Component getTableCellRendererComponent(JTable jtable, Object o, boolean isSeleted, boolean bln1, int row, int column) {
         Component com = super.getTableCellRendererComponent(jtable, o, isSeleted, bln1, row, column);
         currentOrderPanelAction action = new currentOrderPanelAction();
-        if (isSeleted == false && row % 2 == 0) {
+        if (isSeleted == false && row % 3 == 0) {
             action.setBackground(new java.awt.Color(0, 0, 0, 100));
         } else {
             action.setBackground(com.getBackground());

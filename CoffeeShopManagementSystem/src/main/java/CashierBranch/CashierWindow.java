@@ -14,6 +14,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;   
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,7 +25,7 @@ public class CashierWindow extends javax.swing.JFrame {
         initComponents();
         
         // You can call the loadCSVToTable method after initializing the frame
-        loadCSVToExistingTable("CUrrent_orders.csv");
+        loadCSVToExistingTable("Current_orders.csv");
         
         
         
@@ -1358,6 +1359,11 @@ public class CashierWindow extends javax.swing.JFrame {
                 ViewOrderMouseClicked(evt);
             }
         });
+        ViewOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewOrderActionPerformed(evt);
+            }
+        });
         OrderMenu.add(ViewOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 610, 120, 40));
 
         BackToDashboard.setText("BACK");
@@ -1505,7 +1511,9 @@ public class CashierWindow extends javax.swing.JFrame {
         if (currentOrderTable.getColumnModel().getColumnCount() > 0) {
             currentOrderTable.getColumnModel().getColumn(0).setResizable(false);
             currentOrderTable.getColumnModel().getColumn(1).setResizable(false);
+            currentOrderTable.getColumnModel().getColumn(1).setPreferredWidth(5);
             currentOrderTable.getColumnModel().getColumn(2).setResizable(false);
+            currentOrderTable.getColumnModel().getColumn(2).setPreferredWidth(5);
             currentOrderTable.getColumnModel().getColumn(3).setResizable(false);
         }
 
@@ -2076,6 +2084,14 @@ public class CashierWindow extends javax.swing.JFrame {
     private void ConfrimOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfrimOrderActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ConfrimOrderActionPerformed
+
+    private void ViewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewOrderActionPerformed
+        // Path to the CSV file
+    String filePath = "Current_orders.csv";
+
+    // Run the table loading in a separate thread for responsiveness
+    new Thread(() -> loadCSVToExistingTable(filePath)).start();
+    }//GEN-LAST:event_ViewOrderActionPerformed
    
 // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIS">  
     
@@ -2098,7 +2114,7 @@ public class CashierWindow extends javax.swing.JFrame {
                     tableModel.addRow(data);
 
                     // Force the table to repaint immediately
-                    currentOrderTable.repaint();
+                    SwingUtilities.invokeLater(() -> currentOrderTable.repaint());
                 } else {
                     System.out.println("Skipping invalid row (not 6 columns): " + line);
                 }
