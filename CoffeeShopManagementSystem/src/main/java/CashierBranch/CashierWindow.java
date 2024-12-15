@@ -1,6 +1,7 @@
 package CashierBranch;
 
 import CashierSubBranch.*;
+import cellAction.TableActionEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -32,7 +33,27 @@ public class CashierWindow extends javax.swing.JFrame {
         FrappeItems.setVisible(false);
         PastriesItems.setVisible(false);
         
-        // <editor-fold defaultstate="collapsed" desc="TABLE BUTTONS">   
+        TableActionEvent event = new TableActionEvent(){
+            @Override 
+            public void onView(int row){
+                
+                //DITO MO ICALLOUT UNG METHOD SA VIEW BUTTON
+                System.out.println("VIEW BUTTON");
+                System.out.println(row);
+            }
+            @Override 
+            public void onDelete(int row){
+                
+                //DITO MO ICALLOUT UNG METHOD SA DELETE BUTTON
+                System.out.println("DELETE BUTTON");
+                System.out.println(row);
+            }
+        };
+        
+        // <editor-fold defaultstate="collapsed" desc="TABLE BUTTONS"> 
+        
+        
+        // </editor-fold> 
         
     }
     // SQL Connector
