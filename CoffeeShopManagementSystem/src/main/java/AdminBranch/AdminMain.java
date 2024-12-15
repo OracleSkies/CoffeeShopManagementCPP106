@@ -66,6 +66,21 @@ public class AdminMain extends javax.swing.JFrame {
                 System.out.println("CLICKED");
                 System.out.println(row);
             }
+            @Override 
+            public void onDelete(int row){
+                System.out.println("CLICKED");
+                System.out.println(row);
+            }
+            @Override 
+            public void currentOrderOnView(int row){
+                System.out.println("CLICKED");
+                System.out.println(row);
+            }
+            @Override 
+            public void searchOnView(int row){
+                System.out.println("CLICKED");
+                System.out.println(row);
+            }
         };
         
         // <editor-fold defaultstate="collapsed" desc="GUI MODIFICATIONS"> 

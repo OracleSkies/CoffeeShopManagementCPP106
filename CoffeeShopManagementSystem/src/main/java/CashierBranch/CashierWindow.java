@@ -64,6 +64,10 @@ public class CashierWindow extends javax.swing.JFrame {
                 System.out.println("VIEW PRODUCT BUTTON");
                 System.out.println(row);
             }
+            @Override 
+            public void onRestock(int row){
+                
+            }
         };
         
         
