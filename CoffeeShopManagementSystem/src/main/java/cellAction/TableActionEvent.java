@@ -16,9 +16,7 @@ public interface TableActionEvent {
 
     public void onDelete(int row);
     
-    public void onView(int row);
-//    
-//    public void accOnView(int row);
-//    
-//    public void cardOnView(int row);
+    public void currentOrderOnView(int row);
+    
+    public void searchOnView(int row);
 }

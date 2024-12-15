@@ -3,6 +3,8 @@ package CashierBranch;
 import CashierSubBranch.*;
 import cellAction.CurrentOrderTableActionCellEditor;
 import cellAction.CurrentOrderTableActionCellRenderer;
+import cellAction.SearchTableActionCellEditor;
+import cellAction.SearchTableActionCellRenderer;
 import cellAction.TableActionEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,6 +13,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;   
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -38,23 +41,38 @@ public class CashierWindow extends javax.swing.JFrame {
         
         TableActionEvent event = new TableActionEvent(){
             @Override 
-            public void onView(int row){
+            public void currentOrderOnView(int row){
                 
-                //DITO MO ICALLOUT UNG METHOD SA VIEW BUTTON
-                System.out.println("VIEW BUTTON");
+                //DITO MO ICALLOUT UNG METHOD SA VIEW BUTTON NG CURRENT ORDER
+                System.out.println("VIEW ORDER BUTTON");
                 System.out.println(row);
             }
             @Override 
             public void onDelete(int row){
                 
-                //DITO MO ICALLOUT UNG METHOD SA DELETE BUTTON
+                //DITO MO ICALLOUT UNG METHOD SA DELETE BUTTON NG CURRENT ORDER
                 System.out.println("DELETE BUTTON");
+                System.out.println(row);
+            }
+            @Override 
+            public void searchOnView(int row){
+                
+                //DITO MO ICALLOUT UNG METHOD SA VIEW NG SEARCH PRODUCT
+                System.out.println("VIEW PRODUCT BUTTON");
                 System.out.println(row);
             }
         };
         
         
         // <editor-fold defaultstate="collapsed" desc="GUI MODIFICATIONS">
+        
+        // <editor-fold defaultstate="collapsed" desc="TABLE CENTER">
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        currentOrderTable.setDefaultRenderer(Object.class, centerRenderer);
+        transacSummaryTable.setDefaultRenderer(Object.class, centerRenderer);
+
+        // </editor-fold>
 
         currentOrderTable.setOpaque(false);
         currentOrderTable.setBackground(new java.awt.Color(0, 0, 0, 100));
@@ -63,11 +81,29 @@ public class CashierWindow extends javax.swing.JFrame {
         currentOrderScrPane.getViewport().setOpaque(false);
         currentOrderTable.setShowGrid(false);
         
+        transacSummaryTable.setOpaque(false);
+        transacSummaryTable.setBackground(new java.awt.Color(0, 0, 0, 100));
+        ((DefaultTableCellRenderer)transacSummaryTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(0, 0, 0, 100));
+        transacScrPane.setOpaque(false);
+        transacScrPane.getViewport().setOpaque(false);
+        transacSummaryTable.setShowGrid(false);
+        
+        searchTable.setOpaque(false);
+        searchTable.setBackground(new java.awt.Color(0, 0, 0, 100));
+        ((DefaultTableCellRenderer)searchTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(0, 0, 0, 100));
+        searchScrPane.setOpaque(false);
+        searchScrPane.getViewport().setOpaque(false);
+        searchTable.setShowGrid(false);
+        
         
         // </editor-fold> 
+        
         // <editor-fold defaultstate="collapsed" desc="TABLE CELL ACTION"> 
         currentOrderTable.getColumnModel().getColumn(2).setCellRenderer(new CurrentOrderTableActionCellRenderer());
         currentOrderTable.getColumnModel().getColumn(2).setCellEditor(new CurrentOrderTableActionCellEditor(event));
+        
+        searchTable.getColumnModel().getColumn(2).setCellRenderer(new SearchTableActionCellRenderer());
+        searchTable.getColumnModel().getColumn(2).setCellEditor(new SearchTableActionCellEditor(event));
         // </editor-fold> 
         
     }
@@ -99,8 +135,8 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Summary = new javax.swing.JTable();
+        transacScrPane = new javax.swing.JScrollPane();
+        transacSummaryTable = new javax.swing.JTable();
         EndShifft = new javax.swing.JButton();
         OrderMenu = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -203,8 +239,8 @@ public class CashierWindow extends javax.swing.JFrame {
         BackToDashboard = new javax.swing.JButton();
         SearchProduct = new javax.swing.JPanel();
         jLabel85 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        searchScrPane = new javax.swing.JScrollPane();
+        searchTable = new javax.swing.JTable();
         VIEWOrder2 = new javax.swing.JButton();
         BackButto2 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -262,7 +298,9 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel5.setText("TRANSACTIONS FOR THIS SHIFT");
         Dashboard.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 470, -1));
 
-        Summary.setModel(new javax.swing.table.DefaultTableModel(
+        transacSummaryTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        transacSummaryTable.setForeground(new java.awt.Color(255, 255, 255));
+        transacSummaryTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -273,9 +311,10 @@ public class CashierWindow extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(Summary);
+        transacSummaryTable.setRowHeight(40);
+        transacScrPane.setViewportView(transacSummaryTable);
 
-        Dashboard.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 480, 410));
+        Dashboard.add(transacScrPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 480, 410));
 
         EndShifft.setText("END SHIFT");
         EndShifft.addActionListener(new java.awt.event.ActionListener() {
@@ -1343,18 +1382,21 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel85.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel85.setText("BEANS AND LEAVES SEARCH PRODUCT");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        searchTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        searchTable.setForeground(new java.awt.Color(255, 255, 255));
+        searchTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Product", "Category", "Action"
             }
         ));
-        jScrollPane3.setViewportView(jTable2);
+        searchTable.setRowHeight(40);
+        searchScrPane.setViewportView(searchTable);
 
         VIEWOrder2.setText("VIEW ORDER");
 
@@ -1391,7 +1433,7 @@ public class CashierWindow extends javax.swing.JFrame {
                     .addGroup(SearchProductLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(SearchProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3)
+                            .addComponent(searchScrPane)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SearchProductLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(VIEWOrder2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1421,7 +1463,7 @@ public class CashierWindow extends javax.swing.JFrame {
                     .addComponent(Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ShowAll, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
+                .addComponent(searchScrPane, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(SearchProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BackButto2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2156,7 +2198,6 @@ public class CashierWindow extends javax.swing.JFrame {
     private javax.swing.JTextField Searchbar;
     private javax.swing.JButton ShowAll;
     private javax.swing.JButton StrawberryFrappe;
-    private javax.swing.JTable Summary;
     private javax.swing.JButton Tea;
     private javax.swing.JPanel TeaItems;
     private javax.swing.JButton TurkishCof;
@@ -2223,9 +2264,10 @@ public class CashierWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel86;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JScrollPane searchScrPane;
+    private javax.swing.JTable searchTable;
+    private javax.swing.JScrollPane transacScrPane;
+    private javax.swing.JTable transacSummaryTable;
     // End of variables declaration//GEN-END:variables
 }// </editor-fold>

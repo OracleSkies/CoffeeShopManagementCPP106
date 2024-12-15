@@ -11,12 +11,12 @@ import java.awt.event.ActionListener;
  *
  * @author Jayjay
  */
-public class currentOrderPanelAction extends javax.swing.JPanel {
+public class searchPanelAction extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelAction
      */
-    public currentOrderPanelAction() {
+    public searchPanelAction() {
         initComponents();
     }
 
@@ -24,13 +24,7 @@ public class currentOrderPanelAction extends javax.swing.JPanel {
         cmdView.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed (ActionEvent ae){
-                event.currentOrderOnView(row);
-            }
-        });
-        cmdDelete.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed (ActionEvent ae){
-                event.onDelete(row);
+                event.searchOnView(row);
             }
         });
     }
@@ -43,21 +37,16 @@ public class currentOrderPanelAction extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cmdDelete = new cellAction.ActionButton();
         cmdView = new cellAction.ActionButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cmdDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
-        add(cmdDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 40, 30));
-
         cmdView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view.png"))); // NOI18N
-        add(cmdView, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 30, 30));
+        add(cmdView, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 40, 30));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private cellAction.ActionButton cmdDelete;
     private cellAction.ActionButton cmdView;
     // End of variables declaration//GEN-END:variables
 
