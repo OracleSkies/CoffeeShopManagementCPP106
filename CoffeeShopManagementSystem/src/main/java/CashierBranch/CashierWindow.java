@@ -1,15 +1,25 @@
 package CashierBranch;
 
 import CashierSubBranch.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;   
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 public class CashierWindow extends javax.swing.JFrame {
 
     public CashierWindow() {
         initComponents();
+        
+        // You can call the loadCSVToTable method after initializing the frame
+        loadCSVToExistingTable("CUrrent_orders.csv");
+        
+        
         
         
         Dashboard.setVisible(true);
@@ -52,7 +62,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Summary = new javax.swing.JTable();
         EndShifft = new javax.swing.JButton();
         OrderMenu = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -214,7 +224,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel5.setText("TRANSACTIONS FOR THIS SHIFT");
         Dashboard.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 470, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Summary.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -225,7 +235,7 @@ public class CashierWindow extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(Summary);
 
         Dashboard.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 480, 410));
 
@@ -1396,10 +1406,23 @@ public class CashierWindow extends javax.swing.JFrame {
 
             },
             new String [] {
-
+                "Prd Name", "Qty", "Strength", "Milk Type", "Extras"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane4.setViewportView(Orders);
+        if (Orders.getColumnModel().getColumnCount() > 0) {
+            Orders.getColumnModel().getColumn(0).setResizable(false);
+            Orders.getColumnModel().getColumn(2).setResizable(false);
+            Orders.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         ConfrimOrder.setText("CONFIRM ORDER");
         ConfrimOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -1976,6 +1999,31 @@ public class CashierWindow extends javax.swing.JFrame {
     
 // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIS">  
     
+    public void loadCSVToExistingTable(String filePath) {
+        // Get the table model from the existing JTable
+        DefaultTableModel tableModel = (DefaultTableModel) Orders.getModel();
+
+        // Clear existing rows in the JTable
+        tableModel.setRowCount(0);
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                // Split the CSV line by commas and limit to 5 columns
+                String[] data = line.split(",");
+                
+                // Only process rows that have exactly 5 columns
+                if (data.length == 5) {
+                    // Add each valid row of data to the table model
+                    tableModel.addRow(data);
+                } else {
+                    System.out.println("Skipping invalid row (not 5 columns): " + line);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
     
 
@@ -1990,6 +2038,7 @@ public class CashierWindow extends javax.swing.JFrame {
     
     public static void main(String args[]) {
         connect();
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         
@@ -2077,6 +2126,7 @@ public class CashierWindow extends javax.swing.JFrame {
     private javax.swing.JTextField Searchbar;
     private javax.swing.JButton ShowAll;
     private javax.swing.JButton StrawberryFrappe;
+    private javax.swing.JTable Summary;
     private javax.swing.JButton Tea;
     private javax.swing.JPanel TeaItems;
     private javax.swing.JButton TurkishCof;
@@ -2145,7 +2195,6 @@ public class CashierWindow extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }// </editor-fold>
