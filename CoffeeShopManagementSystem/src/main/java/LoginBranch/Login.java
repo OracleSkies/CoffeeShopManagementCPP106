@@ -4,7 +4,10 @@
  */
 package LoginBranch;
 
+import AdminBranch.AdminMain;
+import AdminSubWindow.CashierAccountRegistration;
 import databaseConnection.DBConnection;
+import java.awt.Color;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.*;
@@ -21,7 +24,7 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         
         conn = DBConnection.connectionDB();
-        CreateAccountsTable();
+//        CreateAccountsTable();
 //        DBConnectCheckByQuery();
 //        DBCheck();
 //        DBConnectCheckByQuery();
@@ -37,7 +40,7 @@ public class Login extends javax.swing.JFrame {
         passField = new javax.swing.JPasswordField();
         userField = new javax.swing.JTextField();
         loginButton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        signUpButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,16 +65,39 @@ public class Login extends javax.swing.JFrame {
         loginButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         loginButton.setForeground(new java.awt.Color(255, 255, 255));
         loginButton.setText("LOGIN");
+        loginButton.setContentAreaFilled(false);
+        loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                loginButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                loginButtonMouseExited(evt);
+            }
+        });
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(102, 102, 102));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("SIGN-UP");
+        signUpButton.setBackground(new java.awt.Color(102, 102, 102));
+        signUpButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        signUpButton.setForeground(new java.awt.Color(255, 255, 255));
+        signUpButton.setText("SIGN-UP");
+        signUpButton.setContentAreaFilled(false);
+        signUpButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                signUpButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                signUpButtonMouseExited(evt);
+            }
+        });
+        signUpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signUpButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -91,7 +117,7 @@ public class Login extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(signUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(passField, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
@@ -117,7 +143,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(signUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(213, Short.MAX_VALUE))
         );
 
@@ -137,27 +163,72 @@ public class Login extends javax.swing.JFrame {
         Login();
     }//GEN-LAST:event_loginButtonActionPerformed
 
+    private void loginButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseEntered
+        loginButton.setContentAreaFilled(true);
+        loginButton.setBackground(new java.awt.Color(111, 68, 54));
+        loginButton.setForeground(Color.white);
+    }//GEN-LAST:event_loginButtonMouseEntered
+
+    private void loginButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseExited
+        loginButton.setContentAreaFilled(false);
+        loginButton.setForeground(Color.white);
+    }//GEN-LAST:event_loginButtonMouseExited
+
+    private void signUpButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpButtonMouseEntered
+        signUpButton.setContentAreaFilled(true);
+        signUpButton.setBackground(new java.awt.Color(111, 68, 54));
+        signUpButton.setForeground(Color.white);
+    }//GEN-LAST:event_signUpButtonMouseEntered
+
+    private void signUpButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpButtonMouseExited
+        signUpButton.setContentAreaFilled(false);
+        signUpButton.setForeground(Color.white);
+    }//GEN-LAST:event_signUpButtonMouseExited
+
+    private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
+        openCashierRegistrationWindow();
+    }//GEN-LAST:event_signUpButtonActionPerformed
+
     // </editor-fold>  
     
     
     // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIES"> 
     
-    private void CreateAccountsTable(){
-        //CREATES TABLE FOR ACCOUNTS
-        var qry ="CREATE TABLE IF NOT EXISTS Accounts("
-                +"id INTEGER PRIMARY KEY,"
-                +"Username TEXT,"
-                +"Password TEXT,"
-                +"Name TEXT,"
-                +"AccountType TEXT"
-                +");";
+    private void openCashierRegistrationWindow(){
+        //OPENS CASHIER ACCOUNT REGISTRATION WINDOW
+        CashierAccountRegistration cashier = new CashierAccountRegistration();
         
-        try (var stmt = conn.createStatement()){
-            stmt.execute(qry);
-        } catch (Exception e){
-            System.out.println(e.getMessage());
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(CashierAccountRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(CashierAccountRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(CashierAccountRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(CashierAccountRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new CashierAccountRegistration().setVisible(true);
+            }
+        });
     }
+    
     private void Login(){
         //MATCHES THE USERNAME AND PASSWORD INSERTED BY THE USER IN THE TEXT FIELD
         String sqlQuery = "SELECT * from Accounts WHERE Username = ? AND Password = ?;";
@@ -169,6 +240,52 @@ public class Login extends javax.swing.JFrame {
             sqlResult = sqlPST.executeQuery();
             
             if(sqlResult.next()){
+                String accountType = sqlResult.getString("AccountType");
+                
+                switch (accountType) {
+                    case "admin":
+                        // Display admin window (replace with actual window logic)
+                        /* Set the Nimbus look and feel */
+                            //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+                            /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+                             * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+                             */
+                            try {
+                                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                                    if ("Nimbus".equals(info.getName())) {
+                                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                                        break;
+                                    }
+                                }
+                            } catch (ClassNotFoundException ex) {
+                                java.util.logging.Logger.getLogger(AdminMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                            } catch (InstantiationException ex) {
+                                java.util.logging.Logger.getLogger(AdminMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                            } catch (IllegalAccessException ex) {
+                                java.util.logging.Logger.getLogger(AdminMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                            } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+                                java.util.logging.Logger.getLogger(AdminMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                            }
+                            //</editor-fold>
+
+                            /* Create and display the form */
+                            java.awt.EventQueue.invokeLater(new Runnable() {
+                                public void run() {
+                                    new AdminMain().setVisible(true);
+                                }
+                            });
+                            setVisible(false);
+                        break;
+                    case "user":
+                        // Display user window (replace with actual window logic)
+                        System.out.println("Welcome user!");
+                        break;
+                    default:
+                        // Handle unexpected account type or error
+                        System.out.println("Invalid account type found!");
+                        break;
+                }
+                
                 JOptionPane.showMessageDialog(null, "Login Successfull");
             }
         } catch (Exception e){
@@ -211,13 +328,13 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton loginButton;
     private javax.swing.JPasswordField passField;
+    private javax.swing.JButton signUpButton;
     private javax.swing.JTextField userField;
     // End of variables declaration//GEN-END:variables
 }
