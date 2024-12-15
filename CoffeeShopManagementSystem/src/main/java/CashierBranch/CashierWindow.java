@@ -35,7 +35,7 @@ public class CashierWindow extends javax.swing.JFrame {
     }
     // SQL Connector
     private static Connection connect(){
-        var dbURL = "jdbc:sqlite:coffeDB.db";
+        var dbURL = "jdbc:sqlite:coffeeDB.db";
         
         try(Connection conn = DriverManager.getConnection(dbURL)){
             System.out.println("Connection to SQLlite has been establish");
@@ -1491,7 +1491,7 @@ public class CashierWindow extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    // <editor-fold defaultstate="collapsed" desc="NAvs"> 
+    // <editor-fold defaultstate="collapsed" desc="Navs"> 
     private void OrderMenuButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OrderMenuButtonMouseClicked
         // TODO add your handling code here:
         OrderMenu.setVisible(true);
@@ -1992,11 +1992,6 @@ public class CashierWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ConfrimOrderActionPerformed
    
-    
-
-    
-    
-    
 // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIS">  
     
     public void loadCSVToExistingTable(String filePath) {
