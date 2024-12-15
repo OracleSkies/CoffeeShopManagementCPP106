@@ -32,12 +32,12 @@ public class StaffPerformance extends javax.swing.JFrame {
 
         masterPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        salesAmount = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        cashier = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        orderCount = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
         Confirm = new javax.swing.JButton();
@@ -56,20 +56,20 @@ public class StaffPerformance extends javax.swing.JFrame {
         jLabel1.setText("Total Sales:");
         masterPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, 50));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("10");
-        masterPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, -1));
+        salesAmount.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        salesAmount.setForeground(new java.awt.Color(255, 255, 255));
+        salesAmount.setText("10");
+        masterPanel.add(salesAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Cashier:");
         masterPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, 50));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Kwason");
-        masterPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, -1, -1));
+        cashier.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        cashier.setForeground(new java.awt.Color(255, 255, 255));
+        cashier.setText("Kwason");
+        masterPanel.add(cashier, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, -1, -1));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setForeground(new java.awt.Color(111, 68, 54));
@@ -93,10 +93,10 @@ public class StaffPerformance extends javax.swing.JFrame {
         jLabel7.setText("Orders Served:");
         masterPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, 50));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("10");
-        masterPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, -1, -1));
+        orderCount.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        orderCount.setForeground(new java.awt.Color(255, 255, 255));
+        orderCount.setText("10");
+        masterPanel.add(orderCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, -1, -1));
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setForeground(new java.awt.Color(111, 68, 54));
@@ -239,15 +239,15 @@ public class StaffPerformance extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Confirm;
     private javax.swing.JLabel background;
+    private javax.swing.JLabel cashier;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel masterPanel;
+    private javax.swing.JLabel orderCount;
+    private javax.swing.JLabel salesAmount;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }
