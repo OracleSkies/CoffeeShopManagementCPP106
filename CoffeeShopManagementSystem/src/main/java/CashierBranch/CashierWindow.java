@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;   
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -52,6 +53,18 @@ public class CashierWindow extends javax.swing.JFrame {
             }
         };
         
+        
+        // <editor-fold defaultstate="collapsed" desc="GUI MODIFICATIONS">
+
+        currentOrderTable.setOpaque(false);
+        currentOrderTable.setBackground(new java.awt.Color(0, 0, 0, 100));
+        ((DefaultTableCellRenderer)currentOrderTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(0, 0, 0, 100));
+        currentOrderScrPane.setOpaque(false);
+        currentOrderScrPane.getViewport().setOpaque(false);
+        currentOrderTable.setShowGrid(false);
+        
+        
+        // </editor-fold> 
         // <editor-fold defaultstate="collapsed" desc="TABLE CELL ACTION"> 
         currentOrderTable.getColumnModel().getColumn(2).setCellRenderer(new CurrentOrderTableActionCellRenderer());
         currentOrderTable.getColumnModel().getColumn(2).setCellEditor(new CurrentOrderTableActionCellEditor(event));
@@ -200,7 +213,7 @@ public class CashierWindow extends javax.swing.JFrame {
         ShowAll = new javax.swing.JButton();
         CurrentOrder = new javax.swing.JPanel();
         jLabel86 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        currentOrderScrPane = new javax.swing.JScrollPane();
         currentOrderTable = new javax.swing.JTable();
         ConfrimOrder = new javax.swing.JButton();
         bAck = new javax.swing.JButton();
@@ -1427,6 +1440,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel86.setText("BEANS AND LEAVES CURRENT ORDER");
 
         currentOrderTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        currentOrderTable.setForeground(new java.awt.Color(255, 255, 255));
         currentOrderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -1444,7 +1458,7 @@ public class CashierWindow extends javax.swing.JFrame {
             }
         });
         currentOrderTable.setRowHeight(40);
-        jScrollPane4.setViewportView(currentOrderTable);
+        currentOrderScrPane.setViewportView(currentOrderTable);
 
         ConfrimOrder.setText("CONFIRM ORDER");
         ConfrimOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -1470,7 +1484,7 @@ public class CashierWindow extends javax.swing.JFrame {
                     .addGroup(CurrentOrderLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(CurrentOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane4)
+                            .addComponent(currentOrderScrPane)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CurrentOrderLayout.createSequentialGroup()
                                 .addGap(0, 57, Short.MAX_VALUE)
                                 .addComponent(ConfrimOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1485,7 +1499,7 @@ public class CashierWindow extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(jLabel86)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
+                .addComponent(currentOrderScrPane, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(CurrentOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAck, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2152,6 +2166,7 @@ public class CashierWindow extends javax.swing.JFrame {
     private javax.swing.JButton WhiteTea;
     private javax.swing.JButton YellowTea;
     private javax.swing.JButton bAck;
+    private javax.swing.JScrollPane currentOrderScrPane;
     private javax.swing.JTable currentOrderTable;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -2211,7 +2226,6 @@ public class CashierWindow extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }// </editor-fold>
