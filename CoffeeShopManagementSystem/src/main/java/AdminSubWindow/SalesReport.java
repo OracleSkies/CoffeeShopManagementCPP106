@@ -26,7 +26,7 @@ public class SalesReport extends javax.swing.JFrame {
         initComponents();
         conn = DBConnection.connectionDB();
         
-        countByCategory("coffee");
+        updateLabelsforReport();
         infoPanel.setBackground(new java.awt.Color(0, 0, 0, 80));
 
     }
@@ -45,8 +45,8 @@ public class SalesReport extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        totalSales = new javax.swing.JLabel();
+        pastrySales = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -54,14 +54,14 @@ public class SalesReport extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
+        totalOrders = new javax.swing.JLabel();
+        coffeeCount = new javax.swing.JLabel();
+        teaCount = new javax.swing.JLabel();
+        frappeCount = new javax.swing.JLabel();
+        pastryCount = new javax.swing.JLabel();
+        coffeeSales = new javax.swing.JLabel();
+        teaSales = new javax.swing.JLabel();
+        frappeSales = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         Confirm = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -92,17 +92,17 @@ public class SalesReport extends javax.swing.JFrame {
         jLabel13.setText("Orders");
         infoPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, -1, -1));
 
-        jLabel16.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("10");
-        infoPanel.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 550, -1, -1));
+        totalSales.setBackground(new java.awt.Color(255, 255, 255));
+        totalSales.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        totalSales.setForeground(new java.awt.Color(255, 255, 255));
+        totalSales.setText("10");
+        infoPanel.add(totalSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 550, -1, -1));
 
-        jLabel17.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("P1000");
-        infoPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, -1, -1));
+        pastrySales.setBackground(new java.awt.Color(255, 255, 255));
+        pastrySales.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        pastrySales.setForeground(new java.awt.Color(255, 255, 255));
+        pastrySales.setText("P1000");
+        infoPanel.add(pastrySales, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, -1, -1));
 
         jLabel14.setBackground(new java.awt.Color(255, 255, 255));
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
@@ -146,53 +146,53 @@ public class SalesReport extends javax.swing.JFrame {
         jLabel23.setText("Frappe");
         infoPanel.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
 
-        jLabel24.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setText("10");
-        infoPanel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, -1, -1));
+        totalOrders.setBackground(new java.awt.Color(255, 255, 255));
+        totalOrders.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        totalOrders.setForeground(new java.awt.Color(255, 255, 255));
+        totalOrders.setText("10");
+        infoPanel.add(totalOrders, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, -1, -1));
 
-        jLabel25.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel25.setText("10");
-        infoPanel.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, -1));
+        coffeeCount.setBackground(new java.awt.Color(255, 255, 255));
+        coffeeCount.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        coffeeCount.setForeground(new java.awt.Color(255, 255, 255));
+        coffeeCount.setText("10");
+        infoPanel.add(coffeeCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, -1));
 
-        jLabel26.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel26.setText("10");
-        infoPanel.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, -1, -1));
+        teaCount.setBackground(new java.awt.Color(255, 255, 255));
+        teaCount.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        teaCount.setForeground(new java.awt.Color(255, 255, 255));
+        teaCount.setText("10");
+        infoPanel.add(teaCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, -1, -1));
 
-        jLabel27.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel27.setText("10");
-        infoPanel.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, -1, -1));
+        frappeCount.setBackground(new java.awt.Color(255, 255, 255));
+        frappeCount.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        frappeCount.setForeground(new java.awt.Color(255, 255, 255));
+        frappeCount.setText("10");
+        infoPanel.add(frappeCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, -1, -1));
 
-        jLabel28.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel28.setText("10");
-        infoPanel.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, -1, -1));
+        pastryCount.setBackground(new java.awt.Color(255, 255, 255));
+        pastryCount.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        pastryCount.setForeground(new java.awt.Color(255, 255, 255));
+        pastryCount.setText("10");
+        infoPanel.add(pastryCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, -1, -1));
 
-        jLabel29.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel29.setText("P1000");
-        infoPanel.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, -1, -1));
+        coffeeSales.setBackground(new java.awt.Color(255, 255, 255));
+        coffeeSales.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        coffeeSales.setForeground(new java.awt.Color(255, 255, 255));
+        coffeeSales.setText("P1000");
+        infoPanel.add(coffeeSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, -1, -1));
 
-        jLabel30.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel30.setText("P1000");
-        infoPanel.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, -1, -1));
+        teaSales.setBackground(new java.awt.Color(255, 255, 255));
+        teaSales.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        teaSales.setForeground(new java.awt.Color(255, 255, 255));
+        teaSales.setText("P1000");
+        infoPanel.add(teaSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, -1, -1));
 
-        jLabel31.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel31.setText("P1000");
-        infoPanel.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, -1, -1));
+        frappeSales.setBackground(new java.awt.Color(255, 255, 255));
+        frappeSales.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        frappeSales.setForeground(new java.awt.Color(255, 255, 255));
+        frappeSales.setText("P1000");
+        infoPanel.add(frappeSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, -1, -1));
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setForeground(new java.awt.Color(226, 186, 171));
@@ -275,8 +275,53 @@ public class SalesReport extends javax.swing.JFrame {
     // </editor-fold> 
     
     // <editor-fold defaultstate="collapsed" desc="FUNTIONALITIES"> 
-    
-    private void countByCategory(String category){
+    private void updateLabelsforReport(){
+        String coffeeString = Integer.toString(countByCategory("coffee"));
+        String teaString = Integer.toString(countByCategory("tea"));
+        String frappeString = Integer.toString(countByCategory("frappe"));
+        String pastryString = Integer.toString(countByCategory("pastry"));
+        coffeeCount.setText(coffeeString);
+        teaCount.setText(teaString);
+        frappeCount.setText(frappeString);
+        pastryCount.setText(pastryString);
+        String coffeeAmountText = Integer.toString(addByCategory("coffee"));
+        String teaAmountText = Integer.toString(addByCategory("tea"));
+        String frappeAmountText = Integer.toString(addByCategory("frappe"));
+        String pastryAmountText = Integer.toString(addByCategory("pastry"));
+        coffeeSales.setText("₱" +coffeeAmountText);
+        teaSales.setText("₱" +teaAmountText);
+        frappeSales.setText("₱" +frappeAmountText);
+        pastrySales.setText("₱" +pastryAmountText);
+        String totalCountString = Integer.toString(totalCount(countByCategory("coffee"),countByCategory("tea"),countByCategory("frappe"),countByCategory("pastry")));
+        String totalAmountString = Integer.toString(totalCount(addByCategory("coffee"),addByCategory("tea"),addByCategory("frappe"),addByCategory("pastry")));
+        totalOrders.setText(totalCountString);
+        totalSales.setText("₱" + totalAmountString);
+    }
+    private int totalCount(int cat1, int cat2, int cat3, int cat4){
+        int total = cat1 + cat2 + cat3 + cat4;
+        return total;
+    }
+    private int addByCategory(String category){
+        int categoryAmount = 0;
+        String sqlQuery = "SELECT Category, Sales FROM SalesByProducts WHERE LOWER(Category) = ?";
+        try{
+            sqlPST = conn.prepareStatement(sqlQuery);
+            sqlPST.setString(1, category);
+            sqlResult = sqlPST.executeQuery();
+            while (sqlResult.next()){
+                String categoryString = sqlResult.getString("Category").toLowerCase();
+                int categorySale = sqlResult.getInt("Sales");
+                if (categoryString.equals(category.toLowerCase())){
+                    categoryAmount = categoryAmount + categorySale;
+                }
+            }
+            return categoryAmount;
+        }catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    private int countByCategory(String category){
         int categoryCount = 0;
         String sqlQuery = "SELECT Category FROM SalesByProducts WHERE LOWER(Category) = ?";
         try{
@@ -285,17 +330,15 @@ public class SalesReport extends javax.swing.JFrame {
             sqlResult = sqlPST.executeQuery();
             while (sqlResult.next()){
                 String categoryString = sqlResult.getString("Category").toLowerCase();
-                System.out.println(categoryString);
                 if (categoryString.equals(category.toLowerCase())){
                     categoryCount++;
                 }
             }
-            System.out.println("coffee: "+categoryCount);
+            return categoryCount;
         }catch (SQLException e) {
-                   e.printStackTrace();
-               }
-        
-        
+            e.printStackTrace();
+            return 0;
+        }
     }
     private void callAdminMain(){
         /* Set the Nimbus look and feel */
@@ -366,29 +409,29 @@ public class SalesReport extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Confirm;
+    private javax.swing.JLabel coffeeCount;
+    private javax.swing.JLabel coffeeSales;
+    private javax.swing.JLabel frappeCount;
+    private javax.swing.JLabel frappeSales;
     private javax.swing.JPanel infoPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JLabel pastryCount;
+    private javax.swing.JLabel pastrySales;
+    private javax.swing.JLabel teaCount;
+    private javax.swing.JLabel teaSales;
+    private javax.swing.JLabel totalOrders;
+    private javax.swing.JLabel totalSales;
     // End of variables declaration//GEN-END:variables
 }
