@@ -8,7 +8,9 @@ import cellAction.SearchTableActionCellRenderer;
 import cellAction.TableActionEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -2133,21 +2135,26 @@ public class CashierWindow extends javax.swing.JFrame {
     
     
 // database
-    // Method to insert CSV data into SQLite
     public static void insertCSVToDatabase(String csvFile, String jdbcUrl) {
         BufferedReader br = null;
         PreparedStatement stmt = null;
+        PreparedStatement countStmt = null;
         Connection conn = null;
+        FileWriter fw = null;
+        PrintWriter pw = null;
+        int count = 0;  // To track the number of values in column 7 (Date)
 
         try {
             // Establish the connection to the SQLite database
             conn = DriverManager.getConnection(jdbcUrl);
 
             // SQL query to insert data into the database
-            String sql = "INSERT INTO Order (OrderID, Total Amount, Date, Time) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO TransactionBYOrder (Date, Time) VALUES ( ?, ?)";
+            String countSql = "INSERT INTO TransactionBYOrder (TotalAmount) VALUES (?)"; // Assuming you have a table to store the count
 
-            // Prepare the statement
+            // Prepare the statements
             stmt = conn.prepareStatement(sql);
+            countStmt = conn.prepareStatement(countSql);
 
             // Read the CSV file
             br = new BufferedReader(new FileReader(csvFile));
@@ -2155,18 +2162,28 @@ public class CashierWindow extends javax.swing.JFrame {
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");  // Assuming CSV columns are comma-separated
 
-                // Set values to the PreparedStatement (Adjust indices and types as needed)
-                stmt.setString(1, values[2]);  // Set value for column1
-                stmt.setString(2, values[7]);  // Set value for column2
-                stmt.setString(3, values[8]);  // Set value for column3
-//                stmt.setString(4, values[4]);
-
-                // Execute the insert
+                // Insert data into the TransactionBYOrder table
+                stmt.setString(1, values[6]);  // Set value for TotalAmount
+                stmt.setString(2, values[7]);  // Set value for Date
+                stmt.setString(3, values[8]);  // Set value for Time
                 stmt.executeUpdate();
+
+                // Count the entries in column 7 (Date)
+                count++;
             }
 
+            // Insert the count into the TransactionBYOrderCount table (or another appropriate table)
+            countStmt.setInt(1, count);
+            countStmt.executeUpdate();
+
             // Update message in the label
-            JOptionPane.showMessageDialog(null, "CSV data successfully inserted into the SQLite database.");
+            JOptionPane.showMessageDialog(null, "CSV data successfully inserted into the SQLite database, and the count of entries in column 7 is " + count + ".");
+
+            // Clear the CSV file by opening it for writing and truncating its content
+            fw = new FileWriter(csvFile);
+            pw = new PrintWriter(fw);
+            // If you want to clear the file content without writing anything, just leave it empty
+            pw.close();
         } catch (IOException | SQLException e) {
             // Update message in the label
             JOptionPane.showMessageDialog(null, "Error occurred: " + e.getMessage());
@@ -2175,13 +2192,18 @@ public class CashierWindow extends javax.swing.JFrame {
             // Close resources
             try {
                 if (stmt != null) stmt.close();
+                if (countStmt != null) countStmt.close();
                 if (conn != null) conn.close();
                 if (br != null) br.close();
+                if (fw != null) fw.close();
+                if (pw != null) pw.close();
             } catch (SQLException | IOException e) {
                 e.printStackTrace();
             }
         }
     }
+
+
         
 
     
