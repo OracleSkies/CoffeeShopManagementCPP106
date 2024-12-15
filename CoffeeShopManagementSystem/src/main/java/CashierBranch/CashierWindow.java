@@ -32,6 +32,8 @@ public class CashierWindow extends javax.swing.JFrame {
         FrappeItems.setVisible(false);
         PastriesItems.setVisible(false);
         
+        // <editor-fold defaultstate="collapsed" desc="TABLE BUTTONS">   
+        
     }
     // SQL Connector
     private static Connection connect(){
@@ -1406,11 +1408,11 @@ public class CashierWindow extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Prd Name", "Qty", "Strength", "Milk Type", "Extras"
+                "Product", "Quantity", "Action"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                true, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1418,11 +1420,6 @@ public class CashierWindow extends javax.swing.JFrame {
             }
         });
         jScrollPane4.setViewportView(Orders);
-        if (Orders.getColumnModel().getColumnCount() > 0) {
-            Orders.getColumnModel().getColumn(0).setResizable(false);
-            Orders.getColumnModel().getColumn(2).setResizable(false);
-            Orders.getColumnModel().getColumn(4).setResizable(false);
-        }
 
         ConfrimOrder.setText("CONFIRM ORDER");
         ConfrimOrder.addActionListener(new java.awt.event.ActionListener() {
