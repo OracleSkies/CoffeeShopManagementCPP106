@@ -7,11 +7,13 @@ package AdminBranch;
 import cellAction.TableActionEvent;
 import cellAction.restockTableActionCellEditor;
 import cellAction.restockTableActionCellRenderer;
+import databaseConnection.DBConnection;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -35,12 +37,12 @@ import org.jfree.data.category.DefaultCategoryDataset;
  */
 public class AdminMain extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AdminMain
-     */
+    Connection conn = null;
+    PreparedStatement sqlPST = null;
+    ResultSet sqlResult = null;
     public AdminMain() {
         initComponents();
-        
+        conn = DBConnection.connectionDB();
         
         Dashboard.setVisible(true);
         Inventory.setVisible(false);
@@ -158,13 +160,14 @@ public class AdminMain extends javax.swing.JFrame {
         ProductsTable = new javax.swing.JTable();
         SalesMonitoring = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        salesFilterCombo = new javax.swing.JComboBox<>();
+        salesField = new javax.swing.JTextField();
+        salesFilterButton = new javax.swing.JButton();
+        salesShowAllButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         SalesMonitoringTable = new javax.swing.JTable();
         salesGenReportButton = new javax.swing.JButton();
+        cashierGenReportButton = new javax.swing.JButton();
         RoleManagement = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -486,24 +489,24 @@ public class AdminMain extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("SALES MONITORING");
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        salesFilterCombo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        salesFilterCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cashier", "Product", "Category" }));
+
+        salesField.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+
+        salesFilterButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        salesFilterButton.setText("FILTER");
+        salesFilterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                salesFilterButtonActionPerformed(evt);
             }
         });
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-
-        jButton7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton7.setText("FILTER");
-
-        jButton8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton8.setText("VIEW ALL");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        salesShowAllButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        salesShowAllButton.setText("VIEW ALL");
+        salesShowAllButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                salesShowAllButtonActionPerformed(evt);
             }
         });
 
@@ -514,11 +517,11 @@ public class AdminMain extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Cashier", "Orders", "Sales", "Timestamp"
+                "Cashier", "Product", "Category", "Sales", "Timestamp"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, true, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -532,7 +535,7 @@ public class AdminMain extends javax.swing.JFrame {
         salesGenReportButton.setBackground(new java.awt.Color(0, 0, 255));
         salesGenReportButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         salesGenReportButton.setForeground(new java.awt.Color(255, 255, 255));
-        salesGenReportButton.setText("GENERATE REPORT");
+        salesGenReportButton.setText("GENERATE SALES REPORT");
         salesGenReportButton.setContentAreaFilled(false);
         salesGenReportButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -540,6 +543,20 @@ public class AdminMain extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 salesGenReportButtonMouseExited(evt);
+            }
+        });
+
+        cashierGenReportButton.setBackground(new java.awt.Color(0, 0, 255));
+        cashierGenReportButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        cashierGenReportButton.setForeground(new java.awt.Color(255, 255, 255));
+        cashierGenReportButton.setText("GENERATE CASHIER REPORT");
+        cashierGenReportButton.setContentAreaFilled(false);
+        cashierGenReportButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cashierGenReportButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cashierGenReportButtonMouseExited(evt);
             }
         });
 
@@ -552,21 +569,23 @@ public class AdminMain extends javax.swing.JFrame {
                 .addGroup(SalesMonitoringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
                     .addGroup(SalesMonitoringLayout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(salesFilterCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1)
+                        .addComponent(salesField)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(salesFilterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton8)))
+                        .addComponent(salesShowAllButton)))
                 .addContainerGap())
             .addGroup(SalesMonitoringLayout.createSequentialGroup()
                 .addGap(410, 410, 410)
                 .addComponent(jLabel7)
                 .addGap(0, 411, Short.MAX_VALUE))
             .addGroup(SalesMonitoringLayout.createSequentialGroup()
-                .addGap(464, 464, 464)
-                .addComponent(salesGenReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(274, 274, 274)
+                .addComponent(salesGenReportButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cashierGenReportButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         SalesMonitoringLayout.setVerticalGroup(
@@ -576,15 +595,17 @@ public class AdminMain extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addGroup(SalesMonitoringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(jTextField1)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox1))
+                    .addComponent(salesField)
+                    .addComponent(salesFilterButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(salesShowAllButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(salesFilterCombo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(salesGenReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(20, 20, 20))
+                .addGap(18, 18, 18)
+                .addGroup(SalesMonitoringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(salesGenReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cashierGenReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
 
         RoleManagement.setOpaque(false);
@@ -836,14 +857,10 @@ public class AdminMain extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    // <editor-fold defaultstate="collapsed" desc="EVENTS">    
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void salesShowAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesShowAllButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+        populateSalesMonitoringTable();
+    }//GEN-LAST:event_salesShowAllButtonActionPerformed
 
     private void systemsettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_systemsettingsActionPerformed
         // TODO add your handling code here:
@@ -1036,6 +1053,24 @@ public class AdminMain extends javax.swing.JFrame {
         salesGenReportButton.setForeground(Color.white);
     }//GEN-LAST:event_salesGenReportButtonMouseExited
 
+    private void cashierGenReportButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cashierGenReportButtonMouseEntered
+        // TODO add your handling code here:
+        cashierGenReportButton.setContentAreaFilled(true);
+        cashierGenReportButton.setBackground(new java.awt.Color(111, 68, 54));
+        cashierGenReportButton.setForeground(Color.white);
+    }//GEN-LAST:event_cashierGenReportButtonMouseEntered
+
+    private void cashierGenReportButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cashierGenReportButtonMouseExited
+        // TODO add your handling code here:
+        cashierGenReportButton.setContentAreaFilled(false);
+        cashierGenReportButton.setForeground(Color.white);
+    }//GEN-LAST:event_cashierGenReportButtonMouseExited
+
+    private void salesFilterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesFilterButtonActionPerformed
+        // TODO add your handling code here:
+        filterSalesMonitoringTable(salesField.getText());
+    }//GEN-LAST:event_salesFilterButtonActionPerformed
+
     // </editor-fold>    
     
     // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIES"> 
@@ -1066,19 +1101,20 @@ public class AdminMain extends javax.swing.JFrame {
     private void populateSalesMonitoringTable(){
         //POPULATES DATA FROM DATABASE TO SALES MONITORING TABLE
         DefaultTableModel model = (DefaultTableModel) SalesMonitoringTable.getModel();
-        
+        model.setRowCount(0);
         String url = "jdbc:sqlite:coffeeDB.db";
         try (Connection conn = DriverManager.getConnection(url);
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM Sales")) {
+             ResultSet rs = stmt.executeQuery("SELECT * FROM SalesByProducts")) {
 
             // Iterate through the result set and add rows to the table model
             while (rs.next()) {
                 String cashier = rs.getString("Cashier");
-                int orders = rs.getInt("Orders");
+                String product = rs.getString("Product");
+                String category = rs.getString("Category");
                 int sales = rs.getInt("Sales");
                 String timestamp = rs.getString("Timestamp");
-                model.addRow(new Object[]{cashier, orders, sales, timestamp});
+                model.addRow(new Object[]{cashier, product,category, sales, timestamp});
             }
 
         } catch (SQLException e) {
@@ -1103,6 +1139,75 @@ public class AdminMain extends javax.swing.JFrame {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+    
+    private void filterSalesMonitoringTable(String field){
+        DefaultTableModel model = (DefaultTableModel) SalesMonitoringTable.getModel();
+        Object comboSelect = salesFilterCombo.getSelectedItem();
+        String comboString = comboSelect.toString();
+        String fieldLower = field.toLowerCase();
+        String sqlQuery;
+        model.setRowCount(0);
+        
+        switch (comboString){
+            case "Cashier":
+                System.out.println("CASHIER");
+                sqlQuery = "SELECT * FROM SalesByProducts WHERE LOWER(Cashier) = ?";
+                try {
+                    sqlPST = conn.prepareStatement(sqlQuery);
+                    sqlPST.setString(1, fieldLower);
+                    sqlResult = sqlPST.executeQuery();
+                    while (sqlResult.next()){
+                        String cashier = sqlResult.getString("Cashier");
+                        String product = sqlResult.getString("Product");
+                        String category = sqlResult.getString("Category");
+                        int sales = sqlResult.getInt("Sales");
+                        String timestamp = sqlResult.getString("Timestamp");
+                        model.addRow(new Object[]{cashier, product,category, sales, timestamp});
+                    }
+               } catch (SQLException e) {
+                   e.printStackTrace();
+               }
+                break;
+            case "Product":
+                System.out.println("PRODUCT");
+                sqlQuery = "SELECT * FROM SalesByProducts WHERE LOWER(Product) = ?";
+                try {
+                    sqlPST = conn.prepareStatement(sqlQuery);
+                    sqlPST.setString(1, fieldLower);
+                    sqlResult = sqlPST.executeQuery();
+                    while (sqlResult.next()){
+                        String cashier = sqlResult.getString("Cashier");
+                        String product = sqlResult.getString("Product");
+                        String category = sqlResult.getString("Category");
+                        int sales = sqlResult.getInt("Sales");
+                        String timestamp = sqlResult.getString("Timestamp");
+                        model.addRow(new Object[]{cashier, product,category, sales, timestamp});
+                    }
+               } catch (SQLException e) {
+                   e.printStackTrace();
+               }
+                break;
+            case "Category":
+                System.out.println("CATEGORY");
+                sqlQuery = "SELECT * FROM SalesByProducts WHERE LOWER(Category) = ?";
+                try {
+                    sqlPST = conn.prepareStatement(sqlQuery);
+                    sqlPST.setString(1, fieldLower);
+                    sqlResult = sqlPST.executeQuery();
+                    while (sqlResult.next()){
+                        String cashier = sqlResult.getString("Cashier");
+                        String product = sqlResult.getString("Product");
+                        String category = sqlResult.getString("Category");
+                        int sales = sqlResult.getInt("Sales");
+                        String timestamp = sqlResult.getString("Timestamp");
+                        model.addRow(new Object[]{cashier, product,category, sales, timestamp});
+                    }
+               } catch (SQLException e) {
+                   e.printStackTrace();
+               }
+                break;
         }
     }
     public void showLineChart(){
@@ -1229,11 +1334,9 @@ public class AdminMain extends javax.swing.JFrame {
     private javax.swing.JTable SalesMonitoringTable;
     private javax.swing.JPanel SystemSettings;
     private javax.swing.JButton auditlogs;
+    private javax.swing.JButton cashierGenReportButton;
     private javax.swing.JButton dashboard;
     private javax.swing.JButton inventory;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1255,12 +1358,15 @@ public class AdminMain extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JButton rolemanagement;
+    private javax.swing.JTextField salesField;
+    private javax.swing.JButton salesFilterButton;
+    private javax.swing.JComboBox<String> salesFilterCombo;
     private javax.swing.JButton salesGenReportButton;
+    private javax.swing.JButton salesShowAllButton;
     private javax.swing.JButton salesmonitoring;
     private javax.swing.JButton systemsettings;
     // End of variables declaration//GEN-END:variables
