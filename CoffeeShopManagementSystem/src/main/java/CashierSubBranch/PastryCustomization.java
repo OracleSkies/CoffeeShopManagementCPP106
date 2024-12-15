@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
 
@@ -168,10 +170,16 @@ public class PastryCustomization extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please enter a quantity.", "Input Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        
+        // Get the current date and time
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String date = now.format(dateFormatter);  // Extract the date
+        String time = now.format(timeFormatter);  // Extract the time
 
         // Prepare data to be written to the CSV file
-        String data = Type + "," + "Pastry" + "," + quantity + "," + " " + "," + " " + "," + " ";
+        String data = Type + "," + "Pastry" + "," + quantity + "," + " " + "," + " " + "," + " " + "," + "30" + "," + date + "," + time ;
 
         // Write the data to a CSV file
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Current_orders.csv", true))) {
@@ -186,6 +194,7 @@ public class PastryCustomization extends javax.swing.JFrame {
         setVisible(false);
     }
     //</editor-fold>
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

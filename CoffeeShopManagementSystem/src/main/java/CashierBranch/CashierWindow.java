@@ -11,7 +11,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;   
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
@@ -2081,7 +2083,12 @@ public class CashierWindow extends javax.swing.JFrame {
     
     
     private void ConfrimOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfrimOrderActionPerformed
-        // TODO add your handling code here:
+        // CSV file and SQLite database
+        String csvFile = "Current_orders.csv";  // Adjust this path
+        String jdbcUrl = "jdbc:sqlite:coffeeDB.db";  // SQLite connection string
+
+        // Call the method to insert CSV into the database
+        insertCSVToDatabase(csvFile, jdbcUrl);
     }//GEN-LAST:event_ConfrimOrderActionPerformed
 
     private void ViewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewOrderActionPerformed
@@ -2108,14 +2115,14 @@ public class CashierWindow extends javax.swing.JFrame {
                 String[] data = line.split(",");
 
                 // Only process rows that have exactly 6 columns
-                if (data.length == 6) {
+                if (data.length == 9) {
                     // Add each valid row of data to the table model
                     tableModel.addRow(data);
 
                     // Force the table to repaint immediately
                     SwingUtilities.invokeLater(() -> currentOrderTable.repaint());
                 } else {
-                    System.out.println("Skipping invalid row (not 6 columns): " + line);
+                    System.out.println("Skipping invalid row (not 9 columns): " + line);
                 }
             }
         } catch (IOException e) {
@@ -2125,7 +2132,56 @@ public class CashierWindow extends javax.swing.JFrame {
 
     
     
+// database
+    // Method to insert CSV data into SQLite
+    public static void insertCSVToDatabase(String csvFile, String jdbcUrl) {
+        BufferedReader br = null;
+        PreparedStatement stmt = null;
+        Connection conn = null;
 
+        try {
+            // Establish the connection to the SQLite database
+            conn = DriverManager.getConnection(jdbcUrl);
+
+            // SQL query to insert data into the database
+            String sql = "INSERT INTO Order (OrderID, Total Amount, Date, Time) VALUES (?, ?, ?, ?)";
+
+            // Prepare the statement
+            stmt = conn.prepareStatement(sql);
+
+            // Read the CSV file
+            br = new BufferedReader(new FileReader(csvFile));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");  // Assuming CSV columns are comma-separated
+
+                // Set values to the PreparedStatement (Adjust indices and types as needed)
+                stmt.setString(1, values[2]);  // Set value for column1
+                stmt.setString(2, values[7]);  // Set value for column2
+                stmt.setString(3, values[8]);  // Set value for column3
+//                stmt.setString(4, values[4]);
+
+                // Execute the insert
+                stmt.executeUpdate();
+            }
+
+            // Update message in the label
+            JOptionPane.showMessageDialog(null, "CSV data successfully inserted into the SQLite database.");
+        } catch (IOException | SQLException e) {
+            // Update message in the label
+            JOptionPane.showMessageDialog(null, "Error occurred: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            try {
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+                if (br != null) br.close();
+            } catch (SQLException | IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
         
 
     

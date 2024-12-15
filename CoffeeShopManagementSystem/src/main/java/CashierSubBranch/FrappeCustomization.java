@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 
@@ -329,9 +331,16 @@ public class FrappeCustomization extends javax.swing.JFrame {
         if (extras.length() == 0) {
             extras.append("No Extras");
         }
+        
+        // Get the current date and time
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String date = now.format(dateFormatter);  // Extract the date
+        String time = now.format(timeFormatter);  // Extract the time
 
         // Prepare data to be written to the CSV file
-        String data = Type + "," + "Frappe" + "," + quantity + "," + strength + "," + " " + "," + extras.toString().trim();
+        String data = Type + "," + "Frappe" + "," + quantity + "," + strength + "," + " " + "," + extras.toString().trim() + "," +  "99" + "," + date + "," + time;
 
         // Write the data to a CSV file
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Current_orders.csv", true))) {
