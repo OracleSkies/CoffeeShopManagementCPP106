@@ -364,6 +364,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel17.setText("COFFEE");
 
         Americano.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Americano.png"))); // NOI18N
+        Americano.setText("Americano");
         Americano.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AmericanoActionPerformed(evt);
@@ -371,6 +372,7 @@ public class CashierWindow extends javax.swing.JFrame {
         });
 
         IrishCof.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Irish Coffee.png"))); // NOI18N
+        IrishCof.setText("Irish Coffee");
         IrishCof.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IrishCofActionPerformed(evt);
@@ -378,6 +380,7 @@ public class CashierWindow extends javax.swing.JFrame {
         });
 
         TurkishCof.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Turkish Brew.png"))); // NOI18N
+        TurkishCof.setText("Turkish Coffee");
         TurkishCof.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TurkishCofActionPerformed(evt);
@@ -385,6 +388,7 @@ public class CashierWindow extends javax.swing.JFrame {
         });
 
         Cappucino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Cappucino.png"))); // NOI18N
+        Cappucino.setText("Cappucino");
         Cappucino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CappucinoActionPerformed(evt);
@@ -392,6 +396,7 @@ public class CashierWindow extends javax.swing.JFrame {
         });
 
         Machiato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Macchiato.png"))); // NOI18N
+        Machiato.setText("Machiato");
         Machiato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MachiatoActionPerformed(evt);
@@ -399,6 +404,7 @@ public class CashierWindow extends javax.swing.JFrame {
         });
 
         Latte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Latte.png"))); // NOI18N
+        Latte.setText("Latte");
         Latte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LatteActionPerformed(evt);
@@ -406,6 +412,7 @@ public class CashierWindow extends javax.swing.JFrame {
         });
 
         ColdBrew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Cold Brew.png"))); // NOI18N
+        ColdBrew.setText("ColdBrew");
         ColdBrew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ColdBrewActionPerformed(evt);
@@ -413,6 +420,7 @@ public class CashierWindow extends javax.swing.JFrame {
         });
 
         IcedCof.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Iced Coffee.png"))); // NOI18N
+        IcedCof.setText("Iced Coffee");
         IcedCof.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IcedCofActionPerformed(evt);
@@ -420,6 +428,7 @@ public class CashierWindow extends javax.swing.JFrame {
         });
 
         Mocha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Mocha.png"))); // NOI18N
+        Mocha.setText("Mocha");
         Mocha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MochaActionPerformed(evt);
@@ -427,6 +436,7 @@ public class CashierWindow extends javax.swing.JFrame {
         });
 
         Affogato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/C_Affogato.png"))); // NOI18N
+        Affogato.setText("Affogato");
         Affogato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AffogatoActionPerformed(evt);
@@ -565,6 +575,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel23.setText("Fermented Tea");
 
         HibiscusTea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Hibiscus Tea.png"))); // NOI18N
+        HibiscusTea.setText("Hibiscus Tea");
         HibiscusTea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 HibiscusTeaActionPerformed(evt);
@@ -577,6 +588,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel24.setText("TEA");
 
         ChaiTea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Chai Tea.png"))); // NOI18N
+        ChaiTea.setText("Chai Tea");
         ChaiTea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ChaiTeaActionPerformed(evt);
@@ -589,6 +601,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel25.setText("Green Tea");
 
         GingerTea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Ginger Tea.png"))); // NOI18N
+        GingerTea.setText("Ginger Tea");
         GingerTea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GingerTeaActionPerformed(evt);
@@ -601,6 +614,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel26.setText("Yellow Tea");
 
         Matcha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Matcha.png"))); // NOI18N
+        Matcha.setText("Matcha");
         Matcha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MatchaActionPerformed(evt);
@@ -613,6 +627,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel27.setText("White Tea");
 
         ButterflyTea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Butterfly Pea Tea.png"))); // NOI18N
+        ButterflyTea.setText("Butterfly Tea");
         ButterflyTea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButterflyTeaActionPerformed(evt);
@@ -625,6 +640,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel28.setText("Black Tea");
 
         FermentedTea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Fermented Tea.png"))); // NOI18N
+        FermentedTea.setText("Fermented Tea");
         FermentedTea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FermentedTeaActionPerformed(evt);
@@ -632,6 +648,7 @@ public class CashierWindow extends javax.swing.JFrame {
         });
 
         GreeTea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Green Tea.png"))); // NOI18N
+        GreeTea.setText("Green Tea");
         GreeTea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GreeTeaActionPerformed(evt);
@@ -639,6 +656,7 @@ public class CashierWindow extends javax.swing.JFrame {
         });
 
         YellowTea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Yellow Tea.png"))); // NOI18N
+        YellowTea.setText("Yellow Tea");
         YellowTea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 YellowTeaActionPerformed(evt);
@@ -646,6 +664,7 @@ public class CashierWindow extends javax.swing.JFrame {
         });
 
         WhiteTea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_White Tea.png"))); // NOI18N
+        WhiteTea.setText("White Tea");
         WhiteTea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 WhiteTeaActionPerformed(evt);
@@ -653,6 +672,7 @@ public class CashierWindow extends javax.swing.JFrame {
         });
 
         BllackTea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/T_Black Tea.png"))); // NOI18N
+        BllackTea.setText("Black Tea");
         BllackTea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BllackTeaActionPerformed(evt);
@@ -791,6 +811,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel34.setText("Matcha");
 
         CoockiesAndCreamFrappe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Cookies Cream.png"))); // NOI18N
+        CoockiesAndCreamFrappe.setText("Coockies And Cream");
         CoockiesAndCreamFrappe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CoockiesAndCreamFrappeActionPerformed(evt);
@@ -803,6 +824,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel35.setText("FRAPPE");
 
         VanillaCaramelFrappe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Vanilla Caramel.png"))); // NOI18N
+        VanillaCaramelFrappe.setText("Vanilla Caramel");
         VanillaCaramelFrappe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VanillaCaramelFrappeActionPerformed(evt);
@@ -815,6 +837,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel36.setText("Chocolate");
 
         CappucinoFrappe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Cappucino.png"))); // NOI18N
+        CappucinoFrappe.setText("Cappucino");
         CappucinoFrappe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CappucinoFrappeActionPerformed(evt);
@@ -827,6 +850,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel37.setText("Dark Choco");
 
         ManggoFrappe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Mango.png"))); // NOI18N
+        ManggoFrappe.setText("Manggo");
         ManggoFrappe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ManggoFrappeActionPerformed(evt);
@@ -839,6 +863,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel38.setText("Java Chips");
 
         StrawberryFrappe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Strawberry.png"))); // NOI18N
+        StrawberryFrappe.setText("Strawberry");
         StrawberryFrappe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 StrawberryFrappeActionPerformed(evt);
@@ -851,6 +876,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel39.setText("Black Forest");
 
         MatchaFrappe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Matcha.png"))); // NOI18N
+        MatchaFrappe.setText("Matcha");
         MatchaFrappe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MatchaFrappeActionPerformed(evt);
@@ -858,6 +884,7 @@ public class CashierWindow extends javax.swing.JFrame {
         });
 
         ChocolateFrappe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Chocolate.png"))); // NOI18N
+        ChocolateFrappe.setText("Chocolate");
         ChocolateFrappe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ChocolateFrappeActionPerformed(evt);
@@ -865,6 +892,7 @@ public class CashierWindow extends javax.swing.JFrame {
         });
 
         DarkChocoFrappe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Dark Choco.png"))); // NOI18N
+        DarkChocoFrappe.setText("Dark Chocolate");
         DarkChocoFrappe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DarkChocoFrappeActionPerformed(evt);
@@ -872,6 +900,7 @@ public class CashierWindow extends javax.swing.JFrame {
         });
 
         JavaChipFrappe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_Java Chips.png"))); // NOI18N
+        JavaChipFrappe.setText("Java Chipp");
         JavaChipFrappe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JavaChipFrappeActionPerformed(evt);
@@ -879,6 +908,7 @@ public class CashierWindow extends javax.swing.JFrame {
         });
 
         BlackForestFrappe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/F_BlackForest.png"))); // NOI18N
+        BlackForestFrappe.setText("Black Forest");
         BlackForestFrappe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BlackForestFrappeActionPerformed(evt);
@@ -1017,6 +1047,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel45.setText("Croissant");
 
         Macaroons.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Macaroons.png"))); // NOI18N
+        Macaroons.setText("Macaroons");
         Macaroons.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MacaroonsActionPerformed(evt);
@@ -1029,6 +1060,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel46.setText("COFFEE");
 
         RedVelvetCake.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Red Velvet Cake.png"))); // NOI18N
+        RedVelvetCake.setText("Red Velvet Cake");
         RedVelvetCake.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RedVelvetCakeActionPerformed(evt);
@@ -1041,6 +1073,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel47.setText("Pandesal");
 
         BlackForestCake.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Black Forest Cake.png"))); // NOI18N
+        BlackForestCake.setText("Black Forest Cake");
         BlackForestCake.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BlackForestCakeActionPerformed(evt);
@@ -1053,6 +1086,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel48.setText("Ensaymada");
 
         BukoPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Buko Pie.png"))); // NOI18N
+        BukoPie.setText("Buko Pie");
         BukoPie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BukoPieActionPerformed(evt);
@@ -1065,6 +1099,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel49.setText("Doughnut");
 
         EggPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Egg Pie.png"))); // NOI18N
+        EggPie.setText("Egg Pie");
         EggPie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EggPieActionPerformed(evt);
@@ -1077,6 +1112,7 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel50.setText("Crinkles");
 
         Croissant.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Croissant.png"))); // NOI18N
+        Croissant.setText("Croissant");
         Croissant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CroissantActionPerformed(evt);
@@ -1084,6 +1120,7 @@ public class CashierWindow extends javax.swing.JFrame {
         });
 
         Pandesal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Pandesal.png"))); // NOI18N
+        Pandesal.setText("Pandesal");
         Pandesal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PandesalActionPerformed(evt);
@@ -1091,6 +1128,7 @@ public class CashierWindow extends javax.swing.JFrame {
         });
 
         Ensaymada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Ensaymada.png"))); // NOI18N
+        Ensaymada.setText("Ensaymada");
         Ensaymada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EnsaymadaActionPerformed(evt);
@@ -1098,6 +1136,7 @@ public class CashierWindow extends javax.swing.JFrame {
         });
 
         Doughnut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Doughnut.png"))); // NOI18N
+        Doughnut.setText("Doughnut");
         Doughnut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DoughnutActionPerformed(evt);
@@ -1105,6 +1144,7 @@ public class CashierWindow extends javax.swing.JFrame {
         });
 
         Crinkles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/P_Crinkles.png"))); // NOI18N
+        Crinkles.setText("Crinkles");
         Crinkles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CrinklesActionPerformed(evt);
@@ -1518,127 +1558,307 @@ public class CashierWindow extends javax.swing.JFrame {
     
     // <editor-fold defaultstate="collapsed" desc="Coffee"> 
     private void AmericanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AmericanoActionPerformed
-        CoffeeBuilderwindow();     
+        // Get the text of the clicked button
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open CoffeeCustomization and update JLabel
+        CashierSubBranch.CoffeeCustomization coffeeCustomization = new CashierSubBranch.CoffeeCustomization();
+        coffeeCustomization.setVisible(true);
+        coffeeCustomization.updateLabel(buttonText); 
+         
     }//GEN-LAST:event_AmericanoActionPerformed
 
     private void IrishCofActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IrishCofActionPerformed
-        CoffeeBuilderwindow();
+//        CoffeeBuilderwindow();
+        // Get the text of the clicked button
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open CoffeeCustomization and update JLabel
+        CashierSubBranch.CoffeeCustomization coffeeCustomization = new CashierSubBranch.CoffeeCustomization();
+        coffeeCustomization.setVisible(true);
+        coffeeCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_IrishCofActionPerformed
 
     private void TurkishCofActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TurkishCofActionPerformed
-        CoffeeBuilderwindow();
+       
+        // Get the text of the clicked button
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open CoffeeCustomization and update JLabel
+        CashierSubBranch.CoffeeCustomization coffeeCustomization = new CashierSubBranch.CoffeeCustomization();
+        coffeeCustomization.setVisible(true);
+        coffeeCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_TurkishCofActionPerformed
 
     private void CappucinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CappucinoActionPerformed
-        CoffeeBuilderwindow();
+        
+        // Get the text of the clicked button
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open CoffeeCustomization and update JLabel
+        CashierSubBranch.CoffeeCustomization coffeeCustomization = new CashierSubBranch.CoffeeCustomization();
+        coffeeCustomization.setVisible(true);
+        coffeeCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_CappucinoActionPerformed
 
     private void MachiatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MachiatoActionPerformed
-        CoffeeBuilderwindow();
+        
+        // Get the text of the clicked button
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open CoffeeCustomization and update JLabel
+        CashierSubBranch.CoffeeCustomization coffeeCustomization = new CashierSubBranch.CoffeeCustomization();
+        coffeeCustomization.setVisible(true);
+        coffeeCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_MachiatoActionPerformed
 
     private void LatteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LatteActionPerformed
-        CoffeeBuilderwindow();
+        
+        // Get the text of the clicked button
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open CoffeeCustomization and update JLabel
+        CashierSubBranch.CoffeeCustomization coffeeCustomization = new CashierSubBranch.CoffeeCustomization();
+        coffeeCustomization.setVisible(true);
+        coffeeCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_LatteActionPerformed
 
     private void ColdBrewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ColdBrewActionPerformed
-        CoffeeBuilderwindow();
+        
+        // Get the text of the clicked button
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open CoffeeCustomization and update JLabel
+        CashierSubBranch.CoffeeCustomization coffeeCustomization = new CashierSubBranch.CoffeeCustomization();
+        coffeeCustomization.setVisible(true);
+        coffeeCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_ColdBrewActionPerformed
 
     private void IcedCofActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IcedCofActionPerformed
-        CoffeeBuilderwindow();
+       
+        // Get the text of the clicked button
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open CoffeeCustomization and update JLabel
+        CashierSubBranch.CoffeeCustomization coffeeCustomization = new CashierSubBranch.CoffeeCustomization();
+        coffeeCustomization.setVisible(true);
+        coffeeCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_IcedCofActionPerformed
 
     private void MochaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MochaActionPerformed
-        CoffeeBuilderwindow();
+       
+        // Get the text of the clicked button
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open CoffeeCustomization and update JLabel
+        CashierSubBranch.CoffeeCustomization coffeeCustomization = new CashierSubBranch.CoffeeCustomization();
+        coffeeCustomization.setVisible(true);
+        coffeeCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_MochaActionPerformed
 
     private void AffogatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AffogatoActionPerformed
-        CoffeeBuilderwindow();
+        
+        // Get the text of the clicked button
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open CoffeeCustomization and update JLabel
+        CashierSubBranch.CoffeeCustomization coffeeCustomization = new CashierSubBranch.CoffeeCustomization();
+        coffeeCustomization.setVisible(true);
+        coffeeCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_AffogatoActionPerformed
 // </editor-fold>
     
     // <editor-fold defaultstate="collapsed" desc="TEA"> 
     private void GreeTeaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GreeTeaActionPerformed
-        TeaBuilderWindow();
+        
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open TeaCustomization and update JLabel
+        CashierSubBranch.TeaCustomization teaCustomization = new CashierSubBranch.TeaCustomization();
+        teaCustomization.setVisible(true);
+        teaCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_GreeTeaActionPerformed
 
     private void YellowTeaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YellowTeaActionPerformed
-        TeaBuilderWindow();
+        
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open TeaCustomization and update JLabel
+        CashierSubBranch.TeaCustomization teaCustomization = new CashierSubBranch.TeaCustomization();
+        teaCustomization.setVisible(true);
+        teaCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_YellowTeaActionPerformed
 
     private void WhiteTeaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WhiteTeaActionPerformed
-        TeaBuilderWindow();
+
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open TeaCustomization and update JLabel
+        CashierSubBranch.TeaCustomization teaCustomization = new CashierSubBranch.TeaCustomization();
+        teaCustomization.setVisible(true);
+        teaCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_WhiteTeaActionPerformed
 
     private void BllackTeaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BllackTeaActionPerformed
-        TeaBuilderWindow();
+
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open TeaCustomization and update JLabel
+        CashierSubBranch.TeaCustomization teaCustomization = new CashierSubBranch.TeaCustomization();
+        teaCustomization.setVisible(true);
+        teaCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_BllackTeaActionPerformed
 
     private void HibiscusTeaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HibiscusTeaActionPerformed
-        TeaBuilderWindow();
+
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open TeaCustomization and update JLabel
+        CashierSubBranch.TeaCustomization teaCustomization = new CashierSubBranch.TeaCustomization();
+        teaCustomization.setVisible(true);
+        teaCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_HibiscusTeaActionPerformed
 
     private void ChaiTeaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChaiTeaActionPerformed
-        TeaBuilderWindow();
+
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open TeaCustomization and update JLabel
+        CashierSubBranch.TeaCustomization teaCustomization = new CashierSubBranch.TeaCustomization();
+        teaCustomization.setVisible(true);
+        teaCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_ChaiTeaActionPerformed
 
     private void GingerTeaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GingerTeaActionPerformed
-        TeaBuilderWindow();
+
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open TeaCustomization and update JLabel
+        CashierSubBranch.TeaCustomization teaCustomization = new CashierSubBranch.TeaCustomization();
+        teaCustomization.setVisible(true);
+        teaCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_GingerTeaActionPerformed
 
     private void MatchaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MatchaActionPerformed
-        TeaBuilderWindow();
+
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open TeaCustomization and update JLabel
+        CashierSubBranch.TeaCustomization teaCustomization = new CashierSubBranch.TeaCustomization();
+        teaCustomization.setVisible(true);
+        teaCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_MatchaActionPerformed
 
     private void ButterflyTeaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButterflyTeaActionPerformed
-        TeaBuilderWindow();
+
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open TeaCustomization and update JLabel
+        CashierSubBranch.TeaCustomization teaCustomization = new CashierSubBranch.TeaCustomization();
+        teaCustomization.setVisible(true);
+        teaCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_ButterflyTeaActionPerformed
 
     private void FermentedTeaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FermentedTeaActionPerformed
-        TeaBuilderWindow();
+
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open TeaCustomization and update JLabel
+        CashierSubBranch.TeaCustomization teaCustomization = new CashierSubBranch.TeaCustomization();
+        teaCustomization.setVisible(true);
+        teaCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_FermentedTeaActionPerformed
     // </editor-fold>
     
     // <editor-fold defaultstate="collapsed" desc="FRAPPE"> 
     private void ChocolateFrappeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChocolateFrappeActionPerformed
-        FrappeBuilderWindow();
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open FrappeCustomization and update JLabel
+        CashierSubBranch.FrappeCustomization frappeCustomization = new CashierSubBranch.FrappeCustomization();
+        frappeCustomization.setVisible(true);
+        frappeCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_ChocolateFrappeActionPerformed
 
     private void DarkChocoFrappeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DarkChocoFrappeActionPerformed
-        FrappeBuilderWindow();
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open FrappeCustomization and update JLabel
+        CashierSubBranch.FrappeCustomization frappeCustomization = new CashierSubBranch.FrappeCustomization();
+        frappeCustomization.setVisible(true);
+        frappeCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_DarkChocoFrappeActionPerformed
 
     private void JavaChipFrappeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JavaChipFrappeActionPerformed
-        FrappeBuilderWindow();
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open FrappeCustomization and update JLabel
+        CashierSubBranch.FrappeCustomization frappeCustomization = new CashierSubBranch.FrappeCustomization();
+        frappeCustomization.setVisible(true);
+        frappeCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_JavaChipFrappeActionPerformed
 
     private void BlackForestFrappeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlackForestFrappeActionPerformed
-        FrappeBuilderWindow();
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open FrappeCustomization and update JLabel
+        CashierSubBranch.FrappeCustomization frappeCustomization = new CashierSubBranch.FrappeCustomization();
+        frappeCustomization.setVisible(true);
+        frappeCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_BlackForestFrappeActionPerformed
 
     private void CoockiesAndCreamFrappeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CoockiesAndCreamFrappeActionPerformed
-        FrappeBuilderWindow();
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open FrappeCustomization and update JLabel
+        CashierSubBranch.FrappeCustomization frappeCustomization = new CashierSubBranch.FrappeCustomization();
+        frappeCustomization.setVisible(true);
+        frappeCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_CoockiesAndCreamFrappeActionPerformed
 
     private void VanillaCaramelFrappeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VanillaCaramelFrappeActionPerformed
-        FrappeBuilderWindow();
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open FrappeCustomization and update JLabel
+        CashierSubBranch.FrappeCustomization frappeCustomization = new CashierSubBranch.FrappeCustomization();
+        frappeCustomization.setVisible(true);
+        frappeCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_VanillaCaramelFrappeActionPerformed
 
     private void CappucinoFrappeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CappucinoFrappeActionPerformed
-        FrappeBuilderWindow();
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open FrappeCustomization and update JLabel
+        CashierSubBranch.FrappeCustomization frappeCustomization = new CashierSubBranch.FrappeCustomization();
+        frappeCustomization.setVisible(true);
+        frappeCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_CappucinoFrappeActionPerformed
 
     private void ManggoFrappeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManggoFrappeActionPerformed
-        FrappeBuilderWindow();
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open FrappeCustomization and update JLabel
+        CashierSubBranch.FrappeCustomization frappeCustomization = new CashierSubBranch.FrappeCustomization();
+        frappeCustomization.setVisible(true);
+        frappeCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_ManggoFrappeActionPerformed
 
     private void StrawberryFrappeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StrawberryFrappeActionPerformed
-        FrappeBuilderWindow();
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open FrappeCustomization and update JLabel
+        CashierSubBranch.FrappeCustomization frappeCustomization = new CashierSubBranch.FrappeCustomization();
+        frappeCustomization.setVisible(true);
+        frappeCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_StrawberryFrappeActionPerformed
 
     private void MatchaFrappeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MatchaFrappeActionPerformed
-        FrappeBuilderWindow();
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open FrappeCustomization and update JLabel
+        CashierSubBranch.FrappeCustomization frappeCustomization = new CashierSubBranch.FrappeCustomization();
+        frappeCustomization.setVisible(true);
+        frappeCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_MatchaFrappeActionPerformed
 //</editor-fold>
     
@@ -1649,43 +1869,93 @@ public class CashierWindow extends javax.swing.JFrame {
 
     // <editor-fold defaultstate="collapsed" desc="PASTRY"> 
     private void PandesalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PandesalActionPerformed
-        PastryBuilderWindow();
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open PastryCustomization and update JLabel
+        CashierSubBranch.PastryCustomization pastryCustomization = new CashierSubBranch.PastryCustomization();
+        pastryCustomization.setVisible(true);
+        pastryCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_PandesalActionPerformed
 
     private void EnsaymadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnsaymadaActionPerformed
-        PastryBuilderWindow();
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open PastryCustomization and update JLabel
+        CashierSubBranch.PastryCustomization pastryCustomization = new CashierSubBranch.PastryCustomization();
+        pastryCustomization.setVisible(true);
+        pastryCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_EnsaymadaActionPerformed
 
     private void DoughnutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoughnutActionPerformed
-        PastryBuilderWindow();
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open PastryCustomization and update JLabel
+        CashierSubBranch.PastryCustomization pastryCustomization = new CashierSubBranch.PastryCustomization();
+        pastryCustomization.setVisible(true);
+        pastryCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_DoughnutActionPerformed
 
     private void CrinklesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrinklesActionPerformed
-        PastryBuilderWindow();
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open PastryCustomization and update JLabel
+        CashierSubBranch.PastryCustomization pastryCustomization = new CashierSubBranch.PastryCustomization();
+        pastryCustomization.setVisible(true);
+        pastryCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_CrinklesActionPerformed
 
     private void MacaroonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MacaroonsActionPerformed
-        PastryBuilderWindow();
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open PastryCustomization and update JLabel
+        CashierSubBranch.PastryCustomization pastryCustomization = new CashierSubBranch.PastryCustomization();
+        pastryCustomization.setVisible(true);
+        pastryCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_MacaroonsActionPerformed
 
     private void RedVelvetCakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RedVelvetCakeActionPerformed
-        PastryBuilderWindow();
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open PastryCustomization and update JLabel
+        CashierSubBranch.PastryCustomization pastryCustomization = new CashierSubBranch.PastryCustomization();
+        pastryCustomization.setVisible(true);
+        pastryCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_RedVelvetCakeActionPerformed
 
     private void BlackForestCakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlackForestCakeActionPerformed
-        PastryBuilderWindow();
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open PastryCustomization and update JLabel
+        CashierSubBranch.PastryCustomization pastryCustomization = new CashierSubBranch.PastryCustomization();
+        pastryCustomization.setVisible(true);
+        pastryCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_BlackForestCakeActionPerformed
 
     private void BukoPieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BukoPieActionPerformed
-        PastryBuilderWindow();
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open PastryCustomization and update JLabel
+        CashierSubBranch.PastryCustomization pastryCustomization = new CashierSubBranch.PastryCustomization();
+        pastryCustomization.setVisible(true);
+        pastryCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_BukoPieActionPerformed
 
     private void EggPieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EggPieActionPerformed
-        PastryBuilderWindow();
+        String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open PastryCustomization and update JLabel
+        CashierSubBranch.PastryCustomization pastryCustomization = new CashierSubBranch.PastryCustomization();
+        pastryCustomization.setVisible(true);
+        pastryCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_EggPieActionPerformed
 
     private void CroissantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CroissantActionPerformed
-       PastryBuilderWindow();
+       String buttonText = ((javax.swing.JButton) evt.getSource()).getText();
+        
+        // Open PastryCustomization and update JLabel
+        CashierSubBranch.PastryCustomization pastryCustomization = new CashierSubBranch.PastryCustomization();
+        pastryCustomization.setVisible(true);
+        pastryCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_CroissantActionPerformed
    
     
@@ -1694,27 +1964,8 @@ public class CashierWindow extends javax.swing.JFrame {
     
     
 // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIS">  
-    public void CoffeeBuilderwindow(){
-        CoffeeCustomization CC = new CoffeeCustomization();
-        CC.setVisible(true);        
-    }
-   
-    public void TeaBuilderWindow(){
-        TeaCustomization TC = new TeaCustomization();
-        TC.setVisible(true);
-    }
     
-    public void FrappeBuilderWindow(){
-        FrappeCustomization FC = new FrappeCustomization();
-        FC.setVisible(true);
-    }
     
-    public void PastryBuilderWindow(){
-        PastryCustomization PC = new PastryCustomization();
-        PC.setVisible(true);
-    }
-    
-    // try lang 
     
 
         

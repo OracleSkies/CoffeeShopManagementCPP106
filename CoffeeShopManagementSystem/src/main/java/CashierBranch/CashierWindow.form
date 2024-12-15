@@ -572,6 +572,7 @@
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton()"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Americano.setText(&quot;Americano&quot;);"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="IrishCof">
@@ -583,6 +584,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IrishCofActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="IrishCof.setText(&quot;Irish Coffee&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="TurkishCof">
                   <Properties>
@@ -593,6 +597,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TurkishCofActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TurkishCof.setText(&quot;Turkish Coffee&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="Cappucino">
                   <Properties>
@@ -603,6 +610,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CappucinoActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Cappucino.setText(&quot;Cappucino&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="Machiato">
                   <Properties>
@@ -613,6 +623,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MachiatoActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Machiato.setText(&quot;Machiato&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="Latte">
                   <Properties>
@@ -623,6 +636,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LatteActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Latte.setText(&quot;Latte&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="ColdBrew">
                   <Properties>
@@ -633,6 +649,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ColdBrewActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ColdBrew.setText(&quot;ColdBrew&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="IcedCof">
                   <Properties>
@@ -643,6 +662,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IcedCofActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="IcedCof.setText(&quot;Iced Coffee&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="Mocha">
                   <Properties>
@@ -653,6 +675,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MochaActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Mocha.setText(&quot;Mocha&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="Affogato">
                   <Properties>
@@ -663,6 +688,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AffogatoActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Affogato.setText(&quot;Affogato&quot;);"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -882,6 +910,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HibiscusTeaActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="HibiscusTea.setText(&quot;Hibiscus Tea&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel24">
                   <Properties>
@@ -904,6 +935,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ChaiTeaActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ChaiTea.setText(&quot;Chai Tea&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel25">
                   <Properties>
@@ -926,6 +960,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GingerTeaActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="GingerTea.setText(&quot;Ginger Tea&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel26">
                   <Properties>
@@ -948,6 +985,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MatchaActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Matcha.setText(&quot;Matcha&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel27">
                   <Properties>
@@ -970,6 +1010,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButterflyTeaActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ButterflyTea.setText(&quot;Butterfly Tea&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel28">
                   <Properties>
@@ -992,6 +1035,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FermentedTeaActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="FermentedTea.setText(&quot;Fermented Tea&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="GreeTea">
                   <Properties>
@@ -1002,6 +1048,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GreeTeaActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="GreeTea.setText(&quot;Green Tea&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="YellowTea">
                   <Properties>
@@ -1012,6 +1061,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="YellowTeaActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="YellowTea.setText(&quot;Yellow Tea&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="WhiteTea">
                   <Properties>
@@ -1022,6 +1074,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="WhiteTeaActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="WhiteTea.setText(&quot;White Tea&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="BllackTea">
                   <Properties>
@@ -1032,6 +1087,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BllackTeaActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="BllackTea.setText(&quot;Black Tea&quot;);"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -1251,6 +1309,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CoockiesAndCreamFrappeActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="CoockiesAndCreamFrappe.setText(&quot;Coockies And Cream&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel35">
                   <Properties>
@@ -1273,6 +1334,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VanillaCaramelFrappeActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="VanillaCaramelFrappe.setText(&quot;Vanilla Caramel&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel36">
                   <Properties>
@@ -1295,6 +1359,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CappucinoFrappeActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="CappucinoFrappe.setText(&quot;Cappucino&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel37">
                   <Properties>
@@ -1317,6 +1384,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ManggoFrappeActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ManggoFrappe.setText(&quot;Manggo&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel38">
                   <Properties>
@@ -1339,6 +1409,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StrawberryFrappeActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="StrawberryFrappe.setText(&quot;Strawberry&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel39">
                   <Properties>
@@ -1361,6 +1434,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MatchaFrappeActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="MatchaFrappe.setText(&quot;Matcha&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="ChocolateFrappe">
                   <Properties>
@@ -1371,6 +1447,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ChocolateFrappeActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ChocolateFrappe.setText(&quot;Chocolate&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="DarkChocoFrappe">
                   <Properties>
@@ -1381,6 +1460,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DarkChocoFrappeActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DarkChocoFrappe.setText(&quot;Dark Chocolate&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="JavaChipFrappe">
                   <Properties>
@@ -1391,6 +1473,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JavaChipFrappeActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="JavaChipFrappe.setText(&quot;Java Chipp&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="BlackForestFrappe">
                   <Properties>
@@ -1401,6 +1486,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BlackForestFrappeActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="BlackForestFrappe.setText(&quot;Black Forest&quot;);"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -1620,6 +1708,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MacaroonsActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Macaroons.setText(&quot;Macaroons&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel46">
                   <Properties>
@@ -1642,6 +1733,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RedVelvetCakeActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="RedVelvetCake.setText(&quot;Red Velvet Cake&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel47">
                   <Properties>
@@ -1664,6 +1758,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BlackForestCakeActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="BlackForestCake.setText(&quot;Black Forest Cake&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel48">
                   <Properties>
@@ -1686,6 +1783,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BukoPieActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="BukoPie.setText(&quot;Buko Pie&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel49">
                   <Properties>
@@ -1708,6 +1808,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EggPieActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="EggPie.setText(&quot;Egg Pie&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel50">
                   <Properties>
@@ -1730,6 +1833,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CroissantActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Croissant.setText(&quot;Croissant&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="Pandesal">
                   <Properties>
@@ -1740,6 +1846,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PandesalActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Pandesal.setText(&quot;Pandesal&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="Ensaymada">
                   <Properties>
@@ -1750,6 +1859,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EnsaymadaActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Ensaymada.setText(&quot;Ensaymada&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="Doughnut">
                   <Properties>
@@ -1760,6 +1872,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DoughnutActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Doughnut.setText(&quot;Doughnut&quot;);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="Crinkles">
                   <Properties>
@@ -1770,6 +1885,9 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CrinklesActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Crinkles.setText(&quot;Crinkles&quot;);"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
