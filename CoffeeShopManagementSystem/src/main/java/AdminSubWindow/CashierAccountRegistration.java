@@ -28,6 +28,7 @@ public class CashierAccountRegistration extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel9 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -40,7 +41,12 @@ public class CashierAccountRegistration extends javax.swing.JFrame {
         jPasswordField2 = new javax.swing.JPasswordField();
         Back = new javax.swing.JButton();
         Signup = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+
+        jLabel9.setText("jLabel9");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -68,8 +74,10 @@ public class CashierAccountRegistration extends javax.swing.JFrame {
         jLabel6.setText("Name:");
 
         jTextField1.setBackground(new java.awt.Color(111, 68, 54));
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
 
         jTextField2.setBackground(new java.awt.Color(111, 68, 54));
+        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -77,10 +85,13 @@ public class CashierAccountRegistration extends javax.swing.JFrame {
         });
 
         jPasswordField1.setBackground(new java.awt.Color(111, 68, 54));
+        jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
 
         jPasswordField2.setBackground(new java.awt.Color(111, 68, 54));
+        jPasswordField2.setForeground(new java.awt.Color(255, 255, 255));
 
         Back.setBackground(new java.awt.Color(111, 68, 54));
+        Back.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         Back.setForeground(new java.awt.Color(255, 255, 255));
         Back.setText("Back");
         Back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -93,6 +104,7 @@ public class CashierAccountRegistration extends javax.swing.JFrame {
         });
 
         Signup.setBackground(new java.awt.Color(111, 68, 54));
+        Signup.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         Signup.setForeground(new java.awt.Color(255, 255, 255));
         Signup.setText("Signup");
         Signup.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -165,7 +177,7 @@ public class CashierAccountRegistration extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -184,11 +196,46 @@ public class CashierAccountRegistration extends javax.swing.JFrame {
                 .addGap(47, 47, 47))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1590, 830));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1510, 830));
         jPanel1.getAccessibleContext().setAccessibleName("");
+
+        jPanel2.setOpaque(false);
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Logo - Coffee Shop(resized).png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel10)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 130));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cashier and admin account registration.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 410, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 130, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 130));
 
         pack();
         setLocationRelativeTo(null);
@@ -275,12 +322,16 @@ public class CashierAccountRegistration extends javax.swing.JFrame {
     private javax.swing.JButton Back;
     private javax.swing.JButton Signup;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JTextField jTextField1;
