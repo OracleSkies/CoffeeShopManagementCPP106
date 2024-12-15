@@ -1396,12 +1396,17 @@ public class CashierWindow extends javax.swing.JFrame {
 
             },
             new String [] {
-                "sheesh", "Title 2"
+
             }
         ));
         jScrollPane4.setViewportView(Orders);
 
         ConfrimOrder.setText("CONFIRM ORDER");
+        ConfrimOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfrimOrderActionPerformed(evt);
+            }
+        });
 
         bAck.setText("BACK");
         bAck.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1463,7 +1468,7 @@ public class CashierWindow extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    // <editor-fold defaultstate="collapsed" desc="EVENTS"> 
+    // <editor-fold defaultstate="collapsed" desc="NAvs"> 
     private void OrderMenuButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OrderMenuButtonMouseClicked
         // TODO add your handling code here:
         OrderMenu.setVisible(true);
@@ -1957,9 +1962,15 @@ public class CashierWindow extends javax.swing.JFrame {
         pastryCustomization.setVisible(true);
         pastryCustomization.updateLabel(buttonText);
     }//GEN-LAST:event_CroissantActionPerformed
+    // </editor-fold>
+    
+    
+    private void ConfrimOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfrimOrderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ConfrimOrderActionPerformed
    
     
-// </editor-fold>
+
     
     
     

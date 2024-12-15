@@ -1,6 +1,11 @@
 package CashierSubBranch;
 
 import java.awt.Color;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 
 
 public class CoffeeCustomization extends javax.swing.JFrame {
@@ -8,6 +13,7 @@ public class CoffeeCustomization extends javax.swing.JFrame {
     
     public CoffeeCustomization() {
         initComponents();
+        
     }
 
     
@@ -21,23 +27,23 @@ public class CoffeeCustomization extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         CoffeeLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        QTy = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        MildRad = new javax.swing.JRadioButton();
+        MedRad = new javax.swing.JRadioButton();
+        StrongRad = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jRadioButton6 = new javax.swing.JRadioButton();
-        jRadioButton7 = new javax.swing.JRadioButton();
+        NoMilkRad = new javax.swing.JRadioButton();
+        OatRad = new javax.swing.JRadioButton();
+        AlmondRad = new javax.swing.JRadioButton();
+        FreshRad = new javax.swing.JRadioButton();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
-        jRadioButton8 = new javax.swing.JRadioButton();
-        jRadioButton9 = new javax.swing.JRadioButton();
-        jRadioButton10 = new javax.swing.JRadioButton();
+        ExprRad = new javax.swing.JRadioButton();
+        WhipRad = new javax.swing.JRadioButton();
+        SweetRad = new javax.swing.JRadioButton();
         Confirm = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JSeparator();
 
@@ -60,7 +66,7 @@ public class CoffeeCustomization extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setText("QUANTITY:");
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        QTy.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
@@ -68,27 +74,27 @@ public class CoffeeCustomization extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setText("COFFEE STRENGTH");
 
-        jRadioButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jRadioButton1.setText("Mild");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        MildRad.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        MildRad.setText("Mild");
+        MildRad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                MildRadActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jRadioButton2.setText("Medium");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        MedRad.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        MedRad.setText("Medium");
+        MedRad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                MedRadActionPerformed(evt);
             }
         });
 
-        jRadioButton3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jRadioButton3.setText("Strong");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        StrongRad.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        StrongRad.setText("Strong");
+        StrongRad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                StrongRadActionPerformed(evt);
             }
         });
 
@@ -98,35 +104,35 @@ public class CoffeeCustomization extends javax.swing.JFrame {
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
 
-        jRadioButton4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jRadioButton4.setText("No Milk");
-        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+        NoMilkRad.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        NoMilkRad.setText("No Milk");
+        NoMilkRad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton4ActionPerformed(evt);
+                NoMilkRadActionPerformed(evt);
             }
         });
 
-        jRadioButton5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jRadioButton5.setText("Oat");
-        jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
+        OatRad.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        OatRad.setText("Oat");
+        OatRad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton5ActionPerformed(evt);
+                OatRadActionPerformed(evt);
             }
         });
 
-        jRadioButton6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jRadioButton6.setText("Almond");
-        jRadioButton6.addActionListener(new java.awt.event.ActionListener() {
+        AlmondRad.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        AlmondRad.setText("Almond");
+        AlmondRad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton6ActionPerformed(evt);
+                AlmondRadActionPerformed(evt);
             }
         });
 
-        jRadioButton7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jRadioButton7.setText("Fresh Milk");
-        jRadioButton7.addActionListener(new java.awt.event.ActionListener() {
+        FreshRad.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        FreshRad.setText("Fresh Milk");
+        FreshRad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton7ActionPerformed(evt);
+                FreshRadActionPerformed(evt);
             }
         });
 
@@ -136,27 +142,27 @@ public class CoffeeCustomization extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel7.setText("EXTRAS");
 
-        jRadioButton8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jRadioButton8.setText("Expresso Shot");
-        jRadioButton8.addActionListener(new java.awt.event.ActionListener() {
+        ExprRad.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        ExprRad.setText("Expresso Shot");
+        ExprRad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton8ActionPerformed(evt);
+                ExprRadActionPerformed(evt);
             }
         });
 
-        jRadioButton9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jRadioButton9.setText("Whipped Cream");
-        jRadioButton9.addActionListener(new java.awt.event.ActionListener() {
+        WhipRad.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        WhipRad.setText("Whipped Cream");
+        WhipRad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton9ActionPerformed(evt);
+                WhipRadActionPerformed(evt);
             }
         });
 
-        jRadioButton10.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jRadioButton10.setText("Sweetener");
-        jRadioButton10.addActionListener(new java.awt.event.ActionListener() {
+        SweetRad.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        SweetRad.setText("Sweetener");
+        SweetRad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton10ActionPerformed(evt);
+                SweetRadActionPerformed(evt);
             }
         });
 
@@ -211,13 +217,13 @@ public class CoffeeCustomization extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(jRadioButton4)
+                        .addComponent(NoMilkRad)
                         .addGap(43, 43, 43)
-                        .addComponent(jRadioButton6)
+                        .addComponent(AlmondRad)
                         .addGap(43, 43, 43)
-                        .addComponent(jRadioButton5)
+                        .addComponent(OatRad)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jRadioButton7)
+                        .addComponent(FreshRad)
                         .addGap(40, 40, 40))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,23 +235,23 @@ public class CoffeeCustomization extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(QTy, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jLabel5))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(47, 47, 47)
-                        .addComponent(jRadioButton1)
+                        .addComponent(MildRad)
                         .addGap(107, 107, 107)
-                        .addComponent(jRadioButton2)
+                        .addComponent(MedRad)
                         .addGap(107, 107, 107)
-                        .addComponent(jRadioButton3))
+                        .addComponent(StrongRad))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton9)
-                            .addComponent(jRadioButton8)
-                            .addComponent(jRadioButton10))))
+                            .addComponent(WhipRad)
+                            .addComponent(ExprRad)
+                            .addComponent(SweetRad))))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(242, 242, 242)
@@ -270,36 +276,36 @@ public class CoffeeCustomization extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(CoffeeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(QTy, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3))
+                    .addComponent(MildRad)
+                    .addComponent(MedRad)
+                    .addComponent(StrongRad))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton4)
-                    .addComponent(jRadioButton6)
-                    .addComponent(jRadioButton5)
-                    .addComponent(jRadioButton7))
+                    .addComponent(NoMilkRad)
+                    .addComponent(AlmondRad)
+                    .addComponent(OatRad)
+                    .addComponent(FreshRad))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton8)
+                .addComponent(ExprRad)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton9)
+                .addComponent(WhipRad)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton10)
+                .addComponent(SweetRad)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -324,45 +330,45 @@ public class CoffeeCustomization extends javax.swing.JFrame {
     
 
     // <editor-fold defaultstate="collapsed" desc="Events"> 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    private void MildRadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MildRadActionPerformed
+        groupButtons();
+    }//GEN-LAST:event_MildRadActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    private void MedRadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedRadActionPerformed
+        groupButtons();
+    }//GEN-LAST:event_MedRadActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
+    private void StrongRadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StrongRadActionPerformed
+        groupButtons();
+    }//GEN-LAST:event_StrongRadActionPerformed
 
-    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton4ActionPerformed
+    private void NoMilkRadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoMilkRadActionPerformed
+        groupButtons();
+    }//GEN-LAST:event_NoMilkRadActionPerformed
 
-    private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton5ActionPerformed
+    private void OatRadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OatRadActionPerformed
+        groupButtons();
+    }//GEN-LAST:event_OatRadActionPerformed
 
-    private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton6ActionPerformed
+    private void AlmondRadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlmondRadActionPerformed
+        groupButtons();
+    }//GEN-LAST:event_AlmondRadActionPerformed
 
-    private void jRadioButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton7ActionPerformed
+    private void FreshRadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FreshRadActionPerformed
+        groupButtons();
+    }//GEN-LAST:event_FreshRadActionPerformed
 
-    private void jRadioButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton8ActionPerformed
+    private void ExprRadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExprRadActionPerformed
+        
+    }//GEN-LAST:event_ExprRadActionPerformed
 
-    private void jRadioButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton9ActionPerformed
+    private void WhipRadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WhipRadActionPerformed
+        
+    }//GEN-LAST:event_WhipRadActionPerformed
 
-    private void jRadioButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton10ActionPerformed
+    private void SweetRadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SweetRadActionPerformed
+        
+    }//GEN-LAST:event_SweetRadActionPerformed
 
     private void ConfirmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmMouseEntered
         // TODO add your handling code here:
@@ -376,20 +382,108 @@ public class CoffeeCustomization extends javax.swing.JFrame {
         Confirm.setContentAreaFilled(false);
         Confirm.setForeground(Color.black);
     }//GEN-LAST:event_ConfirmMouseExited
-
+    
+    
     private void ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmActionPerformed
-        setVisible(false);
+        ConfirmFunction();
     }//GEN-LAST:event_ConfirmActionPerformed
    //</editor-fold> 
     
-    
+   // <editor-fold defaultstate="collapsed" desc="Functionalitis"> 
    public void updateLabel(String text){
        CoffeeLabel.setText(text);
    }
+   
+   
+   private void groupButtons() {
+        ButtonGroup strengthGroup = new ButtonGroup();
+        strengthGroup.add(MildRad);
+        strengthGroup.add(MedRad);
+        strengthGroup.add(StrongRad);
+
+        ButtonGroup milkGroup = new ButtonGroup();
+        milkGroup.add(NoMilkRad);
+        milkGroup.add(OatRad);
+        milkGroup.add(AlmondRad);
+        milkGroup.add(FreshRad);
+    }
     
-    /**
-     * @param args the command line arguments
-     */
+   private void ConfirmFunction(){
+       // Get the selected coffee customization details
+        String Type = CoffeeLabel.getText();
+        String quantity = QTy.getText();
+
+        // Validate that quantity is entered
+        if (quantity.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a quantity.", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Get selected coffee strength
+        String strength = "";
+        if (MildRad.isSelected()) {
+            strength = "Mild";
+        } else if (MedRad.isSelected()) {
+            strength = "Medium";
+        } else if (StrongRad.isSelected()) {
+            strength = "Strong";
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select a coffee strength.", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Get selected milk type
+        String milkType = "";
+        if (NoMilkRad.isSelected()) {
+            milkType = "No Milk";
+        } else if (OatRad.isSelected()) {
+            milkType = "Oat";
+        } else if (AlmondRad.isSelected()) {
+            milkType = "Almond";
+        } else if (FreshRad.isSelected()) {
+            milkType = "Fresh Milk";
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select a milk type.", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Get selected extras (if any)
+        StringBuilder extras = new StringBuilder();
+        if (ExprRad.isSelected()) {
+            extras.append("Expresso Shot ");
+        }
+        if (WhipRad.isSelected()) {
+            extras.append("Whipped Cream ");
+        }
+        if (SweetRad.isSelected()) {
+            extras.append("Sweetener ");
+        }
+
+        // Check if at least one extra is selected
+        if (extras.length() == 0) {
+            extras.append("No Extras");
+        }
+
+        // Prepare data to be written to the CSV file
+        String data = Type + "," + quantity + "," + strength + "," + milkType + "," + extras.toString().trim();
+
+        // Write the data to a CSV file
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Current_orders.csv", true))) {
+            writer.write(data);
+            writer.newLine();  // Add a new line for the next record
+            JOptionPane.showMessageDialog(this, "Coffee customization saved!");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error writing to file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        // Optionally close the window after confirmation
+        setVisible(false);
+   }
+   
+   
+   
+    //</editor-fold> 
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -423,8 +517,19 @@ public class CoffeeCustomization extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton AlmondRad;
     private javax.swing.JLabel CoffeeLabel;
     private javax.swing.JButton Confirm;
+    private javax.swing.JRadioButton ExprRad;
+    private javax.swing.JRadioButton FreshRad;
+    private javax.swing.JRadioButton MedRad;
+    private javax.swing.JRadioButton MildRad;
+    private javax.swing.JRadioButton NoMilkRad;
+    private javax.swing.JRadioButton OatRad;
+    private javax.swing.JTextField QTy;
+    private javax.swing.JRadioButton StrongRad;
+    private javax.swing.JRadioButton SweetRad;
+    private javax.swing.JRadioButton WhipRad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -432,21 +537,10 @@ public class CoffeeCustomization extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton10;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JRadioButton jRadioButton7;
-    private javax.swing.JRadioButton jRadioButton8;
-    private javax.swing.JRadioButton jRadioButton9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
