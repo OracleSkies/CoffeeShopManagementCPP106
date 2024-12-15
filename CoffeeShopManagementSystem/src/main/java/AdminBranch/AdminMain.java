@@ -857,6 +857,7 @@ public class AdminMain extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    // <editor-fold defaultstate="collapsed" desc="EVENTS"> 
     private void salesShowAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesShowAllButtonActionPerformed
         // TODO add your handling code here:
         populateSalesMonitoringTable();
