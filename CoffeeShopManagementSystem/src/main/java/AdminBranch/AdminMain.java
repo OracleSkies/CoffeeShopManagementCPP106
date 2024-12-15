@@ -4,10 +4,24 @@
  */
 package AdminBranch;
 
+import AdminSubWindow.SalesReport;
+import AdminSubWindow.StaffPerformance;
+import cellAction.TableActionEvent;
+import cellAction.restockTableActionCellEditor;
+import cellAction.restockTableActionCellRenderer;
+import databaseConnection.DBConnection;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -25,13 +39,12 @@ import org.jfree.data.category.DefaultCategoryDataset;
  */
 public class AdminMain extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AdminMain
-     */
+    Connection conn = null;
+    PreparedStatement sqlPST = null;
+    ResultSet sqlResult = null;
     public AdminMain() {
         initComponents();
-        
-        showLineChart();
+        conn = DBConnection.connectionDB();
         
         Dashboard.setVisible(true);
         Inventory.setVisible(false);
@@ -40,8 +53,36 @@ public class AdminMain extends javax.swing.JFrame {
         SystemSettings.setVisible(false);
         AuditLogs.setVisible(false);
         
+        // <editor-fold defaultstate="collapsed" desc="TABLE POPULATION"> 
+        showLineChart();
+        populateIngredientsListTable();
+        populateSalesMonitoringTable();
+        populateRoleManagementTable();
+        // </editor-fold> 
         
-        // <editor-fold defaultstate="collapsed" desc="GUI MODIFICATIONS">    
+        TableActionEvent event = new TableActionEvent(){
+            @Override 
+            public void onRestock(int row){
+                System.out.println("CLICKED");
+                System.out.println(row);
+            }
+        };
+        
+        // <editor-fold defaultstate="collapsed" desc="GUI MODIFICATIONS"> 
+        
+        // <editor-fold defaultstate="collapsed" desc="TABLE CENTER">
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        IngredientsTable.setDefaultRenderer(Object.class, centerRenderer);
+        SalesMonitoringTable.setDefaultRenderer(Object.class, centerRenderer);
+        RoleManagementTable.setDefaultRenderer(Object.class, centerRenderer);
+        // </editor-fold>
+        
+        // <editor-fold defaultstate="collapsed" desc="CELL ACTION">
+        IngredientsTable.getColumnModel().getColumn(2).setCellRenderer(new restockTableActionCellRenderer());
+        IngredientsTable.getColumnModel().getColumn(2).setCellEditor(new restockTableActionCellEditor(event));
+        // </editor-fold>
+        
         RecentSalesTable.setOpaque(false);
         RecentSalesTable.setBackground(new java.awt.Color(204, 204, 204, 80));
         ((DefaultTableCellRenderer)RecentSalesTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(204, 204, 204, 80));
@@ -50,10 +91,10 @@ public class AdminMain extends javax.swing.JFrame {
         RecentSalesTable.setShowGrid(false);
         
         IngredientsTable.setOpaque(false);
-        IngredientsTable.setBackground(new java.awt.Color(204, 204, 204, 80));
-        ((DefaultTableCellRenderer)IngredientsTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(204, 204, 204, 80));
-        jScrollPane6.setOpaque(false);
-        jScrollPane6.getViewport().setOpaque(false);
+        IngredientsTable.setBackground(new java.awt.Color(0, 0, 0, 100));
+        ((DefaultTableCellRenderer)IngredientsTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(0, 0, 0, 100));
+        IngredientsScrPane.setOpaque(false);
+        IngredientsScrPane.getViewport().setOpaque(false);
         IngredientsTable.setShowGrid(false);
         
         ProductsTable.setOpaque(false);
@@ -64,15 +105,15 @@ public class AdminMain extends javax.swing.JFrame {
         ProductsTable.setShowGrid(false);
         
         SalesMonitoringTable.setOpaque(false);
-        SalesMonitoringTable.setBackground(new java.awt.Color(204, 204, 204, 80));
-        ((DefaultTableCellRenderer)SalesMonitoringTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(204, 204, 204, 80));
+        SalesMonitoringTable.setBackground(new java.awt.Color(0, 0, 0, 100));
+        ((DefaultTableCellRenderer)SalesMonitoringTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(0, 0, 0, 100));
         jScrollPane2.setOpaque(false);
         jScrollPane2.getViewport().setOpaque(false);
         SalesMonitoringTable.setShowGrid(false);
         
         RoleManagementTable.setOpaque(false);
-        RoleManagementTable.setBackground(new java.awt.Color(204, 204, 204, 80));
-        ((DefaultTableCellRenderer)RoleManagementTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(204, 204, 204, 80));
+        RoleManagementTable.setBackground(new java.awt.Color(0, 0, 0, 100));
+        ((DefaultTableCellRenderer)RoleManagementTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(0, 0, 0, 100));
         jScrollPane3.setOpaque(false);
         jScrollPane3.getViewport().setOpaque(false);
         RoleManagementTable.setShowGrid(false);
@@ -115,19 +156,20 @@ public class AdminMain extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jScrollPane6 = new javax.swing.JScrollPane();
+        IngredientsScrPane = new javax.swing.JScrollPane();
         IngredientsTable = new javax.swing.JTable();
         jScrollPane7 = new javax.swing.JScrollPane();
         ProductsTable = new javax.swing.JTable();
         SalesMonitoring = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        salesFilterCombo = new javax.swing.JComboBox<>();
+        salesField = new javax.swing.JTextField();
+        salesFilterButton = new javax.swing.JButton();
+        salesShowAllButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         SalesMonitoringTable = new javax.swing.JTable();
-        jButton9 = new javax.swing.JButton();
+        salesGenReportButton = new javax.swing.JButton();
+        cashierGenReportButton = new javax.swing.JButton();
         RoleManagement = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -392,33 +434,54 @@ public class AdminMain extends javax.swing.JFrame {
         jLabel6.setText("PRODUCTS");
         Inventory.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 70, -1, -1));
 
+        IngredientsTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        IngredientsTable.setForeground(new java.awt.Color(255, 255, 255));
         IngredientsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Ingredient", "Qty/Volume", "Restock"
             }
-        ));
-        jScrollPane6.setViewportView(IngredientsTable);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true
+            };
 
-        Inventory.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 570, 510));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        IngredientsTable.setAlignmentY(0.1F);
+        IngredientsTable.setRowHeight(40);
+        IngredientsTable.setRowSelectionAllowed(false);
+        IngredientsScrPane.setViewportView(IngredientsTable);
+
+        Inventory.add(IngredientsScrPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 570, 510));
 
         ProductsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Image", "Product Name", "Estimated Serving", "Price"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane7.setViewportView(ProductsTable);
+        if (ProductsTable.getColumnModel().getColumnCount() > 0) {
+            ProductsTable.getColumnModel().getColumn(0).setResizable(false);
+            ProductsTable.getColumnModel().getColumn(1).setResizable(false);
+            ProductsTable.getColumnModel().getColumn(2).setResizable(false);
+            ProductsTable.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         Inventory.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, 570, 510));
 
@@ -428,44 +491,86 @@ public class AdminMain extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("SALES MONITORING");
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        salesFilterCombo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        salesFilterCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cashier", "Product", "Category" }));
+
+        salesField.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+
+        salesFilterButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        salesFilterButton.setText("FILTER");
+        salesFilterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                salesFilterButtonActionPerformed(evt);
             }
         });
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-
-        jButton7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton7.setText("FILTER");
-
-        jButton8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton8.setText("VIEW ALL");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        salesShowAllButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        salesShowAllButton.setText("VIEW ALL");
+        salesShowAllButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                salesShowAllButtonActionPerformed(evt);
             }
         });
 
+        SalesMonitoringTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        SalesMonitoringTable.setForeground(new java.awt.Color(255, 255, 255));
         SalesMonitoringTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Cashier", "Product", "Category", "Sales", "Timestamp"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        SalesMonitoringTable.setAlignmentY(0.1F);
+        SalesMonitoringTable.setRowHeight(40);
         jScrollPane2.setViewportView(SalesMonitoringTable);
 
-        jButton9.setBackground(new java.awt.Color(0, 0, 255));
-        jButton9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(255, 255, 255));
-        jButton9.setText("GENERATE REPORT");
+        salesGenReportButton.setBackground(new java.awt.Color(0, 0, 255));
+        salesGenReportButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        salesGenReportButton.setForeground(new java.awt.Color(255, 255, 255));
+        salesGenReportButton.setText("GENERATE SALES REPORT");
+        salesGenReportButton.setContentAreaFilled(false);
+        salesGenReportButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                salesGenReportButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                salesGenReportButtonMouseExited(evt);
+            }
+        });
+        salesGenReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salesGenReportButtonActionPerformed(evt);
+            }
+        });
+
+        cashierGenReportButton.setBackground(new java.awt.Color(0, 0, 255));
+        cashierGenReportButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        cashierGenReportButton.setForeground(new java.awt.Color(255, 255, 255));
+        cashierGenReportButton.setText("GENERATE CASHIER REPORT");
+        cashierGenReportButton.setContentAreaFilled(false);
+        cashierGenReportButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cashierGenReportButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cashierGenReportButtonMouseExited(evt);
+            }
+        });
+        cashierGenReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cashierGenReportButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout SalesMonitoringLayout = new javax.swing.GroupLayout(SalesMonitoring);
         SalesMonitoring.setLayout(SalesMonitoringLayout);
@@ -476,21 +581,23 @@ public class AdminMain extends javax.swing.JFrame {
                 .addGroup(SalesMonitoringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
                     .addGroup(SalesMonitoringLayout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(salesFilterCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1)
+                        .addComponent(salesField)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(salesFilterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton8)))
+                        .addComponent(salesShowAllButton)))
                 .addContainerGap())
             .addGroup(SalesMonitoringLayout.createSequentialGroup()
                 .addGap(410, 410, 410)
                 .addComponent(jLabel7)
                 .addGap(0, 411, Short.MAX_VALUE))
             .addGroup(SalesMonitoringLayout.createSequentialGroup()
-                .addGap(464, 464, 464)
-                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(274, 274, 274)
+                .addComponent(salesGenReportButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cashierGenReportButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         SalesMonitoringLayout.setVerticalGroup(
@@ -500,15 +607,17 @@ public class AdminMain extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addGroup(SalesMonitoringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(jTextField1)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox1))
+                    .addComponent(salesField)
+                    .addComponent(salesFilterButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(salesShowAllButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(salesFilterCombo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(20, 20, 20))
+                .addGap(18, 18, 18)
+                .addGroup(SalesMonitoringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(salesGenReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cashierGenReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
 
         RoleManagement.setOpaque(false);
@@ -517,17 +626,25 @@ public class AdminMain extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("ROLE MANAGEMENT");
 
+        RoleManagementTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        RoleManagementTable.setForeground(new java.awt.Color(255, 255, 255));
         RoleManagementTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Name", "Account Type", "Action"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        RoleManagementTable.setRowHeight(40);
         jScrollPane3.setViewportView(RoleManagementTable);
 
         NewAccBut.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -752,14 +869,11 @@ public class AdminMain extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    // <editor-fold defaultstate="collapsed" desc="EVENTS">    
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    // <editor-fold defaultstate="collapsed" desc="EVENTS"> 
+    private void salesShowAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesShowAllButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+        populateSalesMonitoringTable();
+    }//GEN-LAST:event_salesShowAllButtonActionPerformed
 
     private void systemsettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_systemsettingsActionPerformed
         // TODO add your handling code here:
@@ -939,8 +1053,250 @@ public class AdminMain extends javax.swing.JFrame {
         ConfirmButton.setForeground(Color.white);
     }//GEN-LAST:event_ConfirmButtonMouseExited
 
+    private void salesGenReportButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesGenReportButtonMouseEntered
+        // TODO add your handling code here:
+        salesGenReportButton.setContentAreaFilled(true);
+        salesGenReportButton.setBackground(new java.awt.Color(111, 68, 54));
+        salesGenReportButton.setForeground(Color.white);
+    }//GEN-LAST:event_salesGenReportButtonMouseEntered
+
+    private void salesGenReportButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesGenReportButtonMouseExited
+        // TODO add your handling code here:
+        salesGenReportButton.setContentAreaFilled(false);
+        salesGenReportButton.setForeground(Color.white);
+    }//GEN-LAST:event_salesGenReportButtonMouseExited
+
+    private void cashierGenReportButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cashierGenReportButtonMouseEntered
+        // TODO add your handling code here:
+        cashierGenReportButton.setContentAreaFilled(true);
+        cashierGenReportButton.setBackground(new java.awt.Color(111, 68, 54));
+        cashierGenReportButton.setForeground(Color.white);
+    }//GEN-LAST:event_cashierGenReportButtonMouseEntered
+
+    private void cashierGenReportButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cashierGenReportButtonMouseExited
+        // TODO add your handling code here:
+        cashierGenReportButton.setContentAreaFilled(false);
+        cashierGenReportButton.setForeground(Color.white);
+    }//GEN-LAST:event_cashierGenReportButtonMouseExited
+
+    private void salesFilterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesFilterButtonActionPerformed
+        // TODO add your handling code here:
+        filterSalesMonitoringTable(salesField.getText());
+    }//GEN-LAST:event_salesFilterButtonActionPerformed
+
+    private void salesGenReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesGenReportButtonActionPerformed
+
+        callSalesReport();
+        setVisible(false);
+    }//GEN-LAST:event_salesGenReportButtonActionPerformed
+
+    private void cashierGenReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashierGenReportButtonActionPerformed
+        callCashierReport();
+        setVisible(false);
+    }//GEN-LAST:event_cashierGenReportButtonActionPerformed
+
     // </editor-fold>    
     
+    // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIES"> 
+    
+    private void callCashierReport(){
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new StaffPerformance().setVisible(true);
+            }
+        });
+    }
+    private void callSalesReport(){
+         /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(SalesReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(SalesReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(SalesReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(SalesReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new SalesReport().setVisible(true);
+            }
+        });
+    }
+    private void populateRoleManagementTable(){
+        DefaultTableModel model = (DefaultTableModel) RoleManagementTable.getModel();
+        
+        String url = "jdbc:sqlite:coffeeDB.db";
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT Name, AccountType FROM Accounts")) {
+
+            // Iterate through the result set and add rows to the table model
+            while (rs.next()) {
+                String name = rs.getString("Name");
+                String type = rs.getString("AccountType");
+                if(type.equals("admin")){
+                    type = "ADMINISTRATOR";
+                } else if (type.equals("user")){
+                    type = "CASHIER";
+                }
+                model.addRow(new Object[]{name, type});
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    private void populateSalesMonitoringTable(){
+        //POPULATES DATA FROM DATABASE TO SALES MONITORING TABLE
+        DefaultTableModel model = (DefaultTableModel) SalesMonitoringTable.getModel();
+        model.setRowCount(0);
+        String url = "jdbc:sqlite:coffeeDB.db";
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM SalesByProducts")) {
+
+            // Iterate through the result set and add rows to the table model
+            while (rs.next()) {
+                String cashier = rs.getString("Cashier");
+                String product = rs.getString("Product");
+                String category = rs.getString("Category");
+                int sales = rs.getInt("Sales");
+                String timestamp = rs.getString("Timestamp");
+                model.addRow(new Object[]{cashier, product,category, sales, timestamp});
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    private void populateIngredientsListTable(){
+        //POPULATES DATA FROM DATABASE TO INGREDIENTS LIST TABLE
+        DefaultTableModel model = (DefaultTableModel) IngredientsTable.getModel();
+        
+        String url = "jdbc:sqlite:coffeeDB.db";
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM IngredientList")) {
+
+            // Iterate through the result set and add rows to the table model
+            while (rs.next()) {
+                String ingredient = rs.getString("Ingredient");
+                int amount = rs.getInt("Amount");
+                model.addRow(new Object[]{ingredient, amount});
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void filterSalesMonitoringTable(String field){
+        DefaultTableModel model = (DefaultTableModel) SalesMonitoringTable.getModel();
+        Object comboSelect = salesFilterCombo.getSelectedItem();
+        String comboString = comboSelect.toString();
+        String fieldLower = field.toLowerCase();
+        String sqlQuery;
+        model.setRowCount(0);
+        
+        switch (comboString){
+            case "Cashier":
+                System.out.println("CASHIER");
+                sqlQuery = "SELECT * FROM SalesByProducts WHERE LOWER(Cashier) = ?";
+                try {
+                    sqlPST = conn.prepareStatement(sqlQuery);
+                    sqlPST.setString(1, fieldLower);
+                    sqlResult = sqlPST.executeQuery();
+                    while (sqlResult.next()){
+                        String cashier = sqlResult.getString("Cashier");
+                        String product = sqlResult.getString("Product");
+                        String category = sqlResult.getString("Category");
+                        int sales = sqlResult.getInt("Sales");
+                        String timestamp = sqlResult.getString("Timestamp");
+                        model.addRow(new Object[]{cashier, product,category, sales, timestamp});
+                    }
+               } catch (SQLException e) {
+                   e.printStackTrace();
+               }
+                break;
+            case "Product":
+                System.out.println("PRODUCT");
+                sqlQuery = "SELECT * FROM SalesByProducts WHERE LOWER(Product) = ?";
+                try {
+                    sqlPST = conn.prepareStatement(sqlQuery);
+                    sqlPST.setString(1, fieldLower);
+                    sqlResult = sqlPST.executeQuery();
+                    while (sqlResult.next()){
+                        String cashier = sqlResult.getString("Cashier");
+                        String product = sqlResult.getString("Product");
+                        String category = sqlResult.getString("Category");
+                        int sales = sqlResult.getInt("Sales");
+                        String timestamp = sqlResult.getString("Timestamp");
+                        model.addRow(new Object[]{cashier, product,category, sales, timestamp});
+                    }
+               } catch (SQLException e) {
+                   e.printStackTrace();
+               }
+                break;
+            case "Category":
+                System.out.println("CATEGORY");
+                sqlQuery = "SELECT * FROM SalesByProducts WHERE LOWER(Category) = ?";
+                try {
+                    sqlPST = conn.prepareStatement(sqlQuery);
+                    sqlPST.setString(1, fieldLower);
+                    sqlResult = sqlPST.executeQuery();
+                    while (sqlResult.next()){
+                        String cashier = sqlResult.getString("Cashier");
+                        String product = sqlResult.getString("Product");
+                        String category = sqlResult.getString("Category");
+                        int sales = sqlResult.getInt("Sales");
+                        String timestamp = sqlResult.getString("Timestamp");
+                        model.addRow(new Object[]{cashier, product,category, sales, timestamp});
+                    }
+               } catch (SQLException e) {
+                   e.printStackTrace();
+               }
+                break;
+        }
+    }
     public void showLineChart(){
         //create dataset for the graph
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -1006,9 +1362,9 @@ public class AdminMain extends javax.swing.JFrame {
         LineChart.add(lineChartPanel, BorderLayout.CENTER);
         LineChart.validate();
     }
-    /**
-     * @param args the command line arguments
-     */
+    
+    // </editor-fold> 
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1050,6 +1406,7 @@ public class AdminMain extends javax.swing.JFrame {
     private javax.swing.JButton ConfirmButton;
     private javax.swing.JPanel Dashboard;
     private javax.swing.JButton ImportButton;
+    private javax.swing.JScrollPane IngredientsScrPane;
     private javax.swing.JTable IngredientsTable;
     private javax.swing.JPanel Inventory;
     private javax.swing.JPanel LineChart;
@@ -1064,12 +1421,9 @@ public class AdminMain extends javax.swing.JFrame {
     private javax.swing.JTable SalesMonitoringTable;
     private javax.swing.JPanel SystemSettings;
     private javax.swing.JButton auditlogs;
+    private javax.swing.JButton cashierGenReportButton;
     private javax.swing.JButton dashboard;
     private javax.swing.JButton inventory;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1089,14 +1443,17 @@ public class AdminMain extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JButton rolemanagement;
+    private javax.swing.JTextField salesField;
+    private javax.swing.JButton salesFilterButton;
+    private javax.swing.JComboBox<String> salesFilterCombo;
+    private javax.swing.JButton salesGenReportButton;
+    private javax.swing.JButton salesShowAllButton;
     private javax.swing.JButton salesmonitoring;
     private javax.swing.JButton systemsettings;
     // End of variables declaration//GEN-END:variables
