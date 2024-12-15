@@ -99,14 +99,15 @@ public class CashierWindow extends javax.swing.JFrame {
         // </editor-fold> 
         
         // <editor-fold defaultstate="collapsed" desc="TABLE CELL ACTION"> 
-        currentOrderTable.getColumnModel().getColumn(2).setCellRenderer(new CurrentOrderTableActionCellRenderer());
-        currentOrderTable.getColumnModel().getColumn(2).setCellEditor(new CurrentOrderTableActionCellEditor(event));
+        currentOrderTable.getColumnModel().getColumn(3).setCellRenderer(new CurrentOrderTableActionCellRenderer());
+        currentOrderTable.getColumnModel().getColumn(3).setCellEditor(new CurrentOrderTableActionCellEditor(event));
         
         searchTable.getColumnModel().getColumn(2).setCellRenderer(new SearchTableActionCellRenderer());
         searchTable.getColumnModel().getColumn(2).setCellEditor(new SearchTableActionCellEditor(event));
         // </editor-fold> 
         
     }
+    
     // SQL Connector
     private static Connection connect(){
         var dbURL = "jdbc:sqlite:coffeeDB.db";
@@ -1488,11 +1489,11 @@ public class CashierWindow extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Product", "Quantity", "Action"
+                "Product", "Type", "Quantity", "Action"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, true
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1501,6 +1502,12 @@ public class CashierWindow extends javax.swing.JFrame {
         });
         currentOrderTable.setRowHeight(40);
         currentOrderScrPane.setViewportView(currentOrderTable);
+        if (currentOrderTable.getColumnModel().getColumnCount() > 0) {
+            currentOrderTable.getColumnModel().getColumn(0).setResizable(false);
+            currentOrderTable.getColumnModel().getColumn(1).setResizable(false);
+            currentOrderTable.getColumnModel().getColumn(2).setResizable(false);
+            currentOrderTable.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         ConfrimOrder.setText("CONFIRM ORDER");
         ConfrimOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -2082,21 +2089,25 @@ public class CashierWindow extends javax.swing.JFrame {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
-                // Split the CSV line by commas and limit to 5 columns
+                // Split the CSV line by commas
                 String[] data = line.split(",");
-                
-                // Only process rows that have exactly 5 columns
-                if (data.length == 5) {
+
+                // Only process rows that have exactly 6 columns
+                if (data.length == 6) {
                     // Add each valid row of data to the table model
                     tableModel.addRow(data);
+
+                    // Force the table to repaint immediately
+                    currentOrderTable.repaint();
                 } else {
-                    System.out.println("Skipping invalid row (not 5 columns): " + line);
+                    System.out.println("Skipping invalid row (not 6 columns): " + line);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     
     
 

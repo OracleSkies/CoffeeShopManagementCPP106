@@ -450,7 +450,7 @@ public class TeaCustomization extends javax.swing.JFrame {
         }
 
         // Prepare data to be written to the CSV file
-        String data = Type + "," + quantity + "," + strength + "," + milkType + "," + extras.toString().trim();
+        String data = Type + "," + "Tea" + "," + quantity + "," + strength + "," + milkType + "," + extras.toString().trim();
 
         // Write the data to a CSV file
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Current_orders.csv", true))) {

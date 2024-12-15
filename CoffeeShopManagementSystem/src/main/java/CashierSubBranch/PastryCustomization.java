@@ -171,7 +171,7 @@ public class PastryCustomization extends javax.swing.JFrame {
 
 
         // Prepare data to be written to the CSV file
-        String data = Type + "," + quantity + "," + " " + "," + " " + "," + " ";
+        String data = Type + "," + "Pastry" + "," + quantity + "," + " " + "," + " " + "," + " ";
 
         // Write the data to a CSV file
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Current_orders.csv", true))) {

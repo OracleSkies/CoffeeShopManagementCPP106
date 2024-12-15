@@ -331,7 +331,7 @@ public class FrappeCustomization extends javax.swing.JFrame {
         }
 
         // Prepare data to be written to the CSV file
-        String data = Type + "," + quantity + "," + strength + "," + " " + "," + extras.toString().trim();
+        String data = Type + "," + "Frappe" + "," + quantity + "," + strength + "," + " " + "," + extras.toString().trim();
 
         // Write the data to a CSV file
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Current_orders.csv", true))) {
