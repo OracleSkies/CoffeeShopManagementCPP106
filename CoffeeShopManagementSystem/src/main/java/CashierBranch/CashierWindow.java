@@ -1,6 +1,8 @@
 package CashierBranch;
 
 import CashierSubBranch.*;
+import cellAction.CurrentOrderTableActionCellEditor;
+import cellAction.CurrentOrderTableActionCellRenderer;
 import cellAction.TableActionEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -50,9 +52,9 @@ public class CashierWindow extends javax.swing.JFrame {
             }
         };
         
-        // <editor-fold defaultstate="collapsed" desc="TABLE BUTTONS"> 
-        
-        
+        // <editor-fold defaultstate="collapsed" desc="TABLE CELL ACTION"> 
+        currentOrderTable.getColumnModel().getColumn(2).setCellRenderer(new CurrentOrderTableActionCellRenderer());
+        currentOrderTable.getColumnModel().getColumn(2).setCellEditor(new CurrentOrderTableActionCellEditor(event));
         // </editor-fold> 
         
     }
@@ -199,7 +201,7 @@ public class CashierWindow extends javax.swing.JFrame {
         CurrentOrder = new javax.swing.JPanel();
         jLabel86 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        Orders = new javax.swing.JTable();
+        currentOrderTable = new javax.swing.JTable();
         ConfrimOrder = new javax.swing.JButton();
         bAck = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -1424,7 +1426,8 @@ public class CashierWindow extends javax.swing.JFrame {
         jLabel86.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel86.setText("BEANS AND LEAVES CURRENT ORDER");
 
-        Orders.setModel(new javax.swing.table.DefaultTableModel(
+        currentOrderTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        currentOrderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -1440,7 +1443,8 @@ public class CashierWindow extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(Orders);
+        currentOrderTable.setRowHeight(40);
+        jScrollPane4.setViewportView(currentOrderTable);
 
         ConfrimOrder.setText("CONFIRM ORDER");
         ConfrimOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -2014,7 +2018,7 @@ public class CashierWindow extends javax.swing.JFrame {
     
     public void loadCSVToExistingTable(String filePath) {
         // Get the table model from the existing JTable
-        DefaultTableModel tableModel = (DefaultTableModel) Orders.getModel();
+        DefaultTableModel tableModel = (DefaultTableModel) currentOrderTable.getModel();
 
         // Clear existing rows in the JTable
         tableModel.setRowCount(0);
@@ -2129,7 +2133,6 @@ public class CashierWindow extends javax.swing.JFrame {
     private javax.swing.JButton Mocha;
     private javax.swing.JPanel OrderMenu;
     private javax.swing.JButton OrderMenuButton;
-    private javax.swing.JTable Orders;
     private javax.swing.JButton Pandesal;
     private javax.swing.JButton Pastries;
     private javax.swing.JPanel PastriesItems;
@@ -2149,6 +2152,7 @@ public class CashierWindow extends javax.swing.JFrame {
     private javax.swing.JButton WhiteTea;
     private javax.swing.JButton YellowTea;
     private javax.swing.JButton bAck;
+    private javax.swing.JTable currentOrderTable;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

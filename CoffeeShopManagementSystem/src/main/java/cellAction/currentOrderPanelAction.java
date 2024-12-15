@@ -49,10 +49,10 @@ public class currentOrderPanelAction extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cmdDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
-        add(cmdDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 30));
+        add(cmdDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 40, 30));
 
         cmdView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view.png"))); // NOI18N
-        add(cmdView, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 30));
+        add(cmdView, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 30));
     }// </editor-fold>//GEN-END:initComponents
 
 
