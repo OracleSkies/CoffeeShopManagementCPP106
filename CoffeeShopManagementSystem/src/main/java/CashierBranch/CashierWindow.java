@@ -1499,7 +1499,7 @@ public class CashierWindow extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1514,7 +1514,6 @@ public class CashierWindow extends javax.swing.JFrame {
             currentOrderTable.getColumnModel().getColumn(1).setPreferredWidth(5);
             currentOrderTable.getColumnModel().getColumn(2).setResizable(false);
             currentOrderTable.getColumnModel().getColumn(2).setPreferredWidth(5);
-            currentOrderTable.getColumnModel().getColumn(3).setResizable(false);
         }
 
         ConfrimOrder.setText("CONFIRM ORDER");
