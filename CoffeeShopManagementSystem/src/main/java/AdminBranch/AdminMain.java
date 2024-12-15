@@ -164,7 +164,7 @@ public class AdminMain extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         SalesMonitoringTable = new javax.swing.JTable();
-        jButton9 = new javax.swing.JButton();
+        salesGenReportButton = new javax.swing.JButton();
         RoleManagement = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -529,10 +529,19 @@ public class AdminMain extends javax.swing.JFrame {
         SalesMonitoringTable.setRowHeight(40);
         jScrollPane2.setViewportView(SalesMonitoringTable);
 
-        jButton9.setBackground(new java.awt.Color(0, 0, 255));
-        jButton9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(255, 255, 255));
-        jButton9.setText("GENERATE REPORT");
+        salesGenReportButton.setBackground(new java.awt.Color(0, 0, 255));
+        salesGenReportButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        salesGenReportButton.setForeground(new java.awt.Color(255, 255, 255));
+        salesGenReportButton.setText("GENERATE REPORT");
+        salesGenReportButton.setContentAreaFilled(false);
+        salesGenReportButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                salesGenReportButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                salesGenReportButtonMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout SalesMonitoringLayout = new javax.swing.GroupLayout(SalesMonitoring);
         SalesMonitoring.setLayout(SalesMonitoringLayout);
@@ -557,7 +566,7 @@ public class AdminMain extends javax.swing.JFrame {
                 .addGap(0, 411, Short.MAX_VALUE))
             .addGroup(SalesMonitoringLayout.createSequentialGroup()
                 .addGap(464, 464, 464)
-                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(salesGenReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         SalesMonitoringLayout.setVerticalGroup(
@@ -574,7 +583,7 @@ public class AdminMain extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(salesGenReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
         );
 
@@ -1014,6 +1023,19 @@ public class AdminMain extends javax.swing.JFrame {
         ConfirmButton.setForeground(Color.white);
     }//GEN-LAST:event_ConfirmButtonMouseExited
 
+    private void salesGenReportButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesGenReportButtonMouseEntered
+        // TODO add your handling code here:
+        salesGenReportButton.setContentAreaFilled(true);
+        salesGenReportButton.setBackground(new java.awt.Color(111, 68, 54));
+        salesGenReportButton.setForeground(Color.white);
+    }//GEN-LAST:event_salesGenReportButtonMouseEntered
+
+    private void salesGenReportButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesGenReportButtonMouseExited
+        // TODO add your handling code here:
+        salesGenReportButton.setContentAreaFilled(false);
+        salesGenReportButton.setForeground(Color.white);
+    }//GEN-LAST:event_salesGenReportButtonMouseExited
+
     // </editor-fold>    
     
     // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIES"> 
@@ -1211,7 +1233,6 @@ public class AdminMain extends javax.swing.JFrame {
     private javax.swing.JButton inventory;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1239,6 +1260,7 @@ public class AdminMain extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JButton rolemanagement;
+    private javax.swing.JButton salesGenReportButton;
     private javax.swing.JButton salesmonitoring;
     private javax.swing.JButton systemsettings;
     // End of variables declaration//GEN-END:variables
