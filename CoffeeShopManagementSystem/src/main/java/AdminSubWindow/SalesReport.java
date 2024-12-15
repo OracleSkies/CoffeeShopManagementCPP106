@@ -5,7 +5,12 @@
 package AdminSubWindow;
 
 import AdminBranch.AdminMain;
+import databaseConnection.DBConnection;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -13,12 +18,15 @@ import java.awt.Color;
  */
 public class SalesReport extends javax.swing.JFrame {
 
-    /**
-     * Creates new form SalesReport
-     */
+    Connection conn = null;
+    PreparedStatement sqlPST = null;
+    ResultSet sqlResult = null;
+    
     public SalesReport() {
         initComponents();
+        conn = DBConnection.connectionDB();
         
+        countByCategory("coffee");
         infoPanel.setBackground(new java.awt.Color(0, 0, 0, 80));
 
     }
@@ -242,6 +250,7 @@ public class SalesReport extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    // <editor-fold defaultstate="collapsed" desc="EVENTS"> 
     private void ConfirmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmMouseEntered
         // TODO add your handling code here:
         Confirm.setContentAreaFilled(true);
@@ -263,6 +272,31 @@ public class SalesReport extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_ConfirmActionPerformed
 
+    // </editor-fold> 
+    
+    // <editor-fold defaultstate="collapsed" desc="FUNTIONALITIES"> 
+    
+    private void countByCategory(String category){
+        int categoryCount = 0;
+        String sqlQuery = "SELECT Category FROM SalesByProducts WHERE LOWER(Category) = ?";
+        try{
+            sqlPST = conn.prepareStatement(sqlQuery);
+            sqlPST.setString(1, category);
+            sqlResult = sqlPST.executeQuery();
+            while (sqlResult.next()){
+                String categoryString = sqlResult.getString("Category").toLowerCase();
+                System.out.println(categoryString);
+                if (categoryString.equals(category.toLowerCase())){
+                    categoryCount++;
+                }
+            }
+            System.out.println("coffee: "+categoryCount);
+        }catch (SQLException e) {
+                   e.printStackTrace();
+               }
+        
+        
+    }
     private void callAdminMain(){
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -294,6 +328,7 @@ public class SalesReport extends javax.swing.JFrame {
             }
         });
     }
+    // </editor-fold> 
     /**
      * @param args the command line arguments
      */
