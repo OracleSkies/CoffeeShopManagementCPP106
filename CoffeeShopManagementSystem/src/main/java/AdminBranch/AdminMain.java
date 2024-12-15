@@ -4,6 +4,8 @@
  */
 package AdminBranch;
 
+import AdminSubWindow.SalesReport;
+import AdminSubWindow.StaffPerformance;
 import cellAction.TableActionEvent;
 import cellAction.restockTableActionCellEditor;
 import cellAction.restockTableActionCellRenderer;
@@ -545,6 +547,11 @@ public class AdminMain extends javax.swing.JFrame {
                 salesGenReportButtonMouseExited(evt);
             }
         });
+        salesGenReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salesGenReportButtonActionPerformed(evt);
+            }
+        });
 
         cashierGenReportButton.setBackground(new java.awt.Color(0, 0, 255));
         cashierGenReportButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -557,6 +564,11 @@ public class AdminMain extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 cashierGenReportButtonMouseExited(evt);
+            }
+        });
+        cashierGenReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cashierGenReportButtonActionPerformed(evt);
             }
         });
 
@@ -1072,9 +1084,83 @@ public class AdminMain extends javax.swing.JFrame {
         filterSalesMonitoringTable(salesField.getText());
     }//GEN-LAST:event_salesFilterButtonActionPerformed
 
+    private void salesGenReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesGenReportButtonActionPerformed
+
+        callSalesReport();
+        setVisible(false);
+    }//GEN-LAST:event_salesGenReportButtonActionPerformed
+
+    private void cashierGenReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashierGenReportButtonActionPerformed
+        callCashierReport();
+        setVisible(false);
+    }//GEN-LAST:event_cashierGenReportButtonActionPerformed
+
     // </editor-fold>    
     
     // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIES"> 
+    
+    private void callCashierReport(){
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new StaffPerformance().setVisible(true);
+            }
+        });
+    }
+    private void callSalesReport(){
+         /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(SalesReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(SalesReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(SalesReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(SalesReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new SalesReport().setVisible(true);
+            }
+        });
+    }
     private void populateRoleManagementTable(){
         DefaultTableModel model = (DefaultTableModel) RoleManagementTable.getModel();
         
