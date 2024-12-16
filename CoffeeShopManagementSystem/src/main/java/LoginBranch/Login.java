@@ -245,7 +245,8 @@ public class Login extends javax.swing.JFrame {
                 
                 switch (accountType) {
                     case "admin":
-                        JOptionPane.showMessageDialog(null, "Login Successfull");
+                        String admin = sqlResult.getString("Name");
+                        JOptionPane.showMessageDialog(null, "Login Successful! WELCOME "+admin+"!");
                         /* Set the Nimbus look and feel */
                             //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
                             /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -280,7 +281,7 @@ public class Login extends javax.swing.JFrame {
                     case "user":
                         
                         String cashier = sqlResult.getString("Name");
-                        JOptionPane.showMessageDialog(null, "WELCOME "+cashier+"!");
+                        JOptionPane.showMessageDialog(null, "Login Successful! WELCOME "+cashier+"!");
                         /* Set the Nimbus look and feel */
                         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
 

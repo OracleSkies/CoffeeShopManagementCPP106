@@ -16,7 +16,12 @@ public class accountPanelAction extends javax.swing.JPanel {
 
     public void initEvent(TableActionEvent event, int row) {
         // Initialize the "View" button action listener
-        
+        cmdView.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                event.searchOnView(row);  
+            }
+        });
 
         // Initialize the "Delete" button action listener
         cmdDelete.addActionListener(new ActionListener() {
@@ -25,6 +30,7 @@ public class accountPanelAction extends javax.swing.JPanel {
                 event.onDelete(row);  // Handle delete action
             }
         });
+        
     }
     
     @SuppressWarnings("unchecked")
@@ -32,11 +38,15 @@ public class accountPanelAction extends javax.swing.JPanel {
     private void initComponents() {
 
         cmdDelete = new cellAction.ActionButton();
+        cmdView = new cellAction.ActionButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cmdDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
-        add(cmdDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 40, 30));
+        add(cmdDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 40, 30));
+
+        cmdView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view.png"))); // NOI18N
+        add(cmdView, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 40, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     // <editor-fold defaultstate="collapsed" desc="Functionalitis">
@@ -73,6 +83,7 @@ public class accountPanelAction extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private cellAction.ActionButton cmdDelete;
+    private cellAction.ActionButton cmdView;
     // End of variables declaration//GEN-END:variables
 
     

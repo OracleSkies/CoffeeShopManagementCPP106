@@ -181,6 +181,7 @@ public class AdminAccountRegistration extends javax.swing.JFrame {
 
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
         // TODO add your handling code here:
+        callAdminMain();
         setVisible(false);
     }//GEN-LAST:event_BackActionPerformed
 
@@ -191,7 +192,7 @@ public class AdminAccountRegistration extends javax.swing.JFrame {
 
     // </editor-fold> 
     
-    // <editor-fold defaultstate="collapsed" desc="EVENTS"> 
+    // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIES"> 
     private void callAdminMain(){
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -253,7 +254,7 @@ public class AdminAccountRegistration extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Failed to register account. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         }catch (Exception e){
-            
+            JOptionPane.showMessageDialog(null, "Username already taken", "Error", JOptionPane.ERROR_MESSAGE);
             System.out.println("Login Catch Block: " + e.getMessage());
         }
     }

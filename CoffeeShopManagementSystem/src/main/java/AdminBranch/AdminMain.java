@@ -4,6 +4,7 @@
  */
 package AdminBranch;
 
+import AdminSubWindow.AccountEdit;
 import AdminSubWindow.AdminAccountRegistration;
 import AdminSubWindow.SalesReport;
 import AdminSubWindow.StaffPerformance;
@@ -78,8 +79,7 @@ public class AdminMain extends javax.swing.JFrame {
             }
             @Override 
             public void onDelete(int row){
-                System.out.println("CLICKED");
-                System.out.println(row);
+                deleteAccount(row);
             }
             @Override 
             public void currentOrderOnView(int row){
@@ -88,8 +88,7 @@ public class AdminMain extends javax.swing.JFrame {
             }
             @Override 
             public void searchOnView(int row){
-                System.out.println("CLICKED");
-                System.out.println(row);
+                callAccountEdit(row);
             }
         };
         
@@ -1144,6 +1143,74 @@ public class AdminMain extends javax.swing.JFrame {
     
     // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIES"> 
 
+    private void deleteAccount(int row){
+        String sqlQuery = "SELECT Username FROM Accounts";
+        String username = null;
+        int rowLoopCount = 0;
+        
+        try{
+            sqlPST = conn.prepareStatement(sqlQuery);
+            sqlResult = sqlPST.executeQuery();
+            while(sqlResult.next()){
+                if (rowLoopCount == row -1){
+                    username = sqlResult.getString("Username");
+                }
+                rowLoopCount++;
+            }
+        } catch (Exception e){
+            
+            System.out.println("Login Catch Block: " + e.getMessage());
+        }
+        
+        String deleteQuery = "DELETE FROM Accounts WHERE Username = ?";
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(deleteQuery);
+            pstmt.setString(1,username);
+            int rowsUpdated = pstmt.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                JOptionPane.showMessageDialog(null, "Account deleted successfully!");
+                populateRoleManagementTable();
+            } else {
+                JOptionPane.showMessageDialog(null, "Account not found or update failed.");
+            }
+            
+       } catch (SQLException e) {
+           e.printStackTrace();
+       }
+    }
+    private void callAccountEdit(int row){
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(AccountEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(AccountEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(AccountEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(AccountEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new AccountEdit(row).setVisible(true);
+            }
+        });
+        setVisible(false);
+    }
     private void addStock(int row){
         String amountToAddStr = JOptionPane.showInputDialog("Enter the amount to add:");
         int amountToAdd = Integer.parseInt(amountToAddStr);
@@ -1392,6 +1459,7 @@ public class AdminMain extends javax.swing.JFrame {
     }
     private void populateRoleManagementTable(){
         DefaultTableModel model = (DefaultTableModel) RoleManagementTable.getModel();
+        model.setRowCount(0);
         
         String url = "jdbc:sqlite:coffeeDB.db";
         try (Connection conn = DriverManager.getConnection(url);
