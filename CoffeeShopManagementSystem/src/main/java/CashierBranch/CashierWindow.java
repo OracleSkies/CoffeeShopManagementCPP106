@@ -7,11 +7,16 @@ import cellAction.SearchTableActionCellEditor;
 import cellAction.SearchTableActionCellRenderer;
 import cellAction.TableActionEvent;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;   
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -310,15 +315,20 @@ public class CashierWindow extends javax.swing.JFrame {
         transacSummaryTable.setForeground(new java.awt.Color(255, 255, 255));
         transacSummaryTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         transacSummaryTable.setRowHeight(40);
         transacScrPane.setViewportView(transacSummaryTable);
 
@@ -1990,7 +2000,8 @@ public class CashierWindow extends javax.swing.JFrame {
     
     //badtrip
     private void BackToDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardActionPerformed
-        // TODO add your handling code here:
+        String filePath = "ShiftTransaction.csv";  // Update the path to your CSV file
+        loadCSVData(filePath);
     }//GEN-LAST:event_BackToDashboardActionPerformed
 
     // <editor-fold defaultstate="collapsed" desc="PASTRY"> 
@@ -2090,7 +2101,11 @@ public class CashierWindow extends javax.swing.JFrame {
         // CSV file and SQLite database
         String csvFile = "Current_orders.csv";  // Adjust this path
         String jdbcUrl = "jdbc:sqlite:coffeeDB.db";  // SQLite connection string
-
+        
+        String inputCsvFile = "Current_orders.csv";
+        String outputCsvFile = "ShiftTransaction.csv";
+        // Call the method to compute the total and insert it into the database
+        insertCSVTotalToDatabase(inputCsvFile, jdbcUrl, outputCsvFile);
         // Call the method to insert CSV into the database
         insertCSVToDatabase(csvFile, jdbcUrl);
     }//GEN-LAST:event_ConfrimOrderActionPerformed
@@ -2102,8 +2117,204 @@ public class CashierWindow extends javax.swing.JFrame {
     // Run the table loading in a separate thread for responsiveness
     new Thread(() -> loadCSVToExistingTable(filePath)).start();
     }//GEN-LAST:event_ViewOrderActionPerformed
-   
-// <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIS">  
+     
+// <editor-fold defaultstate="collapsed" desc="Database">
+        public static void insertCSVTotalToDatabase(String csvFile, String jdbcUrl, String outputCsvFile) {
+        BufferedReader br = null;
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        try {
+            // Establish the connection to the SQLite database
+            conn = DriverManager.getConnection(jdbcUrl);
+
+            // SQL query to insert the total along with Date and Time into the database
+            String sql = "INSERT INTO TransactionByOrder (TotalAmount, Date, Time) VALUES (?, ?, ?)";
+
+            // Prepare the statement
+            stmt = conn.prepareStatement(sql);
+
+            // Read the CSV file
+            br = new BufferedReader(new FileReader(csvFile));
+            String line;
+            double totalAmount = 0.0;
+
+            String lastDate = null;
+            String lastTime = null;
+
+            // Skip the header line if the CSV has one
+            // boolean isHeader = true;
+
+            while ((line = br.readLine()) != null) {
+                // Skip header if necessary
+                // if (isHeader) {
+                //     isHeader = false; // Skip the first line (header)
+                //     continue;
+                // }
+
+                String[] values = line.split(",");  // Assuming CSV columns are comma-separated
+
+                try {
+                    // Parse TotalAmount, Date, and Time from the appropriate columns
+                    double amount = Double.parseDouble(values[6]); // Adjust index based on CSV format
+                    totalAmount += amount;
+
+                    // Store Date and Time (Assuming columns 7 and 8)
+                    lastDate = values[7];
+                    lastTime = values[8];
+                } catch (NumberFormatException e) {
+                    System.err.println("Invalid TotalAmount value: " + values[6]);
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    System.err.println("Missing column data in line: " + line);
+                }
+            }
+
+            if (lastDate != null && lastTime != null) {
+                // Insert the computed total along with the last recorded Date and Time into the database
+                stmt.setDouble(1, totalAmount);
+                stmt.setString(2, lastDate);
+                stmt.setString(3, lastTime);
+                stmt.executeUpdate();
+
+                // Write to a new CSV file (this will overwrite the file)
+                writeTotalToCSV(outputCsvFile, totalAmount, lastDate, lastTime);
+
+                // Clear the content of the original CSV file after processing
+                clearCSV(csvFile);
+
+                // Show success message
+                JOptionPane.showMessageDialog(null, "Total computed and inserted into the SQLite database:\n" +
+                        "TotalAmount: " + totalAmount + "\nDate: " + lastDate + "\nTime: " + lastTime +
+                        "\nAlso written to the output CSV file: " + outputCsvFile);
+            } else {
+                JOptionPane.showMessageDialog(null, "Failed to insert data: No valid Date or Time found in the file.");
+            }
+        } catch (IOException | SQLException e) {
+            // Show error message
+            JOptionPane.showMessageDialog(null, "Error occurred: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            try {
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+                if (br != null) br.close();
+            } catch (SQLException | IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void writeTotalToCSV(String outputCsvFile, double totalAmount, String date, String time) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputCsvFile, true))) { // 'true' for appending
+            // Check if the file is empty to decide if the header should be written
+            File file = new File(outputCsvFile);
+            if (file.length() == 0) {
+                // Write the header if the file is empty
+                bw.write("TotalAmount,Date,Time");
+                bw.newLine();
+            }
+
+            // Write the computed data
+            bw.write(totalAmount + "," + date + "," + time);
+            bw.newLine();
+
+            System.out.println("Data successfully written to CSV file: " + outputCsvFile);
+        } catch (IOException e) {
+            System.err.println("Error writing to CSV file: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
+    // Method to clear the contents of the original CSV file
+    public static void clearCSV(String csvFile) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(csvFile))) {
+            // Simply overwrite the file with nothing, effectively clearing it
+            bw.write("");  // Clear the content of the file
+            System.out.println("CSV file cleared: " + csvFile);
+        } catch (IOException e) {
+            System.err.println("Error clearing CSV file: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }    
+    
+    
+    // Method to insert CSV data into SQLite
+    public static void insertCSVToDatabase(String csvFile, String jdbcUrl) {
+        BufferedReader br = null;
+        PreparedStatement stmt = null;
+        PreparedStatement orderIdStmt = null;
+        Connection conn = null;
+
+        try {
+            // Establish the connection to the SQLite database
+            conn = DriverManager.getConnection(jdbcUrl);
+
+            // SQL query to retrieve OrderID from another table (modify the query as needed)
+            String getOrderIDQuery = "SELECT CashierName FROM Accounts WHERE Name = ?"; 
+
+            // Prepare the statement for retrieving OrderID
+            orderIdStmt = conn.prepareStatement(getOrderIDQuery);
+
+            // SQL query to insert data into the database
+            String sql = "INSERT INTO TransactionByProduct (CashierName, Product, Qty, Amount) VALUES (?, ?, ?, ?)";
+
+            // Prepare the statement for inserting data
+            stmt = conn.prepareStatement(sql);
+
+            // Read the CSV file
+            br = new BufferedReader(new FileReader(csvFile));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");  // Assuming CSV columns are comma-separated
+
+                // Retrieve OrderID from another table
+                orderIdStmt.setString(1, values[8]); // Assuming the first column in the CSV maps to the condition
+                ResultSet rs = orderIdStmt.executeQuery();
+                String orderID = null;
+
+                if (rs.next()) {
+                    orderID = rs.getString("OrderID");
+                }
+
+                if (orderID == null) {
+                    // Handle case where OrderID is not found
+                    JOptionPane.showMessageDialog(null, "OrderID not found for: " + values[8]);
+                    continue; // Skip this row
+                }
+
+                // Set values to the PreparedStatement
+                stmt.setString(1, orderID);  // Set the retrieved OrderID
+                stmt.setString(2, values[0]);  // Product
+                stmt.setString(3, values[2]);  // Qty
+                stmt.setString(4, values[6]);  // Amount
+
+                // Execute the insert
+                stmt.executeUpdate();
+            }
+
+            // Update message in the label
+            JOptionPane.showMessageDialog(null, "CSV data successfully inserted into the SQLite database.");
+        } catch (IOException | SQLException e) {
+            // Update message in the label
+            JOptionPane.showMessageDialog(null, "Error occurred: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            try {
+                if (stmt != null) stmt.close();
+                if (orderIdStmt != null) orderIdStmt.close();
+                if (conn != null) conn.close();
+                if (br != null) br.close();
+            } catch (SQLException | IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    //</editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIS">
     
     public void loadCSVToExistingTable(String filePath) {
         // Get the table model from the existing JTable
@@ -2133,59 +2344,39 @@ public class CashierWindow extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-
     
     
-// database
-    // Method to insert CSV data into SQLite
-    public static void insertCSVToDatabase(String csvFile, String jdbcUrl) {
-        BufferedReader br = null;
-        PreparedStatement stmt = null;
-        Connection conn = null;
-
-        try {
-            // Establish the connection to the SQLite database
-            conn = DriverManager.getConnection(jdbcUrl);
-
-            // SQL query to insert data into the database
-            String sql = "INSERT INTO Order (OrderID, Total Amount, Date, Time) VALUES (?, ?, ?, ?)";
-
-            // Prepare the statement
-            stmt = conn.prepareStatement(sql);
-
-            // Read the CSV file
-            br = new BufferedReader(new FileReader(csvFile));
+    //transaction shift
+    // Function to load CSV file data into JTable
+    private void loadCSVData(String filePath) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
+            DefaultTableModel model = new DefaultTableModel();
+            boolean isHeader = true;
+
+            // Read the CSV line by line
             while ((line = br.readLine()) != null) {
-                String[] values = line.split(",");  // Assuming CSV columns are comma-separated
-
-                // Set values to the PreparedStatement (Adjust indices and types as needed)
-                stmt.setString(1, values[2]);  // Set value for column1
-                stmt.setString(2, values[7]);  // Set value for column2
-                stmt.setString(3, values[8]);  // Set value for column3
-//                stmt.setString(4, values[4]);
-
-                // Execute the insert
-                stmt.executeUpdate();
+                String[] row = line.split(",");
+                
+                // If this is the first row, treat it as the header
+                if (isHeader) {
+                    for (String columnName : row) {
+                        model.addColumn(columnName);
+                    }
+                    isHeader = false;
+                } else {
+                    model.addRow(row);
+                }
             }
 
-            // Update message in the label
-            JOptionPane.showMessageDialog(null, "CSV data successfully inserted into the SQLite database.");
-        } catch (IOException | SQLException e) {
-            // Update message in the label
-            JOptionPane.showMessageDialog(null, "Error occurred: " + e.getMessage());
+            // Set the model for the JTable
+            transacSummaryTable.setModel(model); // jTable1 is the name of the JTable you added to the form
+        } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            // Close resources
-            try {
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-                if (br != null) br.close();
-            } catch (SQLException | IOException e) {
-                e.printStackTrace();
-            }
         }
     }
+    
+
         
 
     
