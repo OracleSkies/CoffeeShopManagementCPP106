@@ -1146,24 +1146,34 @@ public class AdminMain extends javax.swing.JFrame {
     private void deleteAccount(int row){
         String sqlQuery = "SELECT Username FROM Accounts";
         String username = null;
+        String url = "jdbc:sqlite:coffeeDB.db";
         int rowLoopCount = 0;
         
-        try{
-            sqlPST = conn.prepareStatement(sqlQuery);
-            sqlResult = sqlPST.executeQuery();
-            while(sqlResult.next()){
-                if (rowLoopCount == row -1){
-                    username = sqlResult.getString("Username");
+        
+        try(Connection conn = DriverManager.getConnection(url);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sqlQuery)){
+            
+            while(rs.next()){
+                if (rowLoopCount == row){
+                    username = rs.getString("Username");
+                    System.out.println("username: "+ username);
+                    break;
                 }
                 rowLoopCount++;
             }
+            
+            System.out.println("row: "+ row);
+            System.out.println("loop count: "+ rowLoopCount);
+            rowLoopCount = 0;
         } catch (Exception e){
             
             System.out.println("Login Catch Block: " + e.getMessage());
         }
         
         String deleteQuery = "DELETE FROM Accounts WHERE Username = ?";
-        try {
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement stmt = conn.createStatement()){
             PreparedStatement pstmt = conn.prepareStatement(deleteQuery);
             pstmt.setString(1,username);
             int rowsUpdated = pstmt.executeUpdate();
@@ -1174,7 +1184,7 @@ public class AdminMain extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Account not found or update failed.");
             }
-            
+            conn.close();
        } catch (SQLException e) {
            e.printStackTrace();
        }
@@ -1233,6 +1243,7 @@ public class AdminMain extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Ingredient not found or update failed.");
             }
+            conn.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -1342,6 +1353,7 @@ public class AdminMain extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) ProductsTable.getModel();
         model.setRowCount(0);
         try {
+            conn = DBConnection.connectionDB();
             sqlPST = conn.prepareStatement(sqlQuery);
             sqlResult = sqlPST.executeQuery();
             while (sqlResult.next()){
@@ -1349,6 +1361,7 @@ public class AdminMain extends javax.swing.JFrame {
                 int price = sqlResult.getInt("Price");
                 model.addRow(new Object[]{productString, price});
             }
+            conn.close();
        } catch (SQLException e) {
            e.printStackTrace();
        }
@@ -1521,7 +1534,6 @@ public class AdminMain extends javax.swing.JFrame {
                 int amount = rs.getInt("Amount");
                 model.addRow(new Object[]{ingredient, amount});
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -1685,6 +1697,7 @@ public class AdminMain extends javax.swing.JFrame {
                         System.out.println("Unknown category: " + category);
                 }
             }
+            conn.close();
        } catch (SQLException e) {
            e.printStackTrace();
        }
