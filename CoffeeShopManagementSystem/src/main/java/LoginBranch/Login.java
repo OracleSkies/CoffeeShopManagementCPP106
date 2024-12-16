@@ -6,6 +6,7 @@ package LoginBranch;
 
 import AdminBranch.AdminMain;
 import AdminSubWindow.CashierAccountRegistration;
+import CashierBranch.CashierWindow;
 import databaseConnection.DBConnection;
 import java.awt.Color;
 import java.sql.DriverManager;
@@ -245,7 +246,6 @@ public class Login extends javax.swing.JFrame {
                 switch (accountType) {
                     case "admin":
                         JOptionPane.showMessageDialog(null, "Login Successfull");
-                        // Display admin window (replace with actual window logic)
                         /* Set the Nimbus look and feel */
                             //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
                             /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -278,8 +278,37 @@ public class Login extends javax.swing.JFrame {
                             setVisible(false);
                         break;
                     case "user":
-                        // Display user window (replace with actual window logic)
-                        System.out.println("Welcome user!");
+                        
+                        String cashier = sqlResult.getString("Name");
+                        JOptionPane.showMessageDialog(null, "WELCOME "+cashier+"!");
+                        /* Set the Nimbus look and feel */
+                        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+
+                        try {
+                            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                                if ("Nimbus".equals(info.getName())) {
+                                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                                    break;
+                                }
+                            }
+                        } catch (ClassNotFoundException ex) {
+                            java.util.logging.Logger.getLogger(CashierWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                        } catch (InstantiationException ex) {
+                            java.util.logging.Logger.getLogger(CashierWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                        } catch (IllegalAccessException ex) {
+                            java.util.logging.Logger.getLogger(CashierWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+                            java.util.logging.Logger.getLogger(CashierWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                        }
+                        //</editor-fold>
+
+                        /* Create and display the form */
+                        java.awt.EventQueue.invokeLater(new Runnable() {
+                            public void run() {
+                                new CashierWindow(cashier).setVisible(true);
+                            }
+                        });
+                        setVisible(false);
                         break;
                     default:
                         // Handle unexpected account type or error
