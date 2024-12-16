@@ -7,6 +7,8 @@ package AdminBranch;
 import AdminSubWindow.SalesReport;
 import AdminSubWindow.StaffPerformance;
 import cellAction.TableActionEvent;
+import cellAction.accountTableActionCellEditor;
+import cellAction.accountTableActionCellRenderer;
 import cellAction.restockTableActionCellEditor;
 import cellAction.restockTableActionCellRenderer;
 import databaseConnection.DBConnection;
@@ -93,11 +95,15 @@ public class AdminMain extends javax.swing.JFrame {
         IngredientsTable.setDefaultRenderer(Object.class, centerRenderer);
         SalesMonitoringTable.setDefaultRenderer(Object.class, centerRenderer);
         RoleManagementTable.setDefaultRenderer(Object.class, centerRenderer);
+        ProductsTable.setDefaultRenderer(Object.class, centerRenderer);
         // </editor-fold>
         
         // <editor-fold defaultstate="collapsed" desc="CELL ACTION">
         IngredientsTable.getColumnModel().getColumn(2).setCellRenderer(new restockTableActionCellRenderer());
         IngredientsTable.getColumnModel().getColumn(2).setCellEditor(new restockTableActionCellEditor(event));
+        
+        RoleManagementTable.getColumnModel().getColumn(2).setCellRenderer(new accountTableActionCellRenderer());
+        RoleManagementTable.getColumnModel().getColumn(2).setCellEditor(new accountTableActionCellEditor(event));
         // </editor-fold>
         
         RecentSalesTable.setOpaque(false);
