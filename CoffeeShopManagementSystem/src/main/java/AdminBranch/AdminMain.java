@@ -19,6 +19,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -1102,12 +1103,12 @@ public class AdminMain extends javax.swing.JFrame {
     private void salesGenReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesGenReportButtonActionPerformed
 
         callSalesReport();
-        setVisible(false);
+        
     }//GEN-LAST:event_salesGenReportButtonActionPerformed
 
     private void cashierGenReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashierGenReportButtonActionPerformed
         callCashierReport();
-        setVisible(false);
+        
     }//GEN-LAST:event_cashierGenReportButtonActionPerformed
 
     // </editor-fold>    
@@ -1115,35 +1116,75 @@ public class AdminMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIES"> 
     
     private void callCashierReport(){
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        String cashier = salesField.getText().toLowerCase();
+        Object comboSelect = salesFilterCombo.getSelectedItem();
+        String comboString = comboSelect.toString();
+        String cashierName = null;
+        
+        
+        
+        if (cashier.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter the name of the cashier ", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new StaffPerformance().setVisible(true);
+        if (comboString.equals("Cashier")){
+            // OPEN STAFF PERFORMANCE WINDOW
+            String sqlQuery = "SELECT Cashier FROM SalesByProducts WHERE LOWER(Cashier) = ?";
+            try {
+                    sqlPST = conn.prepareStatement(sqlQuery);
+                    sqlPST.setString(1, cashier);
+                    sqlResult = sqlPST.executeQuery();
+                    while (sqlResult.next()){
+                        String resultString = sqlResult.getString("Cashier");
+                        if (resultString.toLowerCase().equals(cashier)) {
+                            cashierName = sqlResult.getString("Cashier");
+                            break;
+                        }
+                    }
+               } catch (SQLException e) {
+                   e.printStackTrace();
+               }
+            
+            String cashierFinal = cashierName;
+            if (cashierName == null){
+                JOptionPane.showMessageDialog(null, "Cashier name not found", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
             }
-        });
+            //<editor-fold defaultstate="collapsed" desc="OPEN STAFF PERFORMANCE WINDOW ">
+            
+            //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+
+            try {
+                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                        break;
+                    }
+                }
+            } catch (ClassNotFoundException ex) {
+                java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+                java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }
+            //</editor-fold>
+
+            /* Create and display the form */
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new StaffPerformance(cashierFinal).setVisible(true);
+                }
+            });
+            setVisible(false);
+            //</editor-fold>
+        } else {
+            JOptionPane.showMessageDialog(null, "Please set the combo box to 'Cashier' and put the name of the cashier in the field", "Error in cashier", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
     }
     private void callSalesReport(){
          /* Set the Nimbus look and feel */
@@ -1175,6 +1216,7 @@ public class AdminMain extends javax.swing.JFrame {
                 new SalesReport().setVisible(true);
             }
         });
+        setVisible(false);
     }
     private void populateRoleManagementTable(){
         DefaultTableModel model = (DefaultTableModel) RoleManagementTable.getModel();
@@ -1254,7 +1296,6 @@ public class AdminMain extends javax.swing.JFrame {
         
         switch (comboString){
             case "Cashier":
-                System.out.println("CASHIER");
                 sqlQuery = "SELECT * FROM SalesByProducts WHERE LOWER(Cashier) = ?";
                 try {
                     sqlPST = conn.prepareStatement(sqlQuery);
@@ -1273,7 +1314,6 @@ public class AdminMain extends javax.swing.JFrame {
                }
                 break;
             case "Product":
-                System.out.println("PRODUCT");
                 sqlQuery = "SELECT * FROM SalesByProducts WHERE LOWER(Product) = ?";
                 try {
                     sqlPST = conn.prepareStatement(sqlQuery);
@@ -1292,7 +1332,6 @@ public class AdminMain extends javax.swing.JFrame {
                }
                 break;
             case "Category":
-                System.out.println("CATEGORY");
                 sqlQuery = "SELECT * FROM SalesByProducts WHERE LOWER(Category) = ?";
                 try {
                     sqlPST = conn.prepareStatement(sqlQuery);

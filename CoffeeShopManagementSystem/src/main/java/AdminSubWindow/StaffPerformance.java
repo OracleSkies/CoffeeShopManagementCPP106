@@ -5,7 +5,12 @@
 package AdminSubWindow;
 
 import AdminBranch.AdminMain;
+import databaseConnection.DBConnection;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -13,12 +18,21 @@ import java.awt.Color;
  */
 public class StaffPerformance extends javax.swing.JFrame {
 
-    /**
-     * Creates new form StaffPerformance
-     */
-    public StaffPerformance() {
+    Connection conn = null;
+    PreparedStatement sqlPST = null;
+    ResultSet sqlResult = null;
+    private String cashier;
+    
+    public StaffPerformance(String cashier) {
         initComponents();
+        conn = DBConnection.connectionDB();
+        this.cashier = cashier;
         masterPanel.setBackground(new java.awt.Color(0, 0, 0, 95));
+        cashierLabel.setText(cashier);
+        String orderCount =  Integer.toString(countbyOrders(cashier));
+        String salesAmount = Integer.toString(addByOrders(cashier));
+        orderCountLabel.setText(orderCount);
+        salesAmountLabel.setText(salesAmount);
     }
 
     /**
@@ -32,12 +46,12 @@ public class StaffPerformance extends javax.swing.JFrame {
 
         masterPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        salesAmount = new javax.swing.JLabel();
+        salesAmountLabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        cashier = new javax.swing.JLabel();
+        cashierLabel = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        orderCount = new javax.swing.JLabel();
+        orderCountLabel = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
         Confirm = new javax.swing.JButton();
@@ -56,20 +70,20 @@ public class StaffPerformance extends javax.swing.JFrame {
         jLabel1.setText("Total Sales:");
         masterPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, 50));
 
-        salesAmount.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        salesAmount.setForeground(new java.awt.Color(255, 255, 255));
-        salesAmount.setText("10");
-        masterPanel.add(salesAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, -1));
+        salesAmountLabel.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        salesAmountLabel.setForeground(new java.awt.Color(255, 255, 255));
+        salesAmountLabel.setText("10");
+        masterPanel.add(salesAmountLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Cashier:");
         masterPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, 50));
 
-        cashier.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        cashier.setForeground(new java.awt.Color(255, 255, 255));
-        cashier.setText("Kwason");
-        masterPanel.add(cashier, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, -1, -1));
+        cashierLabel.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        cashierLabel.setForeground(new java.awt.Color(255, 255, 255));
+        cashierLabel.setText("Kwason");
+        masterPanel.add(cashierLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, -1, -1));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setForeground(new java.awt.Color(111, 68, 54));
@@ -93,10 +107,10 @@ public class StaffPerformance extends javax.swing.JFrame {
         jLabel7.setText("Orders Served:");
         masterPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, 50));
 
-        orderCount.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        orderCount.setForeground(new java.awt.Color(255, 255, 255));
-        orderCount.setText("10");
-        masterPanel.add(orderCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, -1, -1));
+        orderCountLabel.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        orderCountLabel.setForeground(new java.awt.Color(255, 255, 255));
+        orderCountLabel.setText("10");
+        masterPanel.add(orderCountLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, -1, -1));
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setForeground(new java.awt.Color(111, 68, 54));
@@ -150,6 +164,7 @@ public class StaffPerformance extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    // <editor-fold defaultstate="collapsed" desc="EVENTS">  
     private void ConfirmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmMouseEntered
         // TODO add your handling code here:
         Confirm.setContentAreaFilled(true);
@@ -168,8 +183,51 @@ public class StaffPerformance extends javax.swing.JFrame {
         callAdminMain();
         setVisible(false);
     }//GEN-LAST:event_ConfirmActionPerformed
-
+    // </editor-fold>  
     
+    
+    // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIES"> 
+    
+    private int countbyOrders(String cashier){
+        int orderCount = 0;
+        String sqlQuery = "SELECT Cashier FROM SalesByProducts WHERE Cashier = ?";
+        try{
+            sqlPST = conn.prepareStatement(sqlQuery);
+            sqlPST.setString(1, cashier);
+            sqlResult = sqlPST.executeQuery();
+            while (sqlResult.next()){
+                String categoryString = sqlResult.getString("Cashier");
+                if (categoryString.equals(cashier)){
+                    orderCount++;
+                }
+            }
+            return orderCount;
+        }catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    
+    private int addByOrders(String cashier){
+        int cashierAmount = 0;
+        String sqlQuery = "SELECT Cashier, Sales FROM SalesByProducts WHERE Cashier = ?";
+        try{
+            sqlPST = conn.prepareStatement(sqlQuery);
+            sqlPST.setString(1, cashier);
+            sqlResult = sqlPST.executeQuery();
+            while (sqlResult.next()){
+                String cashierString = sqlResult.getString("Cashier");
+                int cashierSale = sqlResult.getInt("Sales");
+                if (cashierString.equals(cashier)){
+                    cashierAmount = cashierAmount + cashierSale;
+                }
+            }
+            return cashierAmount;
+        }catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
     private void callAdminMain(){
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -201,6 +259,7 @@ public class StaffPerformance extends javax.swing.JFrame {
             }
         });
     }
+    // </editor-fold> 
     /**
      * @param args the command line arguments
      */
@@ -239,15 +298,15 @@ public class StaffPerformance extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Confirm;
     private javax.swing.JLabel background;
-    private javax.swing.JLabel cashier;
+    private javax.swing.JLabel cashierLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel masterPanel;
-    private javax.swing.JLabel orderCount;
-    private javax.swing.JLabel salesAmount;
+    private javax.swing.JLabel orderCountLabel;
+    private javax.swing.JLabel salesAmountLabel;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }
