@@ -71,7 +71,7 @@
                           <Component id="inventory" alignment="1" max="32767" attributes="0"/>
                           <Component id="salesmonitoring" alignment="0" max="32767" attributes="0"/>
                           <Component id="rolemanagement" alignment="1" pref="298" max="32767" attributes="0"/>
-                          <Component id="systemsettings" alignment="1" max="32767" attributes="0"/>
+                          <Component id="logoutButton" alignment="1" max="32767" attributes="0"/>
                           <Component id="auditlogs" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -81,7 +81,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="241" max="32767" attributes="0"/>
+                      <EmptySpace pref="273" max="32767" attributes="0"/>
                       <Component id="dashboard" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="inventory" min="-2" pref="75" max="-2" attributes="0"/>
@@ -90,10 +90,10 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="rolemanagement" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="systemsettings" min="-2" pref="75" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="auditlogs" min="-2" pref="75" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="logoutButton" min="-2" pref="75" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -174,7 +174,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rolemanagementActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="systemsettings">
+            <Component class="javax.swing.JButton" name="logoutButton">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="24" style="1"/>
@@ -182,14 +182,14 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="SYSTEM SETTINGS"/>
+                <Property name="text" type="java.lang.String" value="LOGOUT"/>
                 <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="systemsettingsMouseEntered"/>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="systemsettingsMouseExited"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="systemsettingsActionPerformed"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="logoutButtonMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="logoutButtonMouseExited"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logoutButtonActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="auditlogs">
@@ -915,6 +915,7 @@
                   <Events>
                     <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="NewAccButMouseEntered"/>
                     <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="NewAccButMouseExited"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NewAccButActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

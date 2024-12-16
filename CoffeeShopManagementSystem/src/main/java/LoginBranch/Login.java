@@ -244,6 +244,7 @@ public class Login extends javax.swing.JFrame {
                 
                 switch (accountType) {
                     case "admin":
+                        JOptionPane.showMessageDialog(null, "Login Successfull");
                         // Display admin window (replace with actual window logic)
                         /* Set the Nimbus look and feel */
                             //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -286,7 +287,7 @@ public class Login extends javax.swing.JFrame {
                         break;
                 }
                 
-                JOptionPane.showMessageDialog(null, "Login Successfull");
+                
             }
         } catch (Exception e){
             
