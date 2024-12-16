@@ -8,6 +8,7 @@ import cellAction.SearchTableActionCellRenderer;
 import cellAction.TableActionEvent;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -1999,7 +2000,7 @@ public class CashierWindow extends javax.swing.JFrame {
     
     //badtrip
     private void BackToDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardActionPerformed
-        String filePath = "output.csv";  // Update the path to your CSV file
+        String filePath = "ShiftTransaction.csv";  // Update the path to your CSV file
         loadCSVData(filePath);
     }//GEN-LAST:event_BackToDashboardActionPerformed
 
@@ -2102,7 +2103,7 @@ public class CashierWindow extends javax.swing.JFrame {
         String jdbcUrl = "jdbc:sqlite:coffeeDB.db";  // SQLite connection string
         
         String inputCsvFile = "Current_orders.csv";
-        String outputCsvFile = "output.csv";
+        String outputCsvFile = "ShiftTransaction.csv";
         // Call the method to compute the total and insert it into the database
         insertCSVTotalToDatabase(inputCsvFile, jdbcUrl, outputCsvFile);
         // Call the method to insert CSV into the database
@@ -2119,102 +2120,123 @@ public class CashierWindow extends javax.swing.JFrame {
      
 // <editor-fold defaultstate="collapsed" desc="Database">
         public static void insertCSVTotalToDatabase(String csvFile, String jdbcUrl, String outputCsvFile) {
-            BufferedReader br = null;
-            PreparedStatement stmt = null;
-            Connection conn = null;
-            try {
-                // Establish the connection to the SQLite database
-                conn = DriverManager.getConnection(jdbcUrl);
+        BufferedReader br = null;
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        try {
+            // Establish the connection to the SQLite database
+            conn = DriverManager.getConnection(jdbcUrl);
 
-                // SQL query to insert the total along with Date and Time into the database
-                String sql = "INSERT INTO TransactionByOrder (TotalAmount, Date, Time) VALUES (?, ?, ?)";
+            // SQL query to insert the total along with Date and Time into the database
+            String sql = "INSERT INTO TransactionByOrder (TotalAmount, Date, Time) VALUES (?, ?, ?)";
 
-                // Prepare the statement
-                stmt = conn.prepareStatement(sql);
+            // Prepare the statement
+            stmt = conn.prepareStatement(sql);
 
-                // Read the CSV file
-                br = new BufferedReader(new FileReader(csvFile));
-                String line;
-                double totalAmount = 0.0;
+            // Read the CSV file
+            br = new BufferedReader(new FileReader(csvFile));
+            String line;
+            double totalAmount = 0.0;
 
-                String lastDate = null;
-                String lastTime = null;
+            String lastDate = null;
+            String lastTime = null;
 
-                // Skip the header line if the CSV has one
-    //            boolean isHeader = true;
+            // Skip the header line if the CSV has one
+            // boolean isHeader = true;
 
-                while ((line = br.readLine()) != null) {
-    //                if (isHeader) {
-    //                    isHeader = false; // Skip the first line (header)
-    //                    continue;
-    //                }
+            while ((line = br.readLine()) != null) {
+                // Skip header if necessary
+                // if (isHeader) {
+                //     isHeader = false; // Skip the first line (header)
+                //     continue;
+                // }
 
-                    String[] values = line.split(",");  // Assuming CSV columns are comma-separated
+                String[] values = line.split(",");  // Assuming CSV columns are comma-separated
 
-                    try {
-                        // Parse TotalAmount, Date, and Time from the appropriate columns
-                        double amount = Double.parseDouble(values[6]); // Adjust index based on CSV format
-                        totalAmount += amount;
-
-                        // Store Date and Time (Assuming columns 7 and 8)
-                        lastDate = values[7];
-                        lastTime = values[8];
-                    } catch (NumberFormatException e) {
-                        System.err.println("Invalid TotalAmount value: " + values[6]);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        System.err.println("Missing column data in line: " + line);
-                    }
-                }
-
-                if (lastDate != null && lastTime != null) {
-                    // Insert the computed total along with the last recorded Date and Time into the database
-                    stmt.setDouble(1, totalAmount);
-                    stmt.setString(2, lastDate);
-                    stmt.setString(3, lastTime);
-                    stmt.executeUpdate();
-
-                    // Write to a new CSV file
-                    writeTotalToCSV(outputCsvFile, totalAmount, lastDate, lastTime);
-
-                    // Show success message
-                    JOptionPane.showMessageDialog(null, "Total computed and inserted into the SQLite database:\n" +
-                            "TotalAmount: " + totalAmount + "\nDate: " + lastDate + "\nTime: " + lastTime +
-                            "\nAlso written to the output CSV file: " + outputCsvFile);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Failed to insert data: No valid Date or Time found in the file.");
-                }
-            } catch (IOException | SQLException e) {
-                // Show error message
-                JOptionPane.showMessageDialog(null, "Error occurred: " + e.getMessage());
-                e.printStackTrace();
-            } finally {
-                // Close resources
                 try {
-                    if (stmt != null) stmt.close();
-                    if (conn != null) conn.close();
-                    if (br != null) br.close();
-                } catch (SQLException | IOException e) {
-                    e.printStackTrace();
+                    // Parse TotalAmount, Date, and Time from the appropriate columns
+                    double amount = Double.parseDouble(values[6]); // Adjust index based on CSV format
+                    totalAmount += amount;
+
+                    // Store Date and Time (Assuming columns 7 and 8)
+                    lastDate = values[7];
+                    lastTime = values[8];
+                } catch (NumberFormatException e) {
+                    System.err.println("Invalid TotalAmount value: " + values[6]);
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    System.err.println("Missing column data in line: " + line);
                 }
+            }
+
+            if (lastDate != null && lastTime != null) {
+                // Insert the computed total along with the last recorded Date and Time into the database
+                stmt.setDouble(1, totalAmount);
+                stmt.setString(2, lastDate);
+                stmt.setString(3, lastTime);
+                stmt.executeUpdate();
+
+                // Write to a new CSV file (this will overwrite the file)
+                writeTotalToCSV(outputCsvFile, totalAmount, lastDate, lastTime);
+
+                // Clear the content of the original CSV file after processing
+                clearCSV(csvFile);
+
+                // Show success message
+                JOptionPane.showMessageDialog(null, "Total computed and inserted into the SQLite database:\n" +
+                        "TotalAmount: " + totalAmount + "\nDate: " + lastDate + "\nTime: " + lastTime +
+                        "\nAlso written to the output CSV file: " + outputCsvFile);
+            } else {
+                JOptionPane.showMessageDialog(null, "Failed to insert data: No valid Date or Time found in the file.");
+            }
+        } catch (IOException | SQLException e) {
+            // Show error message
+            JOptionPane.showMessageDialog(null, "Error occurred: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            try {
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+                if (br != null) br.close();
+            } catch (SQLException | IOException e) {
+                e.printStackTrace();
             }
         }
+    }
 
-        public static void writeTotalToCSV(String outputCsvFile, double totalAmount, String date, String time) {
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputCsvFile))) {
-                // Write the header
+    public static void writeTotalToCSV(String outputCsvFile, double totalAmount, String date, String time) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputCsvFile, true))) { // 'true' for appending
+            // Check if the file is empty to decide if the header should be written
+            File file = new File(outputCsvFile);
+            if (file.length() == 0) {
+                // Write the header if the file is empty
                 bw.write("TotalAmount,Date,Time");
                 bw.newLine();
-
-                // Write the computed data
-                bw.write(totalAmount + "," + date + "," + time);
-                bw.newLine();
-
-                System.out.println("Data successfully written to CSV file: " + outputCsvFile);
-            } catch (IOException e) {
-                System.err.println("Error writing to CSV file: " + e.getMessage());
-                e.printStackTrace();
             }
-        }    
+
+            // Write the computed data
+            bw.write(totalAmount + "," + date + "," + time);
+            bw.newLine();
+
+            System.out.println("Data successfully written to CSV file: " + outputCsvFile);
+        } catch (IOException e) {
+            System.err.println("Error writing to CSV file: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
+    // Method to clear the contents of the original CSV file
+    public static void clearCSV(String csvFile) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(csvFile))) {
+            // Simply overwrite the file with nothing, effectively clearing it
+            bw.write("");  // Clear the content of the file
+            System.out.println("CSV file cleared: " + csvFile);
+        } catch (IOException e) {
+            System.err.println("Error clearing CSV file: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }    
     
     
     // Method to insert CSV data into SQLite
