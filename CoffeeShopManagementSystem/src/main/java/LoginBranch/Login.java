@@ -309,6 +309,7 @@ public class Login extends javax.swing.JFrame {
                                 new CashierWindow(cashier).setVisible(true);
                             }
                         });
+                        conn.close();
                         setVisible(false);
                         break;
                     default:

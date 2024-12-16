@@ -2156,6 +2156,7 @@ public class CashierWindow extends javax.swing.JFrame {
                         // Parse TotalAmount, Date, and Time from the appropriate columns
                         int amount = Integer.parseInt(values[6]); // Adjust index based on CSV format
                         totalAmount += amount;
+//                        System.out.println("check");
 
                         // Store Date and Time (Assuming columns 7 and 8)
                         lastDate = values[7];
@@ -2169,10 +2170,10 @@ public class CashierWindow extends javax.swing.JFrame {
 
                 if (lastDate != null && lastTime != null) {
                     // Insert the computed total along with the cashier name, date, and time into the database
-                    stmt.setString(1, cashier); // Set CashierName
-                    stmt.setInt(2, totalAmount);   // TotalAmount
-                    stmt.setString(3, lastDate);  // Date
-                    stmt.setString(4, lastTime);  // Time
+//                    stmt.setString(1, cashier); // Set CashierName
+                    stmt.setInt(1, totalAmount);   // TotalAmount
+                    stmt.setString(2, lastDate);  // Date
+                    stmt.setString(3, lastTime);  // Time
                     stmt.executeUpdate();
 
                     // Write to a new CSV file
