@@ -4,9 +4,13 @@
  */
 package AdminBranch;
 
+import AdminSubWindow.AdminAccountRegistration;
 import AdminSubWindow.SalesReport;
 import AdminSubWindow.StaffPerformance;
+import LoginBranch.Login;
 import cellAction.TableActionEvent;
+import cellAction.accountTableActionCellEditor;
+import cellAction.accountTableActionCellRenderer;
 import cellAction.restockTableActionCellEditor;
 import cellAction.restockTableActionCellRenderer;
 import databaseConnection.DBConnection;
@@ -19,6 +23,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -58,6 +63,8 @@ public class AdminMain extends javax.swing.JFrame {
         populateIngredientsListTable();
         populateSalesMonitoringTable();
         populateRoleManagementTable();
+        populateProductTable();
+        populateRecentSalesTable();
         // </editor-fold> 
         
         TableActionEvent event = new TableActionEvent(){
@@ -91,11 +98,17 @@ public class AdminMain extends javax.swing.JFrame {
         IngredientsTable.setDefaultRenderer(Object.class, centerRenderer);
         SalesMonitoringTable.setDefaultRenderer(Object.class, centerRenderer);
         RoleManagementTable.setDefaultRenderer(Object.class, centerRenderer);
+        ProductsTable.setDefaultRenderer(Object.class, centerRenderer);
+        RecentSalesTable.setDefaultRenderer(Object.class, centerRenderer);
+        AuditLogsTable.setDefaultRenderer(Object.class, centerRenderer);
         // </editor-fold>
         
         // <editor-fold defaultstate="collapsed" desc="CELL ACTION">
         IngredientsTable.getColumnModel().getColumn(2).setCellRenderer(new restockTableActionCellRenderer());
         IngredientsTable.getColumnModel().getColumn(2).setCellEditor(new restockTableActionCellEditor(event));
+        
+        RoleManagementTable.getColumnModel().getColumn(2).setCellRenderer(new accountTableActionCellRenderer());
+        RoleManagementTable.getColumnModel().getColumn(2).setCellEditor(new accountTableActionCellEditor(event));
         // </editor-fold>
         
         RecentSalesTable.setOpaque(false);
@@ -113,10 +126,10 @@ public class AdminMain extends javax.swing.JFrame {
         IngredientsTable.setShowGrid(false);
         
         ProductsTable.setOpaque(false);
-        ProductsTable.setBackground(new java.awt.Color(204, 204, 204, 80));
-        ((DefaultTableCellRenderer)ProductsTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(204, 204, 204, 80));
-        jScrollPane7.setOpaque(false);
-        jScrollPane7.getViewport().setOpaque(false);
+        ProductsTable.setBackground(new java.awt.Color(0, 0, 0, 100));
+        ((DefaultTableCellRenderer)ProductsTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(0, 0, 0, 100));
+        productsScrPane.setOpaque(false);
+        productsScrPane.getViewport().setOpaque(false);
         ProductsTable.setShowGrid(false);
         
         SalesMonitoringTable.setOpaque(false);
@@ -134,10 +147,10 @@ public class AdminMain extends javax.swing.JFrame {
         RoleManagementTable.setShowGrid(false);
         
         AuditLogsTable.setOpaque(false);
-        AuditLogsTable.setBackground(new java.awt.Color(204, 204, 204, 80));
-        ((DefaultTableCellRenderer)AuditLogsTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(204, 204, 204, 80));
-        jScrollPane4.setOpaque(false);
-        jScrollPane4.getViewport().setOpaque(false);
+        AuditLogsTable.setBackground(new java.awt.Color(0, 0, 0, 100));
+        ((DefaultTableCellRenderer)AuditLogsTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(0, 0, 0, 100));
+        auditScrPane.setOpaque(false);
+        auditScrPane.getViewport().setOpaque(false);
         AuditLogsTable.setShowGrid(false);
         // </editor-fold>    
     }
@@ -158,7 +171,7 @@ public class AdminMain extends javax.swing.JFrame {
         inventory = new javax.swing.JButton();
         salesmonitoring = new javax.swing.JButton();
         rolemanagement = new javax.swing.JButton();
-        systemsettings = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
         auditlogs = new javax.swing.JButton();
         PanelMain = new javax.swing.JPanel();
         Dashboard = new javax.swing.JPanel();
@@ -173,7 +186,7 @@ public class AdminMain extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         IngredientsScrPane = new javax.swing.JScrollPane();
         IngredientsTable = new javax.swing.JTable();
-        jScrollPane7 = new javax.swing.JScrollPane();
+        productsScrPane = new javax.swing.JScrollPane();
         ProductsTable = new javax.swing.JTable();
         SalesMonitoring = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -205,7 +218,7 @@ public class AdminMain extends javax.swing.JFrame {
         ConfirmButton = new javax.swing.JButton();
         AuditLogs = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        auditScrPane = new javax.swing.JScrollPane();
         AuditLogsTable = new javax.swing.JTable();
         Background = new javax.swing.JLabel();
 
@@ -294,22 +307,22 @@ public class AdminMain extends javax.swing.JFrame {
             }
         });
 
-        systemsettings.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        systemsettings.setForeground(new java.awt.Color(255, 255, 255));
-        systemsettings.setText("SYSTEM SETTINGS");
-        systemsettings.setBorderPainted(false);
-        systemsettings.setContentAreaFilled(false);
-        systemsettings.addMouseListener(new java.awt.event.MouseAdapter() {
+        logoutButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        logoutButton.setForeground(new java.awt.Color(255, 255, 255));
+        logoutButton.setText("LOGOUT");
+        logoutButton.setBorderPainted(false);
+        logoutButton.setContentAreaFilled(false);
+        logoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                systemsettingsMouseEntered(evt);
+                logoutButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                systemsettingsMouseExited(evt);
+                logoutButtonMouseExited(evt);
             }
         });
-        systemsettings.addActionListener(new java.awt.event.ActionListener() {
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                systemsettingsActionPerformed(evt);
+                logoutButtonActionPerformed(evt);
             }
         });
 
@@ -343,14 +356,14 @@ public class AdminMain extends javax.swing.JFrame {
                     .addComponent(inventory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(salesmonitoring, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(rolemanagement, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
-                    .addComponent(systemsettings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(logoutButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(auditlogs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         ButtonsPanelLayout.setVerticalGroup(
             ButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ButtonsPanelLayout.createSequentialGroup()
-                .addContainerGap(241, Short.MAX_VALUE)
+                .addContainerGap(273, Short.MAX_VALUE)
                 .addComponent(dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(inventory, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -359,10 +372,10 @@ public class AdminMain extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(rolemanagement, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(systemsettings, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(auditlogs, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
 
         jPanel1.add(ButtonsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 800));
@@ -383,17 +396,25 @@ public class AdminMain extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("RECENT SALES");
 
+        RecentSalesTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        RecentSalesTable.setForeground(new java.awt.Color(255, 255, 255));
         RecentSalesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Cashier", "Product", "Category", "Sales", "Timestamp"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        RecentSalesTable.setRowHeight(40);
         jScrollPane1.setViewportView(RecentSalesTable);
 
         javax.swing.GroupLayout DashboardLayout = new javax.swing.GroupLayout(Dashboard);
@@ -474,31 +495,32 @@ public class AdminMain extends javax.swing.JFrame {
 
         Inventory.add(IngredientsScrPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 570, 510));
 
+        ProductsTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        ProductsTable.setForeground(new java.awt.Color(255, 255, 255));
         ProductsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Image", "Product Name", "Estimated Serving", "Price"
+                "Product Name", "Price"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane7.setViewportView(ProductsTable);
+        ProductsTable.setRowHeight(40);
+        productsScrPane.setViewportView(ProductsTable);
         if (ProductsTable.getColumnModel().getColumnCount() > 0) {
             ProductsTable.getColumnModel().getColumn(0).setResizable(false);
             ProductsTable.getColumnModel().getColumn(1).setResizable(false);
-            ProductsTable.getColumnModel().getColumn(2).setResizable(false);
-            ProductsTable.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        Inventory.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, 570, 510));
+        Inventory.add(productsScrPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, 570, 510));
 
         SalesMonitoring.setOpaque(false);
 
@@ -675,6 +697,11 @@ public class AdminMain extends javax.swing.JFrame {
                 NewAccButMouseExited(evt);
             }
         });
+        NewAccBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewAccButActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout RoleManagementLayout = new javax.swing.GroupLayout(RoleManagement);
         RoleManagement.setLayout(RoleManagementLayout);
@@ -804,7 +831,7 @@ public class AdminMain extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane4.setViewportView(AuditLogsTable);
+        auditScrPane.setViewportView(AuditLogsTable);
 
         javax.swing.GroupLayout AuditLogsLayout = new javax.swing.GroupLayout(AuditLogs);
         AuditLogs.setLayout(AuditLogsLayout);
@@ -812,7 +839,7 @@ public class AdminMain extends javax.swing.JFrame {
             AuditLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AuditLogsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4)
+                .addComponent(auditScrPane)
                 .addContainerGap())
             .addGroup(AuditLogsLayout.createSequentialGroup()
                 .addGap(480, 480, 480)
@@ -825,7 +852,7 @@ public class AdminMain extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                .addComponent(auditScrPane, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -890,15 +917,10 @@ public class AdminMain extends javax.swing.JFrame {
         populateSalesMonitoringTable();
     }//GEN-LAST:event_salesShowAllButtonActionPerformed
 
-    private void systemsettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_systemsettingsActionPerformed
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
-        Dashboard.setVisible(false);
-        Inventory.setVisible(false);
-        SalesMonitoring.setVisible(false);
-        RoleManagement.setVisible(false);
-        SystemSettings.setVisible(true);
-        AuditLogs.setVisible(false);
-    }//GEN-LAST:event_systemsettingsActionPerformed
+        logout();
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void dashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardActionPerformed
         // TODO add your handling code here:
@@ -1003,18 +1025,18 @@ public class AdminMain extends javax.swing.JFrame {
         rolemanagement.setForeground(Color.white);
     }//GEN-LAST:event_rolemanagementMouseExited
 
-    private void systemsettingsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_systemsettingsMouseEntered
+    private void logoutButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutButtonMouseEntered
         // TODO add your handling code here:
-        systemsettings.setContentAreaFilled(true);
-        systemsettings.setBackground(new java.awt.Color(111, 68, 54));
-        systemsettings.setForeground(Color.white);
-    }//GEN-LAST:event_systemsettingsMouseEntered
+        logoutButton.setContentAreaFilled(true);
+        logoutButton.setBackground(new java.awt.Color(111, 68, 54));
+        logoutButton.setForeground(Color.white);
+    }//GEN-LAST:event_logoutButtonMouseEntered
 
-    private void systemsettingsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_systemsettingsMouseExited
+    private void logoutButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutButtonMouseExited
         // TODO add your handling code here:
-        systemsettings.setContentAreaFilled(false);
-        systemsettings.setForeground(Color.white);
-    }//GEN-LAST:event_systemsettingsMouseExited
+        logoutButton.setContentAreaFilled(false);
+        logoutButton.setForeground(Color.white);
+    }//GEN-LAST:event_logoutButtonMouseExited
 
     private void auditlogsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_auditlogsMouseEntered
         // TODO add your handling code here:
@@ -1102,19 +1124,23 @@ public class AdminMain extends javax.swing.JFrame {
     private void salesGenReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesGenReportButtonActionPerformed
 
         callSalesReport();
-        setVisible(false);
+        
     }//GEN-LAST:event_salesGenReportButtonActionPerformed
 
     private void cashierGenReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashierGenReportButtonActionPerformed
         callCashierReport();
-        setVisible(false);
+        
     }//GEN-LAST:event_cashierGenReportButtonActionPerformed
+
+    private void NewAccButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewAccButActionPerformed
+        // TODO add your handling code here:
+        callAdminRegister();
+    }//GEN-LAST:event_NewAccButActionPerformed
 
     // </editor-fold>    
     
     // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIES"> 
-    
-    private void callCashierReport(){
+    private void callAdminRegister(){
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -1128,22 +1154,173 @@ public class AdminMain extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminAccountRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminAccountRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminAccountRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminAccountRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StaffPerformance().setVisible(true);
+                new AdminAccountRegistration().setVisible(true);
             }
         });
+        setVisible(false);
+    }
+    private void logout(){
+        int response = JOptionPane.showConfirmDialog(null, "Do you want to Log out?", "Confirm",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        switch (response) {
+            case JOptionPane.YES_OPTION:
+                //OPENS LOGIN WINDOW
+                //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+                try {
+                    for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                        if ("Nimbus".equals(info.getName())) {
+                            javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                            break;
+                        }
+                    }
+                } catch (ClassNotFoundException ex) {
+                    java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+                    java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                }
+                //</editor-fold>
+
+                /* Create and display the form */
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        new Login().setVisible(true);
+                    }
+                });
+                setVisible(false);
+                break;
+            case JOptionPane.NO_OPTION:
+                break;
+            default:
+                break;
+        }
+    }
+    private void populateRecentSalesTable(){
+        DefaultTableModel model = (DefaultTableModel) RecentSalesTable.getModel();
+        model.setRowCount(0);
+        String url = "jdbc:sqlite:coffeeDB.db";
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM SalesByProducts")) {
+
+            // Iterate through the result set and add rows to the table model
+            while (rs.next()) {
+                String cashier = rs.getString("Cashier");
+                String product = rs.getString("Product");
+                String category = rs.getString("Category");
+                int sales = rs.getInt("Sales");
+                String timestamp = rs.getString("Timestamp");
+                model.addRow(new Object[]{cashier, product,category, sales, timestamp});
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    private void populateProductTable(){
+        String sqlQuery = "SELECT Product, Price FROM ProductList";
+        DefaultTableModel model = (DefaultTableModel) ProductsTable.getModel();
+        model.setRowCount(0);
+        try {
+            sqlPST = conn.prepareStatement(sqlQuery);
+            sqlResult = sqlPST.executeQuery();
+            while (sqlResult.next()){
+                String productString = sqlResult.getString("Product");
+                int price = sqlResult.getInt("Price");
+                model.addRow(new Object[]{productString, price});
+            }
+       } catch (SQLException e) {
+           e.printStackTrace();
+       }
+        
+    }
+    private void callCashierReport(){
+        String cashier = salesField.getText().toLowerCase();
+        Object comboSelect = salesFilterCombo.getSelectedItem();
+        String comboString = comboSelect.toString();
+        String cashierName = null;
+        
+        
+        
+        if (cashier.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter the name of the cashier ", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (comboString.equals("Cashier")){
+            // OPEN STAFF PERFORMANCE WINDOW
+            String sqlQuery = "SELECT Cashier FROM SalesByProducts WHERE LOWER(Cashier) = ?";
+            try {
+                    sqlPST = conn.prepareStatement(sqlQuery);
+                    sqlPST.setString(1, cashier);
+                    sqlResult = sqlPST.executeQuery();
+                    while (sqlResult.next()){
+                        String resultString = sqlResult.getString("Cashier");
+                        if (resultString.toLowerCase().equals(cashier)) {
+                            cashierName = sqlResult.getString("Cashier");
+                            break;
+                        }
+                    }
+               } catch (SQLException e) {
+                   e.printStackTrace();
+               }
+            
+            String cashierFinal = cashierName;
+            if (cashierName == null){
+                JOptionPane.showMessageDialog(null, "Cashier name not found", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            //<editor-fold defaultstate="collapsed" desc="OPEN STAFF PERFORMANCE WINDOW ">
+            
+            //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+
+            try {
+                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                        break;
+                    }
+                }
+            } catch (ClassNotFoundException ex) {
+                java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+                java.util.logging.Logger.getLogger(StaffPerformance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }
+            //</editor-fold>
+
+            /* Create and display the form */
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new StaffPerformance(cashierFinal).setVisible(true);
+                }
+            });
+            setVisible(false);
+            //</editor-fold>
+        } else {
+            JOptionPane.showMessageDialog(null, "Please set the combo box to 'Cashier' and put the name of the cashier in the field", "Error in cashier", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
     }
     private void callSalesReport(){
          /* Set the Nimbus look and feel */
@@ -1175,6 +1352,7 @@ public class AdminMain extends javax.swing.JFrame {
                 new SalesReport().setVisible(true);
             }
         });
+        setVisible(false);
     }
     private void populateRoleManagementTable(){
         DefaultTableModel model = (DefaultTableModel) RoleManagementTable.getModel();
@@ -1254,7 +1432,6 @@ public class AdminMain extends javax.swing.JFrame {
         
         switch (comboString){
             case "Cashier":
-                System.out.println("CASHIER");
                 sqlQuery = "SELECT * FROM SalesByProducts WHERE LOWER(Cashier) = ?";
                 try {
                     sqlPST = conn.prepareStatement(sqlQuery);
@@ -1273,7 +1450,6 @@ public class AdminMain extends javax.swing.JFrame {
                }
                 break;
             case "Product":
-                System.out.println("PRODUCT");
                 sqlQuery = "SELECT * FROM SalesByProducts WHERE LOWER(Product) = ?";
                 try {
                     sqlPST = conn.prepareStatement(sqlQuery);
@@ -1292,7 +1468,6 @@ public class AdminMain extends javax.swing.JFrame {
                }
                 break;
             case "Category":
-                System.out.println("CATEGORY");
                 sqlQuery = "SELECT * FROM SalesByProducts WHERE LOWER(Category) = ?";
                 try {
                     sqlPST = conn.prepareStatement(sqlQuery);
@@ -1435,6 +1610,7 @@ public class AdminMain extends javax.swing.JFrame {
     private javax.swing.JPanel SalesMonitoring;
     private javax.swing.JTable SalesMonitoringTable;
     private javax.swing.JPanel SystemSettings;
+    private javax.swing.JScrollPane auditScrPane;
     private javax.swing.JButton auditlogs;
     private javax.swing.JButton cashierGenReportButton;
     private javax.swing.JButton dashboard;
@@ -1457,12 +1633,12 @@ public class AdminMain extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JButton logoutButton;
+    private javax.swing.JScrollPane productsScrPane;
     private javax.swing.JButton rolemanagement;
     private javax.swing.JTextField salesField;
     private javax.swing.JButton salesFilterButton;
@@ -1470,7 +1646,6 @@ public class AdminMain extends javax.swing.JFrame {
     private javax.swing.JButton salesGenReportButton;
     private javax.swing.JButton salesShowAllButton;
     private javax.swing.JButton salesmonitoring;
-    private javax.swing.JButton systemsettings;
     // End of variables declaration//GEN-END:variables
     // </editor-fold>
 }
