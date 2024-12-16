@@ -59,6 +59,7 @@ public class AdminMain extends javax.swing.JFrame {
         populateIngredientsListTable();
         populateSalesMonitoringTable();
         populateRoleManagementTable();
+        populateProductTable();
         // </editor-fold> 
         
         TableActionEvent event = new TableActionEvent(){
@@ -114,10 +115,10 @@ public class AdminMain extends javax.swing.JFrame {
         IngredientsTable.setShowGrid(false);
         
         ProductsTable.setOpaque(false);
-        ProductsTable.setBackground(new java.awt.Color(204, 204, 204, 80));
-        ((DefaultTableCellRenderer)ProductsTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(204, 204, 204, 80));
-        jScrollPane7.setOpaque(false);
-        jScrollPane7.getViewport().setOpaque(false);
+        ProductsTable.setBackground(new java.awt.Color(0, 0, 0, 100));
+        ((DefaultTableCellRenderer)ProductsTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(0, 0, 0, 100));
+        productsScrPane.setOpaque(false);
+        productsScrPane.getViewport().setOpaque(false);
         ProductsTable.setShowGrid(false);
         
         SalesMonitoringTable.setOpaque(false);
@@ -174,7 +175,7 @@ public class AdminMain extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         IngredientsScrPane = new javax.swing.JScrollPane();
         IngredientsTable = new javax.swing.JTable();
-        jScrollPane7 = new javax.swing.JScrollPane();
+        productsScrPane = new javax.swing.JScrollPane();
         ProductsTable = new javax.swing.JTable();
         SalesMonitoring = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -475,31 +476,32 @@ public class AdminMain extends javax.swing.JFrame {
 
         Inventory.add(IngredientsScrPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 570, 510));
 
+        ProductsTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        ProductsTable.setForeground(new java.awt.Color(255, 255, 255));
         ProductsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Image", "Product Name", "Estimated Serving", "Price"
+                "Product Name", "Price"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane7.setViewportView(ProductsTable);
+        ProductsTable.setRowHeight(40);
+        productsScrPane.setViewportView(ProductsTable);
         if (ProductsTable.getColumnModel().getColumnCount() > 0) {
             ProductsTable.getColumnModel().getColumn(0).setResizable(false);
             ProductsTable.getColumnModel().getColumn(1).setResizable(false);
-            ProductsTable.getColumnModel().getColumn(2).setResizable(false);
-            ProductsTable.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        Inventory.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, 570, 510));
+        Inventory.add(productsScrPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, 570, 510));
 
         SalesMonitoring.setOpaque(false);
 
@@ -1115,6 +1117,24 @@ public class AdminMain extends javax.swing.JFrame {
     
     // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIES"> 
     
+    private void populateProductTable(){
+        String sqlQuery = "SELECT Product, Price FROM ProductList";
+        DefaultTableModel model = (DefaultTableModel) ProductsTable.getModel();
+        model.setRowCount(0);
+        try {
+            sqlPST = conn.prepareStatement(sqlQuery);
+            sqlResult = sqlPST.executeQuery();
+            while (sqlResult.next()){
+                String productString = sqlResult.getString("Product");
+                int price = sqlResult.getInt("Price");
+                model.addRow(new Object[]{productString, price});
+            }
+       } catch (SQLException e) {
+           e.printStackTrace();
+       }
+        
+    }
+    
     private void callCashierReport(){
         String cashier = salesField.getText().toLowerCase();
         Object comboSelect = salesFilterCombo.getSelectedItem();
@@ -1497,11 +1517,11 @@ public class AdminMain extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JScrollPane productsScrPane;
     private javax.swing.JButton rolemanagement;
     private javax.swing.JTextField salesField;
     private javax.swing.JButton salesFilterButton;
