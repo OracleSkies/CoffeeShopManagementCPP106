@@ -1690,7 +1690,11 @@ public class CashierWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_ViewOrderMouseClicked
     
     private void EndShifftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EndShifftActionPerformed
+        String csvFile1 = "ShiftTransaction.csv";        // Path to the current orders CSV file
+        String jdbcUrl = "jdbc:sqlite:coffeeDB.db";  // SQLite connection string
         
+        
+        shiftinsertCSVToDatabase( csvFile1,  jdbcUrl,  cashier);
     }//GEN-LAST:event_EndShifftActionPerformed
     // </editor-fold>
     
@@ -2324,28 +2328,86 @@ public class CashierWindow extends javax.swing.JFrame {
             DefaultTableModel model = new DefaultTableModel();
             boolean isHeader = true;
 
+            // The indices of the columns you want to display (e.g., column 1, 3, and 5)
+            int[] columnsToDisplay = {1, 2, 3};  // Adjust based on the actual column indices you want
+
             // Read the CSV line by line
             while ((line = br.readLine()) != null) {
                 String[] row = line.split(",");
-                
+
                 // If this is the first row, treat it as the header
                 if (isHeader) {
-                    for (String columnName : row) {
-                        model.addColumn(columnName);
+                    // Add only the columns you want to display
+                    for (int colIndex : columnsToDisplay) {
+                        model.addColumn(row[colIndex]);
                     }
                     isHeader = false;
                 } else {
-                    model.addRow(row);
+                    // Add only the specific columns for each row
+                    String[] rowData = new String[columnsToDisplay.length];
+                    for (int i = 0; i < columnsToDisplay.length; i++) {
+                        rowData[i] = row[columnsToDisplay[i]];
+                    }
+                    model.addRow(rowData);
                 }
             }
 
             // Set the model for the JTable
-            transacSummaryTable.setModel(model); // jTable1 is the name of the JTable you added to the form
+            transacSummaryTable.setModel(model); // transacSummaryTable is the name of your JTable
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-     
+
+     //End Shift
+    public static void shiftinsertCSVToDatabase(String csvFile1, String jdbcUrl, String cashier) {
+                BufferedReader br = null;
+                PreparedStatement stmt = null;
+                Connection conn = null;
+
+                try {
+                    conn = DriverManager.getConnection(jdbcUrl);
+
+                    String sql = "INSERT INTO EndOfShiftLogs (Cashier, Orders, Sales, Timestamp) VALUES (?, ?, ?, ?)";
+
+                    stmt = conn.prepareStatement(sql);
+
+                    br = new BufferedReader(new FileReader(csvFile1));
+                    String line;
+
+                    while ((line = br.readLine()) != null) {
+                        String[] values = line.split(",");  // Assuming CSV columns are comma-separated
+
+                        try {
+                            stmt.setString(1, cashier); // Set CashierName
+                            stmt.setString(2, values[1]);  // Product
+                            stmt.setString(3, values[2]);  // Category
+                            stmt.setString(4, values[3]);
+
+                             // Clear the content of the original CSV file after processing
+                            clearCSV(csvFile1);
+
+                            stmt.executeUpdate();
+                        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+                            System.err.println("Invalid data in line: " + line);
+                        }
+                    }
+
+                    JOptionPane.showMessageDialog(null, "CSV data successfully inserted into the SQLite database for cashier: " + cashier);
+                } catch (IOException | SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error occurred: " + e.getMessage());
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        if (stmt != null) stmt.close();
+                        if (conn != null) conn.close();
+                        if (br != null) br.close();
+                    } catch (SQLException | IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+    
 // </editor-fold>
 
     
