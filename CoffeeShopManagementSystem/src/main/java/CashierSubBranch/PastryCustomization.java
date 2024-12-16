@@ -185,7 +185,7 @@ public class PastryCustomization extends javax.swing.JFrame {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Current_orders.csv", true))) {
             writer.write(data);
             writer.newLine();  // Add a new line for the next record
-            JOptionPane.showMessageDialog(this, "Order customization saved!");
+            JOptionPane.showMessageDialog(this, "Order saved!!");
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, "Error writing to file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
