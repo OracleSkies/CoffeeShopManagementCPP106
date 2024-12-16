@@ -74,8 +74,7 @@ public class AdminMain extends javax.swing.JFrame {
         TableActionEvent event = new TableActionEvent(){
             @Override 
             public void onRestock(int row){
-                System.out.println("CLICKED");
-                System.out.println(row);
+                addStock(row);
             }
             @Override 
             public void onDelete(int row){
@@ -1144,6 +1143,36 @@ public class AdminMain extends javax.swing.JFrame {
     // </editor-fold>    
     
     // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIES"> 
+
+    private void addStock(int row){
+        String amountToAddStr = JOptionPane.showInputDialog("Enter the amount to add:");
+        int amountToAdd = Integer.parseInt(amountToAddStr);
+        
+        try {
+            conn = DBConnection.connectionDB();
+            // Prepare the SQL update statement
+            String updateQuery = "UPDATE IngredientList SET Amount = Amount + ? WHERE id = ?";
+            PreparedStatement pstmt = conn.prepareStatement(updateQuery);
+
+            // Set the parameters for the prepared statement
+            pstmt.setInt(1, amountToAdd);
+            pstmt.setInt(2, row);
+
+            // Execute the update
+            int rowsUpdated = pstmt.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                JOptionPane.showMessageDialog(null, "Ingredient updated successfully!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingredient not found or update failed.");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
+        populateIngredientsListTable();
+    }
     private void callAdminRegister(){
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1176,6 +1205,7 @@ public class AdminMain extends javax.swing.JFrame {
         });
         setVisible(false);
     }
+    
     private void logout(){
         int response = JOptionPane.showConfirmDialog(null, "Do you want to Log out?", "Confirm",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -1216,6 +1246,7 @@ public class AdminMain extends javax.swing.JFrame {
                 break;
         }
     }
+    
     private void populateRecentSalesTable(){
         DefaultTableModel model = (DefaultTableModel) RecentSalesTable.getModel();
         model.setRowCount(0);
@@ -1238,6 +1269,7 @@ public class AdminMain extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    
     private void populateProductTable(){
         String sqlQuery = "SELECT Product, Price FROM ProductList";
         DefaultTableModel model = (DefaultTableModel) ProductsTable.getModel();
@@ -1408,11 +1440,12 @@ public class AdminMain extends javax.swing.JFrame {
     private void populateIngredientsListTable(){
         //POPULATES DATA FROM DATABASE TO INGREDIENTS LIST TABLE
         DefaultTableModel model = (DefaultTableModel) IngredientsTable.getModel();
+        model.setRowCount(0);
         
         String url = "jdbc:sqlite:coffeeDB.db";
         try (Connection conn = DriverManager.getConnection(url);
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM IngredientList")) {
+             ResultSet rs = stmt.executeQuery("SELECT Ingredient,Amount FROM IngredientList")) {
 
             // Iterate through the result set and add rows to the table model
             while (rs.next()) {
@@ -1617,6 +1650,7 @@ public class AdminMain extends javax.swing.JFrame {
         panel.add(pieChartPanel, BorderLayout.CENTER);
         panel.setOpaque(false);
         panel.validate();
+        
     }
     
     // </editor-fold> 
