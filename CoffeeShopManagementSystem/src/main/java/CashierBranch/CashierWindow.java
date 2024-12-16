@@ -2138,7 +2138,7 @@ public class CashierWindow extends javax.swing.JFrame {
             // Read the CSV file
             br = new BufferedReader(new FileReader(csvFile));
             String line;
-            double totalAmount = 0.0;
+            int totalAmount = 0;
 
             String lastDate = null;
             String lastTime = null;
