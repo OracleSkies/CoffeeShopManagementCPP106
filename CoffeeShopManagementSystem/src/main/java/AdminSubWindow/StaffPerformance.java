@@ -32,7 +32,7 @@ public class StaffPerformance extends javax.swing.JFrame {
         String orderCount =  Integer.toString(countbyOrders(cashier));
         String salesAmount = Integer.toString(addByOrders(cashier));
         orderCountLabel.setText(orderCount);
-        salesAmountLabel.setText(salesAmount);
+        salesAmountLabel.setText("₱"+ salesAmount);
     }
 
     /**

@@ -62,6 +62,7 @@ public class AdminMain extends javax.swing.JFrame {
         populateSalesMonitoringTable();
         populateRoleManagementTable();
         populateProductTable();
+        populateRecentSalesTable();
         // </editor-fold> 
         
         TableActionEvent event = new TableActionEvent(){
@@ -96,6 +97,7 @@ public class AdminMain extends javax.swing.JFrame {
         SalesMonitoringTable.setDefaultRenderer(Object.class, centerRenderer);
         RoleManagementTable.setDefaultRenderer(Object.class, centerRenderer);
         ProductsTable.setDefaultRenderer(Object.class, centerRenderer);
+        RecentSalesTable.setDefaultRenderer(Object.class, centerRenderer);
         // </editor-fold>
         
         // <editor-fold defaultstate="collapsed" desc="CELL ACTION">
@@ -391,17 +393,25 @@ public class AdminMain extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("RECENT SALES");
 
+        RecentSalesTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        RecentSalesTable.setForeground(new java.awt.Color(255, 255, 255));
         RecentSalesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Cashier", "Product", "Category", "Sales", "Timestamp"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        RecentSalesTable.setRowHeight(40);
         jScrollPane1.setViewportView(RecentSalesTable);
 
         javax.swing.GroupLayout DashboardLayout = new javax.swing.GroupLayout(Dashboard);
@@ -1123,6 +1133,28 @@ public class AdminMain extends javax.swing.JFrame {
     
     // <editor-fold defaultstate="collapsed" desc="FUNCTIONALITIES"> 
     
+    private void populateRecentSalesTable(){
+        DefaultTableModel model = (DefaultTableModel) RecentSalesTable.getModel();
+        model.setRowCount(0);
+        String url = "jdbc:sqlite:coffeeDB.db";
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM SalesByProducts")) {
+
+            // Iterate through the result set and add rows to the table model
+            while (rs.next()) {
+                String cashier = rs.getString("Cashier");
+                String product = rs.getString("Product");
+                String category = rs.getString("Category");
+                int sales = rs.getInt("Sales");
+                String timestamp = rs.getString("Timestamp");
+                model.addRow(new Object[]{cashier, product,category, sales, timestamp});
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     private void populateProductTable(){
         String sqlQuery = "SELECT Product, Price FROM ProductList";
         DefaultTableModel model = (DefaultTableModel) ProductsTable.getModel();
@@ -1140,7 +1172,6 @@ public class AdminMain extends javax.swing.JFrame {
        }
         
     }
-    
     private void callCashierReport(){
         String cashier = salesField.getText().toLowerCase();
         Object comboSelect = salesFilterCombo.getSelectedItem();
