@@ -100,6 +100,7 @@ public class AdminMain extends javax.swing.JFrame {
         RoleManagementTable.setDefaultRenderer(Object.class, centerRenderer);
         ProductsTable.setDefaultRenderer(Object.class, centerRenderer);
         RecentSalesTable.setDefaultRenderer(Object.class, centerRenderer);
+        AuditLogsTable.setDefaultRenderer(Object.class, centerRenderer);
         // </editor-fold>
         
         // <editor-fold defaultstate="collapsed" desc="CELL ACTION">
@@ -146,10 +147,10 @@ public class AdminMain extends javax.swing.JFrame {
         RoleManagementTable.setShowGrid(false);
         
         AuditLogsTable.setOpaque(false);
-        AuditLogsTable.setBackground(new java.awt.Color(204, 204, 204, 80));
-        ((DefaultTableCellRenderer)AuditLogsTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(204, 204, 204, 80));
-        jScrollPane4.setOpaque(false);
-        jScrollPane4.getViewport().setOpaque(false);
+        AuditLogsTable.setBackground(new java.awt.Color(0, 0, 0, 100));
+        ((DefaultTableCellRenderer)AuditLogsTable.getDefaultRenderer(Object.class)).setBackground(new java.awt.Color(0, 0, 0, 100));
+        auditScrPane.setOpaque(false);
+        auditScrPane.getViewport().setOpaque(false);
         AuditLogsTable.setShowGrid(false);
         // </editor-fold>    
     }
@@ -217,7 +218,7 @@ public class AdminMain extends javax.swing.JFrame {
         ConfirmButton = new javax.swing.JButton();
         AuditLogs = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        auditScrPane = new javax.swing.JScrollPane();
         AuditLogsTable = new javax.swing.JTable();
         Background = new javax.swing.JLabel();
 
@@ -830,7 +831,7 @@ public class AdminMain extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane4.setViewportView(AuditLogsTable);
+        auditScrPane.setViewportView(AuditLogsTable);
 
         javax.swing.GroupLayout AuditLogsLayout = new javax.swing.GroupLayout(AuditLogs);
         AuditLogs.setLayout(AuditLogsLayout);
@@ -838,7 +839,7 @@ public class AdminMain extends javax.swing.JFrame {
             AuditLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AuditLogsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4)
+                .addComponent(auditScrPane)
                 .addContainerGap())
             .addGroup(AuditLogsLayout.createSequentialGroup()
                 .addGap(480, 480, 480)
@@ -851,7 +852,7 @@ public class AdminMain extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                .addComponent(auditScrPane, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1609,6 +1610,7 @@ public class AdminMain extends javax.swing.JFrame {
     private javax.swing.JPanel SalesMonitoring;
     private javax.swing.JTable SalesMonitoringTable;
     private javax.swing.JPanel SystemSettings;
+    private javax.swing.JScrollPane auditScrPane;
     private javax.swing.JButton auditlogs;
     private javax.swing.JButton cashierGenReportButton;
     private javax.swing.JButton dashboard;
@@ -1631,7 +1633,6 @@ public class AdminMain extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
