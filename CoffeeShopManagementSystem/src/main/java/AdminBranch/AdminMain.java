@@ -24,6 +24,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -32,11 +33,13 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.CategoryAxis;
 import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.chart.title.Title;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -59,7 +62,8 @@ public class AdminMain extends javax.swing.JFrame {
         AuditLogs.setVisible(false);
         
         // <editor-fold defaultstate="collapsed" desc="TABLE POPULATION"> 
-        showLineChart();
+//        showLineChart();
+        showPieChart(LineChart);
         populateIngredientsListTable();
         populateSalesMonitoringTable();
         populateRoleManagementTable();
@@ -1551,6 +1555,68 @@ public class AdminMain extends javax.swing.JFrame {
         LineChart.removeAll();
         LineChart.add(lineChartPanel, BorderLayout.CENTER);
         LineChart.validate();
+    }
+    public void showPieChart(JPanel panel){
+        String sqlQuery = "SELECT Category, Sales FROM SalesByProducts";
+        double totalCoffee = 0, totalTea = 0, totalFrappe = 0, totalPastry = 0;
+        try {
+            sqlPST = conn.prepareStatement(sqlQuery);
+            sqlResult = sqlPST.executeQuery();
+            while (sqlResult.next()){
+                String category = sqlResult.getString("Category");
+                String sales = Integer.toString(sqlResult.getInt("Sales"));
+                double salesAmount = Double.parseDouble(sales);
+                
+                switch(category){
+                    case "Coffee":
+                        totalCoffee += salesAmount;
+                        break;
+                    case "Tea":
+                        totalTea += salesAmount;
+                        break;
+                    case "Frappe":
+                        totalFrappe += salesAmount;
+                        break;
+                    case "Pastry":
+                        totalPastry += salesAmount;
+                        break;
+                    default:
+                        System.out.println("Unknown category: " + category);
+                }
+            }
+       } catch (SQLException e) {
+           e.printStackTrace();
+       }
+        
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        if (totalCoffee > 0) dataset.setValue("COFFEE", totalCoffee);
+        if (totalTea > 0) dataset.setValue("TEA", totalTea);
+        if (totalFrappe > 0) dataset.setValue("FRAPPE", totalFrappe);
+        if (totalPastry > 0) dataset.setValue("PASTRY", totalPastry);
+
+        // Create pie chart
+        JFreeChart piechart = ChartFactory.createPieChart("SALES CONTRIBUTION BY PRODUCT CATEGORY", dataset, false, true, false);
+        piechart.setBackgroundPaint(new java.awt.Color(206, 148, 97)); //39, 146, 248
+
+        // Customize title
+        TextTitle chartTitle = piechart.getTitle();
+        chartTitle.setPaint(Color.WHITE);
+        chartTitle.setFont(new Font("Segoe UI", Font.BOLD, 20));
+
+        // Customize pie chart plot
+        PiePlot piePlot = (PiePlot) piechart.getPlot();
+        piePlot.setSectionPaint("COFFEE", new Color(61, 26, 9));
+        piePlot.setSectionPaint("TEA", new Color(125, 53, 17));
+        piePlot.setSectionPaint("FRAPPE", new Color(156, 68, 25));
+        piePlot.setSectionPaint("PASTRY", new Color(204, 111, 65));
+        piePlot.setBackgroundPaint(new java.awt.Color(222, 160, 87));
+
+        // Display pie chart in the panel
+        ChartPanel pieChartPanel = new ChartPanel(piechart);
+        panel.removeAll();
+        panel.add(pieChartPanel, BorderLayout.CENTER);
+        panel.setOpaque(false);
+        panel.validate();
     }
     
     // </editor-fold> 
