@@ -179,7 +179,7 @@ public class PastryCustomization extends javax.swing.JFrame {
         String time = now.format(timeFormatter);  // Extract the time
 
         // Prepare data to be written to the CSV file
-        String data = Type + "," + "Pastry" + "," + quantity + "," + " " + "," + " " + "," + " " + "," + "30" + "," + date + "," + time ;
+        String data = Type + "," + "Pastry" + "," + quantity + "," + "null" + "," + "null" + "," + "null" + "," + "30" + "," + date + "," + time ;
 
         // Write the data to a CSV file
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Current_orders.csv", true))) {
@@ -241,3 +241,6 @@ public class PastryCustomization extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }//</editor-fold>   
+
+
+/**/
