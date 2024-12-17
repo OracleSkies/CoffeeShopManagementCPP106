@@ -1155,16 +1155,18 @@ public class AdminMain extends javax.swing.JFrame {
              ResultSet rs = stmt.executeQuery(sqlQuery)){
             
             while(rs.next()){
+                System.out.println("row: "+ row);
+                System.out.println("loop count: "+ rowLoopCount);
                 if (rowLoopCount == row){
                     username = rs.getString("Username");
                     System.out.println("username: "+ username);
+                    
                     break;
                 }
                 rowLoopCount++;
             }
             
-            System.out.println("row: "+ row);
-            System.out.println("loop count: "+ rowLoopCount);
+            
             rowLoopCount = 0;
         } catch (Exception e){
             
@@ -1184,6 +1186,7 @@ public class AdminMain extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Account not found or update failed.");
             }
+            
             conn.close();
        } catch (SQLException e) {
            e.printStackTrace();
