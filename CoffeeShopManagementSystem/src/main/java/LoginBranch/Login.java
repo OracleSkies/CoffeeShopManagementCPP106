@@ -278,6 +278,7 @@ public class Login extends javax.swing.JFrame {
                                 }
                             });
                             setVisible(false);
+                            conn.close();
                         break;
                     case "user":
                         

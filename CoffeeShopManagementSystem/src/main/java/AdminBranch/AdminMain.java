@@ -405,11 +405,11 @@ public class AdminMain extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Cashier", "Product", "Category", "Sales", "Timestamp"
+                "Cashier", "Product", "Category", "Quantity", "Sales"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -558,11 +558,11 @@ public class AdminMain extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Cashier", "Product", "Category", "Sales", "Timestamp"
+                "Cashier", "Product", "Category", "Quantity", "Sales"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1341,9 +1341,9 @@ public class AdminMain extends javax.swing.JFrame {
                 String cashier = rs.getString("Cashier");
                 String product = rs.getString("Product");
                 String category = rs.getString("Category");
+                int quantity = rs.getInt("Quantity");
                 int sales = rs.getInt("Sales");
-                String timestamp = rs.getString("Timestamp");
-                model.addRow(new Object[]{cashier, product,category, sales, timestamp});
+                model.addRow(new Object[]{cashier, product,category, quantity, sales});
             }
 
         } catch (SQLException e) {
@@ -1512,9 +1512,9 @@ public class AdminMain extends javax.swing.JFrame {
                 String cashier = rs.getString("Cashier");
                 String product = rs.getString("Product");
                 String category = rs.getString("Category");
+                int quantity = rs.getInt("Quantity");
                 int sales = rs.getInt("Sales");
-                String timestamp = rs.getString("Timestamp");
-                model.addRow(new Object[]{cashier, product,category, sales, timestamp});
+                model.addRow(new Object[]{cashier, product,category, quantity, sales});
             }
 
         } catch (SQLException e) {

@@ -1,7 +1,7 @@
-﻿Cashier,Product,Category,Sales,Timestamp
-Gabuyo,Americano,Coffee,100,date
-Gabuyo,Irish Coffee,Coffee,200,date
-Gabuyo,Mango,Frappe,200,date
-Donasco,Mango,Frappe,200,date
-Donasco,Strawberry,Frappe,200,date
-Donasco,Strawberry,Frappe,200,date
+Cashier,Product,Category,Quantity,Sales
+Gabuyo,Americano,Coffee,1,49
+Gabuyo,Irish Coffee,Coffee,1,49
+Gabuyo,Mango,Frappe,1,49
+Donasco,Mango,Frappe,1,49
+Donasco,Strawberry,Frappe,1,49
+Donasco,Strawberry,Frappe,1,49

@@ -2247,7 +2247,7 @@ public class CashierWindow extends javax.swing.JFrame {
             try {
                 conn = DriverManager.getConnection(jdbcUrl);
 
-                String sql = "INSERT INTO TransactionByProduct (Cashier, Product, Category, Quantity, Sales) VALUES (?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO SalesByProducts (Cashier, Product, Category, Quantity, Sales) VALUES (?, ?, ?, ?, ?)";
 
                 stmt = conn.prepareStatement(sql);
 
